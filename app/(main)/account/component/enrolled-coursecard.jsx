@@ -1,136 +1,158 @@
 import { CourseProgress } from "@/components/course-progress";
 import { Badge } from "@/components/ui/badge";
-import { BookOpen } from "lucide-react";
+import { BookOpen, Award, CheckCircle2, Play, ArrowRight, FileCheck } from "lucide-react";
 import Image from "next/image";
 import { getImageUrl } from "@/lib/utils";
-
 import { getCategoryDetails } from "@/queries/categories";
-
 import { getAReport } from "@/queries/reports";
-
 import { getCourseDetails } from "@/queries/courses";
 
-const EnrolledCourseCard = async ({enrollment}) => {
+const EnrolledCourseCard = async ({ enrollment }) => {
+  let courseCategory = null;
+  if (enrollment?.course?.category?._id) {
+    try {
+      courseCategory = await getCategoryDetails(enrollment.course.category._id);
+    } catch (e) {}
+  }
 
-    const courseCategory = await getCategoryDetails(enrollment?.course?.category?._id);
+  const filter = {
+    course: enrollment?.course?._id,
+    student: enrollment?.student?._id,
+  };
 
-    const filter = {course: enrollment?.course?._id, student: enrollment?.student?._id};
+  let report = null;
+  try {
+    report = await getAReport(filter);
+  } catch (e) {}
 
-    const report = await getAReport(filter);
+  let courseDetails = null;
+  try {
+    courseDetails = await getCourseDetails(enrollment?.course?._id);
+  } catch (e) {}
 
-    // Get Total Module Number
-    const courseDetails = await getCourseDetails(enrollment?.course?._id);
-    const totalModuleCount = courseDetails?.modules?.length
+  const totalModuleCount = courseDetails?.modules?.length || enrollment?.course?.modules?.length || 1;
+  const totalCompletedModules = report?.totalCompletedModeules ? report.totalCompletedModeules.length : 0;
+  const totalProgress = Math.min(100, Math.round((totalCompletedModules / totalModuleCount) * 100));
 
-    // Total Completed Modules
-    const totalCompletedModules = report?.totalCompletedModeules ? report?.totalCompletedModeules?.length : 0;
+  const quizzes = report?.quizAssessment?.assessments || [];
+  const totalQuizzes = quizzes.length;
+  const quizzesTaken = quizzes.filter((q) => q.attempted);
 
-    // Total Progress
-    const totalProgress = totalModuleCount ? (totalCompletedModules/totalModuleCount) * 100 : 0
+  const totalCorrect = quizzesTaken.map((quiz) => {
+    return (quiz.options || []).filter((o) => o.isCorrect === true && o.isSelected === true);
+  }).flat();
 
-    // Get all Quizzes and Assignments
-    const quizzes = report?.quizAssessment?.assessments;
-    const totalQuizzes = quizzes?.length ?? 0;
+  const marksFromQuizzes = totalCorrect.length * 5;
+  const otherMarks = report?.quizAssessment?.otherMarks ?? 0;
+  const totalMarks = marksFromQuizzes + otherMarks;
 
-    // Find attempted quizzes
-    const quizzesTaken = quizzes ? quizzes.filter(q => q.attempted) : [];
+  const thumbnail = enrollment?.course?.thumbnail 
+    ? getImageUrl(enrollment.course.thumbnail, "courses")
+    : "/assets/home/course_female_hoodie.jpg";
 
-    // Find how many quizzes answered correct
+  const isCompleted = totalProgress === 100;
 
-    const totalCorrect = quizzesTaken.map(quiz => {
-        const item = quiz.options
-        return item.filter(o => {
-            return o.isCorrect === true && o.isSelected === true
-        })
-      }).filter(elem => elem.length > 0).flat();
+  return (
+    <div className="group bg-white rounded-3xl p-4 sm:p-5 shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100/90 flex flex-col justify-between h-full relative overflow-hidden">
+      
+      <div>
+        {/* Course Thumbnail with Sliding Overlay */}
+        <div className="relative aspect-[16/10] w-full rounded-2xl overflow-hidden mb-4 bg-slate-100">
+          <Image
+            src={thumbnail}
+            alt={enrollment?.course?.title || "Enrolled course thumbnail"}
+            fill
+            unoptimized
+            className="object-cover group-hover:scale-105 transition-transform duration-500"
+          />
 
-    //console.log({totalCorrect});
+          {/* Sliding Dark Hover Overlay */}
+          <div className="absolute inset-0 bg-black/40 -translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out z-10 pointer-events-none" />
 
-    const marksFromQuizzes = totalCorrect?.length * 5;
+          {/* Badges */}
+          <div className="absolute top-3 inset-x-3 flex items-center justify-between z-20 pointer-events-none">
+            <span className="bg-[#4A3AFF] text-white text-[11px] font-bold px-3 py-1 rounded-full shadow-md">
+              {courseCategory?.title || enrollment?.course?.category?.title || "Course"}
+            </span>
 
-    const otherMarks = report?.quizAssessment?.otherMarks ?? 0;
-
-    const totalMarks = (marksFromQuizzes + otherMarks);
-
-
-    return (
-        <div className="group hover:shadow-sm transition overflow-hidden border rounded-lg p-3 h-full">
-            <div className="relative w-full aspect-video rounded-md overflow-hidden">
-                <Image
-                    src={getImageUrl(enrollment?.course?.thumbnail, "courses")}
-                    alt={enrollment?.course?.title || "Enrolled course thumbnail"}
-                    className="object-cover"
-                    fill
-                />
-            </div>
-            <div className="flex flex-col pt-2">
-                <div className="text-lg md:text-base font-medium group-hover:text-sky-700 line-clamp-2">
-                    {enrollment?.course?.title}
-                </div>
-                <p className="text-xs text-muted-foreground">{courseCategory?.title}</p>
-                <div className="my-3 flex items-center gap-x-2 text-sm md:text-xs">
-                    <div className="flex items-center gap-x-1 text-slate-500">
-                        <div>
-                            <BookOpen className="w-4" />
-                        </div>
-                        <span>{enrollment?.course?.modules?.length} Chapters</span>
-                    </div>
-                </div>
-                <div className=" border-b pb-2 mb-2">
-                    <div className="flex items-center justify-between">
-                        <p className="text-md md:text-sm font-medium text-slate-700">
-                            Total Modules: {enrollment?.course?.modules?.length}
-                        </p>
-                        <p className="text-md md:text-sm font-medium text-slate-700">
-                            Completed Modules{" "}
-                            <Badge variant="success">{totalCompletedModules}</Badge>
-                        </p>
-                    </div>
-                    <div className="flex items-center justify-between mt-2">
-                        <p className="text-md md:text-sm font-medium text-slate-700">
-                            Total Quizzes: {totalQuizzes}
-                        </p>
-
-                        <p className="text-md md:text-sm font-medium text-slate-700">
-                            Quiz taken <Badge variant="success">{quizzesTaken?.length}</Badge>
-                        </p>
-                    </div>
-                    <div className="flex items-center justify-between mt-2">
-                        <p className="text-md md:text-sm font-medium text-slate-700">
-                            Mark from Quizzes
-                        </p>
-
-                        <p className="text-md md:text-sm font-medium text-slate-700">
-                            {marksFromQuizzes}
-                        </p>
-                    </div>
-                    <div className="flex items-center justify-between mt-2">
-                        <p className="text-md md:text-sm font-medium text-slate-700">
-                            Others
-                        </p>
-
-                        <p className="text-md md:text-sm font-medium text-slate-700">
-                            {otherMarks}
-                        </p>
-                    </div>
-                </div>
-                <div className="flex items-center justify-between mb-4">
-                    <p className="text-md md:text-sm font-medium text-slate-700">
-                        Total Marks
-                    </p>
-
-                    <p className="text-md md:text-sm font-medium text-slate-700">
-                        {totalMarks}
-                    </p>
-                </div>
-
-                <CourseProgress
-						size="sm"
-						value={totalProgress}
-						variant={110 === 100 ? "success" : ""}/>
-            </div>
+            {isCompleted ? (
+              <span className="bg-emerald-500 text-white text-[11px] font-bold px-3 py-1 rounded-full shadow-md flex items-center gap-1">
+                <CheckCircle2 className="w-3 h-3" />
+                <span>Completed</span>
+              </span>
+            ) : (
+              <span className="bg-slate-900/80 backdrop-blur-sm text-white text-[11px] font-bold px-3 py-1 rounded-full shadow-md">
+                In Progress
+              </span>
+            )}
+          </div>
         </div>
-    );
+
+        {/* Title */}
+        <h3 className="text-base sm:text-lg font-bold text-slate-900 group-hover:text-[#4A3AFF] transition-colors line-clamp-2 leading-snug mb-3">
+          {enrollment?.course?.title}
+        </h3>
+
+        {/* Modules & Quizzes Grid */}
+        <div className="bg-slate-50 rounded-2xl p-3.5 space-y-2 text-xs font-semibold text-slate-600 mb-4 border border-slate-100">
+          <div className="flex items-center justify-between">
+            <span className="flex items-center gap-1.5 text-slate-500">
+              <BookOpen className="w-3.5 h-3.5 text-[#4A3AFF]" />
+              <span>Modules</span>
+            </span>
+            <span className="text-slate-900 font-bold">
+              {totalCompletedModules} / {totalModuleCount} Completed
+            </span>
+          </div>
+
+          <div className="flex items-center justify-between">
+            <span className="flex items-center gap-1.5 text-slate-500">
+              <FileCheck className="w-3.5 h-3.5 text-[#14C88C]" />
+              <span>Quizzes Taken</span>
+            </span>
+            <span className="text-slate-900 font-bold">
+              {quizzesTaken.length} / {totalQuizzes || 0}
+            </span>
+          </div>
+
+          <div className="flex items-center justify-between pt-1 border-t border-slate-200/60">
+            <span className="flex items-center gap-1.5 text-slate-500">
+              <Award className="w-3.5 h-3.5 text-amber-500" />
+              <span>Marks Earned</span>
+            </span>
+            <span className="text-[#4A3AFF] font-extrabold text-xs sm:text-sm">
+              {totalMarks} pts
+            </span>
+          </div>
+        </div>
+
+      </div>
+
+      {/* Progress Bar & Continue Button */}
+      <div className="space-y-3 pt-1 mt-auto">
+        <div className="space-y-1.5">
+          <div className="flex items-center justify-between text-xs font-bold">
+            <span className="text-slate-500">Course Progress</span>
+            <span className="text-[#4A3AFF]">{totalProgress}%</span>
+          </div>
+          <div className="w-full bg-slate-100 h-2.5 rounded-full overflow-hidden">
+            <div
+              className={`h-full rounded-full transition-all duration-500 ${
+                isCompleted ? "bg-[#14C88C]" : "bg-[#4A3AFF]"
+              }`}
+              style={{ width: `${totalProgress}%` }}
+            />
+          </div>
+        </div>
+
+        <div className="pt-1 flex items-center justify-between text-xs font-bold text-[#4A3AFF] group-hover:underline">
+          <span>Continue Lesson</span>
+          <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+        </div>
+      </div>
+
+    </div>
+  );
 };
 
 export default EnrolledCourseCard;

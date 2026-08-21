@@ -1,39 +1,59 @@
 "use client";
+
 import { signOut } from "next-auth/react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import React from "react";
+import { User, BookOpen, LogOut, ChevronRight } from "lucide-react";
+import { cn } from "@/lib/utils";
 
-const menu = [
-	{ label: "Profile", href: "/account" },
-	{ label: "Enrolled Courses", href: "/account/enrolled-courses" },
+const menuItems = [
+  { label: "Personal Profile", href: "/account", icon: User },
+  { label: "Enrolled Courses", href: "/account/enrolled-courses", icon: BookOpen },
 ];
 
-function Menu() {
-	const pathname = usePathname();
-	return (
-		<ul className="list-none sidebar-nav mb-0 mt-3" id="navmenu-nav">
-			{menu.map((item, i) => (
-				<li className="navbar-item account-menu" key={i}>
-					<Link
-						href={item.href}
-						className={`navbar-link flex items-center py-2 rounded ${
-							pathname === item.href ? "text-primary" : "text-slate-400"
-						}`}>
-						<h6 className="mb-0 font-semibold">{item?.label}</h6>
-					</Link>
-				</li>
-			))}
-			<li className="navbar-item account-menu">
-				<Link
-					href="#"
-					onClick={() => {signOut()}}
-					className="navbar-link text-slate-400 flex items-center py-2 rounded">
-					<h6 className="mb-0 font-semibold">Sign Out</h6>
-				</Link>
-			</li>
-		</ul>
-	);
-}
+export default function Menu() {
+  const pathname = usePathname();
 
-export default Menu;
+  return (
+    <ul className="space-y-1.5 w-full">
+      {menuItems.map((item) => {
+        const Icon = item.icon;
+        const isActive = pathname === item.href;
+
+        return (
+          <li key={item.href}>
+            <Link
+              href={item.href}
+              className={cn(
+                "flex items-center justify-between px-4 py-3 rounded-2xl text-xs sm:text-sm font-bold transition-all duration-200 group",
+                isActive
+                  ? "bg-[#4A3AFF] text-white shadow-lg shadow-indigo-500/25"
+                  : "text-slate-600 hover:bg-indigo-50/70 hover:text-[#4A3AFF]"
+              )}
+            >
+              <div className="flex items-center gap-3">
+                <Icon className={cn("w-4 h-4", isActive ? "text-white" : "text-slate-400 group-hover:text-[#4A3AFF]")} />
+                <span>{item.label}</span>
+              </div>
+              <ChevronRight className={cn("w-3.5 h-3.5 opacity-60 group-hover:translate-x-0.5 transition-transform", isActive ? "text-white opacity-100" : "")} />
+            </Link>
+          </li>
+        );
+      })}
+
+      {/* Sign Out Button */}
+      <li className="pt-2">
+        <button
+          onClick={() => signOut({ callbackUrl: "/" })}
+          className="w-full flex items-center justify-between px-4 py-3 rounded-2xl text-xs sm:text-sm font-bold text-rose-600 hover:bg-rose-50 transition-all duration-200 group"
+        >
+          <div className="flex items-center gap-3">
+            <LogOut className="w-4 h-4 text-rose-400 group-hover:text-rose-600" />
+            <span>Sign Out</span>
+          </div>
+          <ChevronRight className="w-3.5 h-3.5 opacity-60 group-hover:translate-x-0.5 transition-transform" />
+        </button>
+      </li>
+    </ul>
+  );
+}
