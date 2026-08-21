@@ -15,7 +15,7 @@ import { dbConnect } from "@/service/mongo";
 
 export async function getCourseList() {
     await dbConnect();
-    const courses = await Course.find({active:true}).select(["title", "subtitle", "thumbnail", "modules", "price", "category", "instructor"]).populate({
+    const courses = await Course.find({active:true}).select(["title", "subtitle", "thumbnail", "modules", "price", "category", "instructor", "testimonials"]).populate({
         path: "category",
         model: Category
     }).populate({

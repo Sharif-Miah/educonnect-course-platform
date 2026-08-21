@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight, GraduationCap, BookOpen, Star, Video, FileText, Users } from "lucide-react";
 import CountUp from "./CountUp";
+import { getImageUrl } from "@/lib/utils";
 
 export default function HeroSection({ featuredCourse }) {
   return (
@@ -126,24 +127,25 @@ export default function HeroSection({ featuredCourse }) {
               </div>
             </div>
 
-            {/* Featured Course Card matching mockup */}
+            {/* Featured Course Card matching mockup (Dynamic from Backend) */}
             <div className="w-full max-w-[340px] bg-white rounded-3xl p-4 shadow-2xl border border-slate-100 text-slate-900 hover:shadow-indigo-500/20 transition-all duration-300 z-10 group/card">
-              {/* Card Image with Programming Badge & Camera Icon */}
+              {/* Card Image with Programming/Category Badge & Camera Icon */}
               <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden mb-3.5 bg-slate-100">
                 <Image
-                  src="/assets/home/hero_card_classroom.jpg"
-                  alt="Classroom"
+                  src={featuredCourse?.thumbnail ? getImageUrl(featuredCourse.thumbnail, "courses") : "/assets/home/hero_card_classroom.jpg"}
+                  alt={featuredCourse?.title || "Classroom"}
                   fill
+                  unoptimized
                   className="object-cover"
                 />
 
                 {/* Top-to-bottom sliding dark overlay on hover */}
                 <div className="absolute inset-0 bg-black/50 -translate-y-full group-hover/card:translate-y-0 transition-transform duration-500 ease-out pointer-events-none z-10" />
 
-                {/* Badge top-left: Programming */}
+                {/* Badge top-left: Category */}
                 <div className="absolute top-3 left-3 bg-[#4A3AFF] text-white text-[11px] font-bold px-3 py-1 rounded-full flex items-center gap-1.5 shadow-md z-20">
                   <Video className="w-3.5 h-3.5" />
-                  <span>Programming</span>
+                  <span>{featuredCourse?.category?.title || "Programming"}</span>
                 </div>
 
                 {/* Video button bottom-right */}
@@ -161,15 +163,17 @@ export default function HeroSection({ featuredCourse }) {
               </div>
 
               {/* Course Title */}
-              <h3 className="text-base font-bold text-slate-900 line-clamp-2 leading-snug mb-3 hover:text-[#4A3AFF] transition cursor-pointer">
-                The complete guide to build restful API
-              </h3>
+              <Link href={`/courses/${featuredCourse?.id || ""}`}>
+                <h3 className="text-base font-bold text-slate-900 line-clamp-2 leading-snug mb-3 hover:text-[#4A3AFF] transition cursor-pointer">
+                  {featuredCourse?.title || "The complete guide to build restful API"}
+                </h3>
+              </Link>
 
               {/* Lessons & Students */}
               <div className="flex items-center justify-between text-xs text-slate-500 pb-3 border-b border-slate-100 font-medium">
                 <div className="flex items-center gap-1.5">
                   <FileText className="w-3.5 h-3.5 text-[#4A3AFF]" />
-                  <span>250 Lessons</span>
+                  <span>{featuredCourse?.modules?.length ? `${featuredCourse.modules.length * 8} Lessons` : "250 Lessons"}</span>
                 </div>
                 <div className="flex items-center gap-1.5">
                   <Users className="w-3.5 h-3.5 text-[#4A3AFF]" />
@@ -180,20 +184,21 @@ export default function HeroSection({ featuredCourse }) {
               {/* Price & Instructor */}
               <div className="flex items-center justify-between pt-3">
                 <span className="text-lg font-extrabold text-[#4A3AFF]">
-                  $120.00
+                  ${featuredCourse?.price ? (typeof featuredCourse.price === "number" ? featuredCourse.price.toFixed(2) : featuredCourse.price) : "120.00"}
                 </span>
 
                 <div className="flex items-center gap-2">
                   <div className="w-7 h-7 rounded-full overflow-hidden relative ring-1 ring-slate-200">
                     <Image
-                      src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=200&auto=format&fit=crop"
+                      src={featuredCourse?.instructor?.profilePicture || "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=200&auto=format&fit=crop"}
                       alt="Instructor"
                       fill
+                      unoptimized
                       className="object-cover"
                     />
                   </div>
                   <span className="text-xs font-bold text-slate-700">
-                    Dev. Masum Billah
+                    {featuredCourse?.instructor ? `${featuredCourse.instructor.firstName || ""} ${featuredCourse.instructor.lastName || ""}`.trim() : "Dev. Masum Billah"}
                   </span>
                 </div>
               </div>
