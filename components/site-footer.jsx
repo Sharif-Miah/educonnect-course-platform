@@ -5,99 +5,81 @@ import { Logo } from "./logo";
 import Link from "next/link";
 import { Facebook, Linkedin, Youtube, Send } from "lucide-react";
 
-export function SiteFooter({ className }) {
+export default function SiteFooter({ className }) {
   return (
-    <footer className={cn("relative bg-[#F8FAFC] pt-20 pb-8 text-slate-600 overflow-hidden", className)}>
+    <footer className={cn("relative bg-[#FBFBFE] pt-24 pb-8 text-slate-600 overflow-hidden", className)}>
       
-      {/* Background Vector Guilloche Wave Lines matching Screenshot */}
-      <div className="absolute inset-0 pointer-events-none opacity-40 overflow-hidden">
+      {/* Background Guilloche Curved Geometric Wave Pattern matching Screenshot */}
+      <div className="absolute inset-0 pointer-events-none opacity-45 overflow-hidden">
         <svg
-          className="w-full h-full text-slate-300"
-          viewBox="0 0 1440 600"
+          className="w-full h-full text-slate-300/80"
+          viewBox="0 0 1600 700"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
           preserveAspectRatio="none"
         >
-          <path
-            d="M-100 150 C 300 50, 600 450, 1100 200 C 1300 100, 1500 250, 1600 200"
-            stroke="currentColor"
-            strokeWidth="1.2"
-            strokeDasharray="4 4"
-          />
-          <path
-            d="M-100 200 C 350 100, 650 500, 1150 250 C 1350 150, 1550 300, 1600 250"
-            stroke="currentColor"
-            strokeWidth="1.2"
-          />
-          <path
-            d="M-100 250 C 400 150, 700 550, 1200 300 C 1400 200, 1600 350, 1650 300"
-            stroke="currentColor"
-            strokeWidth="1.2"
-          />
-          <path
-            d="M-100 300 C 450 200, 750 600, 1250 350 C 1450 250, 1650 400, 1700 350"
-            stroke="currentColor"
-            strokeWidth="1"
-          />
-          <path
-            d="M-100 350 C 500 250, 800 650, 1300 400 C 1500 300, 1700 450, 1750 400"
-            stroke="currentColor"
-            strokeWidth="1"
-          />
-          <path
-            d="M-100 400 C 550 300, 850 700, 1350 450 C 1550 350, 1750 500, 1800 450"
-            stroke="currentColor"
-            strokeWidth="0.8"
-          />
+          <g stroke="currentColor" strokeWidth="1">
+            <path d="M-200,200 C200,50 600,600 1100,250 C1350,80 1600,300 1800,200" />
+            <path d="M-200,220 C220,70 620,620 1120,270 C1370,100 1620,320 1800,220" />
+            <path d="M-200,240 C240,90 640,640 1140,290 C1390,120 1640,340 1800,240" />
+            <path d="M-200,260 C260,110 660,660 1160,310 C1410,140 1660,360 1800,260" />
+            <path d="M-200,280 C280,130 680,680 1180,330 C1430,160 1680,380 1800,280" />
+            <path d="M-200,300 C300,150 700,700 1200,350 C1450,180 1700,400 1800,300" />
+            <path d="M-200,320 C320,170 720,720 1220,370 C1470,200 1720,420 1800,320" />
+            <path d="M-200,340 C340,190 740,740 1240,390 C1490,220 1740,440 1800,340" />
+            <path d="M-200,360 C360,210 760,760 1260,410 C1510,240 1760,460 1800,360" />
+            <path d="M-200,380 C380,230 780,780 1280,430 C1530,260 1780,480 1800,380" />
+            <path d="M-200,400 C400,250 800,800 1300,450 C1550,280 1800,500 1800,400" />
+          </g>
         </svg>
       </div>
 
       <div className="container max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
         
-        {/* 5 Columns Layout matching Screenshot */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-8 pb-16">
+        {/* 5 Columns Layout */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-6 pb-20">
           
           {/* Column 1: About Us (lg:col-span-3) */}
-          <div className="lg:col-span-3 space-y-3.5">
+          <div className="lg:col-span-3 space-y-4">
             <div>
-              <h4 className="text-base font-bold text-slate-900 tracking-tight">About Us</h4>
+              <h4 className="text-base sm:text-lg font-bold text-slate-900 tracking-tight">About Us</h4>
               {/* Soft Purple Wavy Underline */}
               <div className="mt-1.5">
-                <svg className="w-10 text-[#818CF8]" viewBox="0 0 40 8" fill="none">
-                  <path d="M1 5C4 1 7 7 10 3C13 1 16 7 19 3C22 1 25 7 28 3C31 1 34 7 37 3" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
+                <svg className="w-12 text-[#938BFB]" viewBox="0 0 48 8" fill="none">
+                  <path d="M1 5C5 1 9 7 13 3C17 1 21 7 25 3C29 1 33 7 37 3C41 1 45 7 47 3" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
                 </svg>
               </div>
             </div>
-            <p className="text-xs text-slate-500 leading-relaxed font-normal max-w-[260px]">
+            <p className="text-xs sm:text-[13px] text-slate-500 leading-relaxed font-normal max-w-[260px]">
               Duis aute irure dolor in reprehenderit in volupta velit esse cillum dolore eu fugiat nulla pariatur. excepteur sint occaecat
             </p>
-            <div className="space-y-1.5 text-xs font-semibold pt-1">
+            <div className="space-y-1.5 text-xs sm:text-[13px] font-semibold pt-1">
               <p>
-                <span className="text-slate-800 font-bold">Email: </span>
+                <span className="text-slate-900 font-bold">Email: </span>
                 <a href="mailto:support@example.com" className="text-[#4A3AFF] hover:underline font-semibold">support@example.com</a>
               </p>
               <p>
-                <span className="text-slate-800 font-bold">Phone: </span>
+                <span className="text-slate-900 font-bold">Phone: </span>
                 <a href="tel:+9801736895478" className="text-[#4A3AFF] hover:underline font-semibold">+9801736895478</a>
               </p>
               <p>
-                <span className="text-slate-800 font-bold">Location: </span>
+                <span className="text-slate-900 font-bold">Location: </span>
                 <span className="text-[#4A3AFF] font-semibold">3500 Lenox Road , USA</span>
               </p>
             </div>
           </div>
 
           {/* Column 2: Company (lg:col-span-2) */}
-          <div className="lg:col-span-2 space-y-3.5">
+          <div className="lg:col-span-2 space-y-4">
             <div>
-              <h4 className="text-base font-bold text-slate-900 tracking-tight">Company</h4>
+              <h4 className="text-base sm:text-lg font-bold text-slate-900 tracking-tight">Company</h4>
               <div className="mt-1.5">
-                <svg className="w-10 text-[#818CF8]" viewBox="0 0 40 8" fill="none">
-                  <path d="M1 5C4 1 7 7 10 3C13 1 16 7 19 3C22 1 25 7 28 3C31 1 34 7 37 3" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
+                <svg className="w-12 text-[#938BFB]" viewBox="0 0 48 8" fill="none">
+                  <path d="M1 5C5 1 9 7 13 3C17 1 21 7 25 3C29 1 33 7 37 3C41 1 45 7 47 3" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
                 </svg>
               </div>
             </div>
-            <ul className="space-y-2 text-xs text-slate-600 font-medium">
+            <ul className="space-y-2.5 text-xs sm:text-[13px] text-slate-600 font-medium">
               <li><Link href="/#about" className="hover:text-[#4A3AFF] transition-colors">About</Link></li>
               <li><Link href="/courses" className="hover:text-[#4A3AFF] transition-colors">Course</Link></li>
               <li><Link href="/#instructors" className="hover:text-[#4A3AFF] transition-colors">Instructor</Link></li>
@@ -108,16 +90,16 @@ export function SiteFooter({ className }) {
           </div>
 
           {/* Column 3: Useful Links (lg:col-span-2) */}
-          <div className="lg:col-span-2 space-y-3.5">
+          <div className="lg:col-span-2 space-y-4">
             <div>
-              <h4 className="text-base font-bold text-slate-900 tracking-tight">Useful Links</h4>
+              <h4 className="text-base sm:text-lg font-bold text-slate-900 tracking-tight">Useful Links</h4>
               <div className="mt-1.5">
-                <svg className="w-10 text-[#818CF8]" viewBox="0 0 40 8" fill="none">
-                  <path d="M1 5C4 1 7 7 10 3C13 1 16 7 19 3C22 1 25 7 28 3C31 1 34 7 37 3" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
+                <svg className="w-12 text-[#938BFB]" viewBox="0 0 48 8" fill="none">
+                  <path d="M1 5C5 1 9 7 13 3C17 1 21 7 25 3C29 1 33 7 37 3C41 1 45 7 47 3" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
                 </svg>
               </div>
             </div>
-            <ul className="space-y-2 text-xs text-slate-600 font-medium">
+            <ul className="space-y-2.5 text-xs sm:text-[13px] text-slate-600 font-medium">
               <li><Link href="/contact" className="hover:text-[#4A3AFF] transition-colors">Contact Us</Link></li>
               <li><Link href="/courses" className="hover:text-[#4A3AFF] transition-colors">Technology</Link></li>
               <li><Link href="/#instructors" className="hover:text-[#4A3AFF] transition-colors">Instructors</Link></li>
@@ -128,16 +110,16 @@ export function SiteFooter({ className }) {
           </div>
 
           {/* Column 4: Explore (lg:col-span-2) */}
-          <div className="lg:col-span-2 space-y-3.5">
+          <div className="lg:col-span-2 space-y-4">
             <div>
-              <h4 className="text-base font-bold text-slate-900 tracking-tight">Explore</h4>
+              <h4 className="text-base sm:text-lg font-bold text-slate-900 tracking-tight">Explore</h4>
               <div className="mt-1.5">
-                <svg className="w-10 text-[#818CF8]" viewBox="0 0 40 8" fill="none">
-                  <path d="M1 5C4 1 7 7 10 3C13 1 16 7 19 3C22 1 25 7 28 3C31 1 34 7 37 3" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
+                <svg className="w-12 text-[#938BFB]" viewBox="0 0 48 8" fill="none">
+                  <path d="M1 5C5 1 9 7 13 3C17 1 21 7 25 3C29 1 33 7 37 3C41 1 45 7 47 3" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
                 </svg>
               </div>
             </div>
-            <ul className="space-y-2 text-xs text-slate-600 font-medium">
+            <ul className="space-y-2.5 text-xs sm:text-[13px] text-slate-600 font-medium">
               <li><Link href="/contact" className="hover:text-[#4A3AFF] transition-colors">Contact Us</Link></li>
               <li><Link href="/courses" className="hover:text-[#4A3AFF] transition-colors">Technology</Link></li>
               <li><Link href="/#instructors" className="hover:text-[#4A3AFF] transition-colors">Instructors</Link></li>
@@ -148,16 +130,16 @@ export function SiteFooter({ className }) {
           </div>
 
           {/* Column 5: Sign up for the Newsletter (lg:col-span-3) */}
-          <div className="lg:col-span-3 space-y-3.5">
+          <div className="lg:col-span-3 space-y-4">
             <div>
-              <h4 className="text-base font-bold text-slate-900 tracking-tight">Sign up for the Newsletter</h4>
+              <h4 className="text-base sm:text-lg font-bold text-slate-900 tracking-tight">Sign up for the Newsletter</h4>
               <div className="mt-1.5">
-                <svg className="w-10 text-[#818CF8]" viewBox="0 0 40 8" fill="none">
-                  <path d="M1 5C4 1 7 7 10 3C13 1 16 7 19 3C22 1 25 7 28 3C31 1 34 7 37 3" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
+                <svg className="w-12 text-[#938BFB]" viewBox="0 0 48 8" fill="none">
+                  <path d="M1 5C5 1 9 7 13 3C17 1 21 7 25 3C29 1 33 7 37 3C41 1 45 7 47 3" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
                 </svg>
               </div>
             </div>
-            <p className="text-xs text-slate-500 leading-relaxed font-normal max-w-[280px]">
+            <p className="text-xs sm:text-[13px] text-slate-500 leading-relaxed font-normal max-w-[280px]">
               Duis aute irure dolor in reprehenderit in volupta velit esse cillum dolore eu fugiat nulla pariatur.
             </p>
 
@@ -166,7 +148,7 @@ export function SiteFooter({ className }) {
               <input
                 type="email"
                 placeholder="Enter Email Address"
-                className="w-full bg-[#ECEFF8] border border-transparent focus:border-[#4A3AFF]/40 focus:bg-white rounded-full py-3.5 pl-5 pr-14 text-xs text-slate-800 placeholder-slate-400 focus:outline-none transition-all"
+                className="w-full bg-[#ECEFF8] border border-transparent focus:border-[#4A3AFF]/40 focus:bg-white rounded-full py-3.5 pl-5 pr-14 text-xs sm:text-sm text-slate-800 placeholder-slate-400 focus:outline-none transition-all shadow-inner"
               />
               <button
                 type="submit"
@@ -178,7 +160,7 @@ export function SiteFooter({ className }) {
             </form>
 
             {/* Social Icons */}
-            <div className="pt-2 flex items-center gap-3 text-xs font-bold text-slate-700">
+            <div className="pt-2 flex items-center gap-3 text-xs sm:text-sm font-bold text-slate-700">
               <span className="font-semibold text-slate-800">Follow on:</span>
               <div className="flex items-center gap-3.5 text-slate-800">
                 <Link href="#" aria-label="Facebook" className="hover:text-[#4A3AFF] transition-colors"><Facebook className="w-4 h-4 fill-current" /></Link>
@@ -205,3 +187,5 @@ export function SiteFooter({ className }) {
     </footer>
   );
 }
+
+export { SiteFooter };
