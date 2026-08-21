@@ -1,28 +1,39 @@
-
 import NextAuth from "next-auth";
 import { authConfig } from "./auth.config";
-
-import {DEFAULT_REDIRECT, PUBLIC_ROUTES, LOGIN, ROOT} from "@/lib/routes";
+import { LOGIN } from "@/lib/routes";
 
 const { auth } = NextAuth(authConfig);
 
 export default auth((req) => {
   const { nextUrl } = req;
-
   const isAuthenticated = !!req.auth;
+  const pathname = nextUrl.pathname;
 
-  console.log(isAuthenticated, nextUrl.pathname);
+  // 1. Static and Next.js internal assets
+  if (
+    pathname.startsWith("/_next") ||
+    pathname.startsWith("/api/auth") ||
+    pathname.startsWith("/api/register") ||
+    pathname.startsWith("/assets") ||
+    pathname.includes(".")
+  ) {
+    return;
+  }
 
-  const isPublicRoute = (PUBLIC_ROUTES.find(route => nextUrl.pathname.startsWith(route))
-   || nextUrl.pathname === ROOT);
+  // 2. Explicitly Protected Routes
+  const isProtected =
+    pathname.startsWith("/account") ||
+    pathname.startsWith("/dashboard") ||
+    pathname.startsWith("/enroll-success") ||
+    pathname.includes("/lesson");
 
-  console.log({isPublicRoute});
+  if (isProtected && !isAuthenticated) {
+    const loginUrl = new URL(LOGIN, nextUrl);
+    loginUrl.searchParams.set("callbackUrl", pathname);
+    return Response.redirect(loginUrl);
+  }
+});
 
-  if (!isAuthenticated && !isPublicRoute)
-    return Response.redirect(new URL(LOGIN, nextUrl));
-
- });
-
- export const config = {
+export const config = {
   matcher: ["/((?!.+\\.[\\w]+$|_next).*)", "/", "/(api|trpc)(.*)"],
- };
+};

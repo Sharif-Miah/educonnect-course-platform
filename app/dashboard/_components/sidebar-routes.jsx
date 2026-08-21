@@ -1,57 +1,61 @@
 "use client";
 
-import { BarChart } from "lucide-react";
-
-import { BookOpen } from "lucide-react";
+import { LayoutDashboard, BookOpen, PlusCircle, Radio, HelpCircle, ArrowLeft } from "lucide-react";
 import { SidebarItem } from "./sidebar-item";
-import { BookA } from "lucide-react";
-import { Radio } from "lucide-react";
+import Link from "next/link";
 
 const routes = [
   {
-    icon: BarChart,
-    label: "Analytics",
+    icon: LayoutDashboard,
+    label: "Dashboard",
     href: "/dashboard",
   },
   {
     icon: BookOpen,
-    label: "Courses",
+    label: "All Courses",
     href: "/dashboard/courses",
   },
   {
-    icon: BookOpen,
-    label: "Add Course",
+    icon: PlusCircle,
+    label: "Create Course",
     href: "/dashboard/courses/add",
   },
   {
     icon: Radio,
-    label: "Lives",
+    label: "Live Classes",
     href: "/dashboard/lives",
   },
   {
-    icon: BookA,
-    label: "Quizzes",
+    icon: HelpCircle,
+    label: "Quiz Sets",
     href: "/dashboard/quiz-sets",
   },
 ];
 
 export const SidebarRoutes = () => {
-  // const pathname = usePathname();
-
-  // const isTeacherPage = pathname?.includes("/teacher");
-
-  // const routes = isTeacherPage ? teacherRoutes : guestRoutes;
-
   return (
-    <div className="flex flex-col w-full">
-      {routes.map((route) => (
-        <SidebarItem
-          key={route.href}
-          icon={route.icon}
-          label={route.label}
-          href={route.href}
-        />
-      ))}
+    <div className="flex flex-col w-full h-full justify-between pb-6">
+      <div className="flex flex-col w-full space-y-1">
+        {routes.map((route) => (
+          <SidebarItem
+            key={route.href}
+            icon={route.icon}
+            label={route.label}
+            href={route.href}
+          />
+        ))}
+      </div>
+
+      {/* Back to Public Website Link */}
+      <div className="px-3 pt-6 border-t border-slate-100 mt-auto">
+        <Link
+          href="/"
+          className="flex items-center gap-2.5 px-4 py-3 rounded-2xl text-xs font-bold text-slate-500 hover:text-[#4A3AFF] hover:bg-indigo-50/60 transition-all"
+        >
+          <ArrowLeft className="w-4 h-4" />
+          <span>Exit to Main Site</span>
+        </Link>
+      </div>
     </div>
   );
 };

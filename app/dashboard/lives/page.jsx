@@ -1,27 +1,58 @@
 import { columns } from "./_components/columns";
 import { DataTable } from "./_components/data-table";
+import { Radio, PlusCircle, Sparkles } from "lucide-react";
+import Link from "next/link";
 
 const lives = [
   {
     id: 1,
-    title: "Career In Backend Web Development",
-    date: "10 Nov 2022",
+    title: "Career In Full-Stack Web Development & Modern Architecture",
+    date: "25 Aug 2026",
     time: "10:00 AM",
   },
   {
     id: 2,
-    title: "Career In Frontend Development",
-    date: "10 Nov 2022",
+    title: "Interactive Live Q&A: Next.js 14 App Router Deep Dive",
+    date: "28 Aug 2026",
     time: "08:30 PM",
   },
 ];
+
 const LivesPage = async () => {
   return (
-    <div className="p-6">
-      {/* <Link href="/teacher/create">
-        <Button>New Course</Button>
-      </Link> */}
-      <DataTable columns={columns} data={lives} />
+    <div className="p-6 sm:p-8 lg:p-10 space-y-8 bg-[#F8FAFC] min-h-[calc(100vh-80px)]">
+      
+      {/* Header Banner */}
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-slate-200/80">
+        <div>
+          <div className="flex items-center gap-2 mb-1">
+            <span className="bg-emerald-500/10 text-emerald-600 text-[11px] font-extrabold px-3 py-1 rounded-full flex items-center gap-1">
+              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+              <span>Broadcast Center</span>
+            </span>
+          </div>
+          <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
+            Live Class Sessions
+          </h2>
+          <p className="text-xs sm:text-sm text-slate-500 font-medium mt-1">
+            Schedule, manage, and host live interactive video sessions for your students.
+          </p>
+        </div>
+
+        <Link
+          href="/dashboard/lives/add"
+          className="inline-flex items-center gap-2 bg-[#14C88C] hover:bg-[#0fa874] text-white text-xs sm:text-sm font-extrabold px-6 py-3.5 rounded-2xl shadow-lg shadow-emerald-500/20 transition-all hover:scale-105 active:scale-95 w-fit"
+        >
+          <PlusCircle className="w-4 h-4" />
+          <span>Schedule Live Class</span>
+        </Link>
+      </div>
+
+      {/* Table Container Card */}
+      <div className="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-slate-100/90">
+        <DataTable columns={columns} data={lives} />
+      </div>
+
     </div>
   );
 };

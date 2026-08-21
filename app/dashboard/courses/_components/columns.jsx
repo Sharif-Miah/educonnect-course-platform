@@ -9,11 +9,8 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { cn } from "@/lib/utils";
-import { GraduationCap } from "lucide-react";
-import { Star } from "lucide-react";
-import { ArrowUpDown, MoreHorizontal, Pencil } from "lucide-react";
+import { GraduationCap, Star, ArrowUpDown, MoreHorizontal, Pencil, Eye, CheckCircle2 } from "lucide-react";
 import Link from "next/link";
-
 import { formatPrice } from "@/lib/formatPrice";
 
 export const columns = [
@@ -21,12 +18,25 @@ export const columns = [
     accessorKey: "title",
     header: ({ column }) => {
       return (
-        <Button
-          variant="ghost"
+        <button
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+          className="flex items-center gap-1.5 text-xs font-bold text-slate-600 hover:text-[#4A3AFF] transition py-2"
         >
-          Title <ArrowUpDown className="ml-2 h-4 w-4" />
-        </Button>
+          <span>Course Title</span>
+          <ArrowUpDown className="w-3.5 h-3.5" />
+        </button>
+      );
+    },
+    cell: ({ row }) => {
+      const id = row.original._id || row.original.id;
+      const title = row.getValue("title");
+      return (
+        <Link
+          href={`/dashboard/courses/${id}`}
+          className="font-bold text-slate-900 hover:text-[#4A3AFF] transition line-clamp-1 max-w-md block"
+        >
+          {title}
+        </Link>
       );
     },
   },
@@ -34,71 +44,88 @@ export const columns = [
     accessorKey: "price",
     header: ({ column }) => {
       return (
-        <Button
-          variant="ghost"
+        <button
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+          className="flex items-center gap-1.5 text-xs font-bold text-slate-600 hover:text-[#4A3AFF] transition py-2"
         >
-          Price <ArrowUpDown className="ml-2 h-4 w-4" />
-        </Button>
+          <span>Price</span>
+          <ArrowUpDown className="w-3.5 h-3.5" />
+        </button>
       );
     },
     cell: ({ row }) => {
       const price = row.getValue("price");
       const formatted = formatPrice(price);
-      return <div>{formatted}</div>;
+      const isFree = Number(price) === 0;
+
+      return (
+        <span className={`text-xs font-extrabold px-2.5 py-1 rounded-lg ${
+          isFree 
+            ? "bg-emerald-50 text-emerald-600 border border-emerald-200" 
+            : "text-slate-900 bg-slate-100/80"
+        }`}>
+          {isFree ? "Free" : formatted}
+        </span>
+      );
     },
   },
   {
     accessorKey: "active",
     header: ({ column }) => {
       return (
-        <Button
-          variant="ghost"
+        <button
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+          className="flex items-center gap-1.5 text-xs font-bold text-slate-600 hover:text-[#4A3AFF] transition py-2"
         >
-          Published <ArrowUpDown className="ml-2 h-4 w-4" />
-        </Button>
+          <span>Status</span>
+          <ArrowUpDown className="w-3.5 h-3.5" />
+        </button>
       );
     },
     cell: ({ row }) => {
       const active = row.getValue("active") || false;
 
-      return (
-        <Badge className={cn("bg-gray-500", active && "bg-success")}>
-          {active ? "Published" : "Unpublished"}
-        </Badge>
+      return active ? (
+        <span className="inline-flex items-center gap-1.5 bg-emerald-50 text-emerald-700 border border-emerald-200/80 px-3 py-1 rounded-full text-xs font-bold w-fit">
+          <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+          <span>Published</span>
+        </span>
+      ) : (
+        <span className="inline-flex items-center gap-1.5 bg-slate-100 text-slate-500 border border-slate-200/80 px-3 py-1 rounded-full text-xs font-bold w-fit">
+          <span className="w-1.5 h-1.5 rounded-full bg-slate-400" />
+          <span>Draft</span>
+        </span>
       );
     },
   },
   {
     id: "actions",
     cell: ({ row }) => {
-      const id  = row.original._id;
+      const id = row.original._id || row.original.id;
       return (
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <Button variant="ghost" className="h-4 w-8 p-0">
-              <span className="sr-only">Open Menu</span>
-              <MoreHorizontal className="h-4 w-4" />
-            </Button>
+            <button className="w-8 h-8 rounded-xl hover:bg-slate-100 text-slate-500 hover:text-slate-900 flex items-center justify-center transition">
+              <MoreHorizontal className="w-4 h-4" />
+            </button>
           </DropdownMenuTrigger>
-          <DropdownMenuContent align="end">
+          <DropdownMenuContent align="end" className="w-48 bg-white rounded-2xl p-1.5 shadow-xl border border-slate-100">
             <Link href={`/dashboard/courses/${id}`}>
-              <DropdownMenuItem className="cursor-pointer">
-                <Pencil className="h-4 w-4 mr-2" />
-                Edit
+              <DropdownMenuItem className="cursor-pointer rounded-xl text-xs font-bold py-2 px-3 focus:bg-indigo-50 focus:text-[#4A3AFF]">
+                <Pencil className="w-3.5 h-3.5 mr-2" />
+                Edit Curriculum
               </DropdownMenuItem>
             </Link>
             <Link href={`/dashboard/courses/${id}/enrollments`}>
-              <DropdownMenuItem className="cursor-pointer">
-                <GraduationCap className="h-4 w-4 mr-2" />
-                View Enrollments
+              <DropdownMenuItem className="cursor-pointer rounded-xl text-xs font-bold py-2 px-3 focus:bg-indigo-50 focus:text-[#4A3AFF]">
+                <GraduationCap className="w-3.5 h-3.5 mr-2" />
+                Student Enrollments
               </DropdownMenuItem>
             </Link>
             <Link href={`/dashboard/courses/${id}/reviews`}>
-              <DropdownMenuItem className="cursor-pointer">
-                <Star className="h-4 w-4 mr-2 fill-primary" />
-                View Reviews
+              <DropdownMenuItem className="cursor-pointer rounded-xl text-xs font-bold py-2 px-3 focus:bg-indigo-50 focus:text-[#4A3AFF]">
+                <Star className="w-3.5 h-3.5 mr-2 text-amber-500 fill-amber-500" />
+                Student Reviews
               </DropdownMenuItem>
             </Link>
           </DropdownMenuContent>

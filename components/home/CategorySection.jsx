@@ -236,7 +236,7 @@ export default function CategorySection({ categories = [] }) {
         {/* View All Categories CTA Button */}
         <div className="text-center mt-14">
           <Link
-            href="/courses"
+            href="/categories"
             className="inline-flex items-center gap-2 bg-[#4A3AFF] hover:bg-[#3D2FE6] text-white font-semibold text-sm sm:text-base px-8 py-3.5 rounded-full shadow-lg shadow-indigo-500/25 hover:scale-105 active:scale-95 transition-all duration-200"
           >
             <span>View All Categories</span>
