@@ -6,8 +6,13 @@ import Link from "next/link";
 import { BookOpen, GraduationCap, Facebook, Youtube, ChevronLeft, ChevronRight } from "lucide-react";
 
 export default function InstructorsAndPartners() {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [isPaused, setIsPaused] = useState(false);
+  // Instructors Slider State
+  const [instructorIndex, setInstructorIndex] = useState(0);
+  const [isInstructorPaused, setIsInstructorPaused] = useState(false);
+
+  // Brands Slider State
+  const [brandIndex, setBrandIndex] = useState(0);
+  const [isBrandPaused, setIsBrandPaused] = useState(false);
 
   const instructors = [
     {
@@ -92,24 +97,137 @@ export default function InstructorsAndPartners() {
     },
   ];
 
-  // Number of cards to slide
-  const maxIndex = instructors.length - 4;
+  // Brand Partners Data matching screenshot + global additions
+  const brands = [
+    {
+      id: "trustpilot",
+      render: (
+        <div className="flex items-center gap-1.5 text-slate-900 font-extrabold text-xl sm:text-2xl whitespace-nowrap">
+          <span className="text-[#00B67A] text-2xl font-black">★</span>
+          <span>Trustpilot</span>
+        </div>
+      ),
+    },
+    {
+      id: "coursera",
+      render: (
+        <div className="flex items-center gap-1 font-black text-2xl sm:text-3xl text-[#0056D2] tracking-tighter whitespace-nowrap">
+          <span>coursera</span>
+        </div>
+      ),
+    },
+    {
+      id: "udemy",
+      render: (
+        <div className="flex items-center gap-1.5 font-bold text-2xl sm:text-3xl whitespace-nowrap">
+          <span className="text-[#A435F0] text-3xl font-black">u</span>
+          <span className="text-slate-900 font-extrabold tracking-tight">Udemy</span>
+        </div>
+      ),
+    },
+    {
+      id: "british-council",
+      render: (
+        <div className="flex items-center gap-2 whitespace-nowrap">
+          <div className="flex flex-col text-[11px] sm:text-xs font-black leading-none tracking-wider text-slate-900">
+            <span>BRITISH</span>
+            <span>COUNCIL</span>
+          </div>
+          <div className="grid grid-cols-2 gap-1 w-5 h-5">
+            <div className="w-2 h-2 rounded-full bg-[#00A9E0]" />
+            <div className="w-2 h-2 rounded-full bg-[#00A9E0]" />
+            <div className="w-2 h-2 rounded-full bg-[#00A9E0]" />
+            <div className="w-2 h-2 rounded-full bg-[#00A9E0]" />
+          </div>
+        </div>
+      ),
+    },
+    {
+      id: "hubspot",
+      render: (
+        <div className="flex items-center font-black text-2xl sm:text-3xl text-slate-900 whitespace-nowrap">
+          <span>HubSp</span>
+          <div className="w-4 h-4 rounded-full border-[3.5px] border-[#FF7A59] -ml-0.5 -mr-0.5" />
+          <span>t</span>
+        </div>
+      ),
+    },
+    {
+      id: "edx",
+      render: (
+        <div className="flex items-center gap-1 text-2xl sm:text-3xl font-black text-slate-900 whitespace-nowrap">
+          <span className="text-[#B52555]">ed</span>
+          <span className="text-slate-900">X</span>
+        </div>
+      ),
+    },
+    {
+      id: "skillshare",
+      render: (
+        <div className="flex items-center text-xl sm:text-2xl font-black text-[#00FF84] bg-slate-900 px-3 py-1 rounded-md tracking-wider whitespace-nowrap">
+          <span>SKILLSHARE</span>
+        </div>
+      ),
+    },
+    {
+      id: "khan-academy",
+      render: (
+        <div className="flex items-center gap-1.5 text-xl sm:text-2xl font-extrabold text-slate-900 whitespace-nowrap">
+          <span className="text-[#14BF96] text-2xl">🌱</span>
+          <span>Khan Academy</span>
+        </div>
+      ),
+    },
+    {
+      id: "linkedin-learning",
+      render: (
+        <div className="flex items-center gap-1.5 text-xl sm:text-2xl font-bold text-slate-900 whitespace-nowrap">
+          <span className="bg-[#0A66C2] text-white px-1.5 py-0.5 rounded text-sm font-black">in</span>
+          <span className="font-extrabold">Learning</span>
+        </div>
+      ),
+    },
+  ];
 
-  const handleNext = () => {
-    setCurrentIndex((prev) => (prev >= maxIndex ? 0 : prev + 1));
+  // Instructors max index (showing 4 at a time)
+  const maxInstructorIndex = instructors.length - 4;
+
+  const handleNextInstructor = () => {
+    setInstructorIndex((prev) => (prev >= maxInstructorIndex ? 0 : prev + 1));
   };
 
-  const handlePrev = () => {
-    setCurrentIndex((prev) => (prev <= 0 ? maxIndex : prev - 1));
+  const handlePrevInstructor = () => {
+    setInstructorIndex((prev) => (prev <= 0 ? maxInstructorIndex : prev - 1));
   };
 
+  // Brands max index (showing 5 at a time)
+  const maxBrandIndex = brands.length - 5;
+
+  const handleNextBrand = () => {
+    setBrandIndex((prev) => (prev >= maxBrandIndex ? 0 : prev + 1));
+  };
+
+  const handlePrevBrand = () => {
+    setBrandIndex((prev) => (prev <= 0 ? maxBrandIndex : prev - 1));
+  };
+
+  // Instructors auto-slide timer
   useEffect(() => {
-    if (isPaused || maxIndex <= 0) return;
+    if (isInstructorPaused || maxInstructorIndex <= 0) return;
     const timer = setInterval(() => {
-      handleNext();
+      handleNextInstructor();
     }, 3500);
     return () => clearInterval(timer);
-  }, [isPaused, maxIndex]);
+  }, [isInstructorPaused, maxInstructorIndex]);
+
+  // Brands auto-slide timer
+  useEffect(() => {
+    if (isBrandPaused || maxBrandIndex <= 0) return;
+    const timer = setInterval(() => {
+      handleNextBrand();
+    }, 3000);
+    return () => clearInterval(timer);
+  }, [isBrandPaused, maxBrandIndex]);
 
   return (
     <section id="instructors" className="py-24 bg-white relative overflow-hidden">
@@ -160,14 +278,14 @@ export default function InstructorsAndPartners() {
         {/* INSTRUCTORS AUTO-SLIDING CAROUSEL (10 CARDS) */}
         {/* ======================================================== */}
         <div 
-          className="relative overflow-hidden mb-20 pb-8 pt-3"
-          onMouseEnter={() => setIsPaused(true)}
-          onMouseLeave={() => setIsPaused(false)}
+          className="relative overflow-hidden mb-24 pb-8 pt-3"
+          onMouseEnter={() => setIsInstructorPaused(true)}
+          onMouseLeave={() => setIsInstructorPaused(false)}
         >
           <div
             className="flex transition-transform duration-700 ease-in-out gap-6 sm:gap-8"
             style={{
-              transform: `translateX(-${currentIndex * (100 / 4 + 0.75)}%)`,
+              transform: `translateX(-${instructorIndex * (100 / 4 + 0.75)}%)`,
             }}
           >
             {instructors.map((inst) => (
@@ -256,69 +374,50 @@ export default function InstructorsAndPartners() {
         </div>
 
         {/* ======================================================== */}
-        {/* 2. BRAND PARTNERS MARQUEE / PILL BOX */}
+        {/* 2. BRAND PARTNERS AUTO-SLIDING PILL CAROUSEL */}
         {/* ======================================================== */}
-        <div className="relative max-w-5xl mx-auto rounded-full border border-slate-200/90 py-5 sm:py-6 px-6 sm:px-12 bg-white shadow-sm hover:shadow-md transition-shadow duration-300 flex items-center justify-between gap-6 overflow-hidden">
+        <div className="relative max-w-6xl mx-auto px-4">
           
-          {/* Left arrow */}
-          <button 
-            onClick={handlePrev} 
-            aria-label="Previous Brand"
-            className="w-8 h-8 rounded-full bg-slate-50 hover:bg-slate-100 text-slate-400 flex items-center justify-center transition flex-shrink-0"
+          {/* Pill Container */}
+          <div 
+            className="relative rounded-full border border-indigo-100/90 py-6 sm:py-7 px-8 sm:px-14 bg-white shadow-sm hover:shadow-md transition-shadow duration-300 overflow-hidden"
+            onMouseEnter={() => setIsBrandPaused(true)}
+            onMouseLeave={() => setIsBrandPaused(false)}
           >
-            <ChevronLeft className="w-4 h-4" />
-          </button>
-
-          {/* Brands Logos */}
-          <div className="flex-1 flex flex-wrap items-center justify-around gap-6 sm:gap-10">
-            
-            {/* Coursera */}
-            <div className="flex items-center gap-1 font-extrabold text-xl sm:text-2xl text-[#0056D2] tracking-tight">
-              <span>coursera</span>
+            {/* Auto-sliding Brands Track */}
+            <div 
+              className="flex transition-transform duration-700 ease-in-out items-center"
+              style={{
+                transform: `translateX(-${brandIndex * (100 / 5)}%)`,
+              }}
+            >
+              {brands.map((brand) => (
+                <div 
+                  key={brand.id}
+                  className="w-1/2 sm:w-1/3 lg:w-1/5 flex-shrink-0 flex items-center justify-center px-4 select-none opacity-85 hover:opacity-100 transition-opacity"
+                >
+                  {brand.render}
+                </div>
+              ))}
             </div>
-
-            {/* Udemy */}
-            <div className="flex items-center gap-1 font-bold text-xl sm:text-2xl text-[#A435F0]">
-              <span className="text-[#A435F0] text-2xl font-black">u</span>
-              <span className="text-slate-900 font-extrabold">udemy</span>
-            </div>
-
-            {/* British Council */}
-            <div className="flex items-center gap-2">
-              <div className="grid grid-cols-2 gap-0.5 w-4 h-4">
-                <div className="w-1.5 h-1.5 rounded-full bg-[#002B49]" />
-                <div className="w-1.5 h-1.5 rounded-full bg-[#002B49]" />
-                <div className="w-1.5 h-1.5 rounded-full bg-[#002B49]" />
-                <div className="w-1.5 h-1.5 rounded-full bg-[#002B49]" />
-              </div>
-              <div className="flex flex-col text-[11px] font-black leading-tight tracking-wider text-[#002B49]">
-                <span>BRITISH</span>
-                <span>COUNCIL</span>
-              </div>
-            </div>
-
-            {/* HubSpot */}
-            <div className="flex items-center gap-1.5 font-bold text-xl sm:text-2xl text-slate-800">
-              <span className="font-extrabold">HubSp</span>
-              <div className="w-4 h-4 rounded-full border-4 border-[#FF7A59] -ml-0.5 -mr-0.5" />
-              <span className="font-extrabold">t</span>
-            </div>
-
-            {/* Trustpilot */}
-            <div className="flex items-center gap-1 text-slate-900 font-extrabold text-lg sm:text-xl">
-              <span className="text-[#00B67A] text-xl">★</span>
-              <span>Trustpilot</span>
-            </div>
-
           </div>
 
-          {/* Right arrow */}
+          {/* Left Arrow Button Overlapping Left Edge */}
           <button 
-            onClick={handleNext} 
-            aria-label="Next Brand"
-            className="w-8 h-8 rounded-full bg-slate-50 hover:bg-slate-100 text-slate-400 flex items-center justify-center transition flex-shrink-0"
+            onClick={handlePrevBrand} 
+            aria-label="Previous Brand"
+            className="absolute left-1 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-white border border-indigo-100/90 hover:bg-[#4A3AFF] hover:border-transparent hover:text-white text-slate-500 shadow-md flex items-center justify-center transition-all duration-200 z-20"
           >
-            <ChevronRight className="w-4 h-4" />
+            <ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5" />
+          </button>
+
+          {/* Right Arrow Button Overlapping Right Edge */}
+          <button 
+            onClick={handleNextBrand} 
+            aria-label="Next Brand"
+            className="absolute right-1 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-white border border-indigo-100/90 hover:bg-[#4A3AFF] hover:border-transparent hover:text-white text-slate-500 shadow-md flex items-center justify-center transition-all duration-200 z-20"
+          >
+            <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5" />
           </button>
 
         </div>
