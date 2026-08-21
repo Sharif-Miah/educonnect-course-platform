@@ -314,22 +314,25 @@ export default function LiveClassesAndPopularCourses({ courses = [] }) {
               >
                 <div>
                   {/* Thumbnail with Category Badge & Video Icon */}
-                  <div className="relative w-full aspect-[4/3] rounded-xl overflow-hidden mb-4">
+                  <div className="relative w-full aspect-[4/3] rounded-xl overflow-hidden mb-4 bg-slate-100">
                     <Image
                       src={course.thumbnail}
                       alt={course.title}
                       fill
-                      className="object-cover group-hover:scale-105 transition-transform duration-500"
+                      className="object-cover"
                     />
+
+                    {/* Top-to-bottom sliding dark overlay on hover */}
+                    <div className="absolute inset-0 bg-black/50 -translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out pointer-events-none z-10" />
                     
                     {/* Category pill badge on top left */}
-                    <div className="absolute top-3 left-3 bg-[#4A3AFF] text-white text-xs font-semibold px-3 py-1 rounded-full flex items-center gap-1.5 shadow-md">
+                    <div className="absolute top-3 left-3 bg-[#4A3AFF] text-white text-xs font-semibold px-3 py-1 rounded-full flex items-center gap-1.5 shadow-md z-20">
                       <Video className="w-3.5 h-3.5" />
                       <span>{course.category}</span>
                     </div>
 
                     {/* Camera icon on bottom right */}
-                    <div className="absolute bottom-3 right-3 w-7 h-7 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center text-[#4A3AFF] shadow-sm">
+                    <div className="absolute bottom-3 right-3 w-7 h-7 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center text-[#4A3AFF] shadow-sm z-20">
                       <Video className="w-3.5 h-3.5" />
                     </div>
                   </div>

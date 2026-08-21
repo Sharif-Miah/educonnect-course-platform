@@ -122,7 +122,7 @@ export default function HeroSection({ featuredCourse }) {
             </div>
 
             {/* Featured Course Card matching mockup */}
-            <div className="w-full max-w-[340px] bg-white rounded-3xl p-4 shadow-2xl border border-slate-100 text-slate-900 hover:shadow-indigo-500/20 transition-all duration-300 z-10">
+            <div className="w-full max-w-[340px] bg-white rounded-3xl p-4 shadow-2xl border border-slate-100 text-slate-900 hover:shadow-indigo-500/20 transition-all duration-300 z-10 group/card">
               {/* Card Image with Programming Badge & Camera Icon */}
               <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden mb-3.5 bg-slate-100">
                 <Image
@@ -132,14 +132,17 @@ export default function HeroSection({ featuredCourse }) {
                   className="object-cover"
                 />
 
+                {/* Top-to-bottom sliding dark overlay on hover */}
+                <div className="absolute inset-0 bg-black/50 -translate-y-full group-hover/card:translate-y-0 transition-transform duration-500 ease-out pointer-events-none z-10" />
+                
                 {/* Badge top-left: Programming */}
-                <div className="absolute top-3 left-3 bg-[#4A3AFF] text-white text-[11px] font-bold px-3 py-1 rounded-full flex items-center gap-1.5 shadow-md">
+                <div className="absolute top-3 left-3 bg-[#4A3AFF] text-white text-[11px] font-bold px-3 py-1 rounded-full flex items-center gap-1.5 shadow-md z-20">
                   <Video className="w-3.5 h-3.5" />
                   <span>Programming</span>
                 </div>
 
                 {/* Video button bottom-right */}
-                <div className="absolute bottom-3 right-3 w-8 h-8 bg-white/95 backdrop-blur-sm rounded-full flex items-center justify-center text-[#4A3AFF] shadow-md">
+                <div className="absolute bottom-3 right-3 w-8 h-8 bg-white/95 backdrop-blur-sm rounded-full flex items-center justify-center text-[#4A3AFF] shadow-md z-20">
                   <Video className="w-4 h-4" />
                 </div>
               </div>
