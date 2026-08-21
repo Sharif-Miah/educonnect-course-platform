@@ -6,7 +6,8 @@ import FilterCourseMobile from "./_components/FilterCourseMobile";
 import SearchCourse from "./_components/SearchCourse";
 import SortCourse from "./_components/SortCourse";
 import ActiveFilters from "./_components/ActiveFilters";
-import { Sparkles, BookOpen, SearchX } from "lucide-react";
+import CtaBanners from "@/components/home/CtaBanners";
+import { Sparkles, BookOpen, SearchX, ChevronRight, Users, Award, CheckCircle2 } from "lucide-react";
 import Link from "next/link";
 
 const CoursesPage = async ({ searchParams }) => {
@@ -66,36 +67,105 @@ const CoursesPage = async ({ searchParams }) => {
     <div className="min-h-screen bg-[#F8FAFC]">
       
       {/* ======================================================== */}
-      {/* HERO BANNER: Explore All Courses */}
+      {/* HERO BANNER: Explore Our World-Class Courses */}
       {/* ======================================================== */}
-      <div className="bg-slate-950 text-white relative py-14 sm:py-16 overflow-hidden border-b border-slate-800">
+      <div className="bg-slate-950 text-white relative pt-12 pb-16 lg:pt-16 lg:pb-20 overflow-hidden border-b border-slate-800/80">
         
-        {/* Glow Decor */}
-        <div className="absolute inset-0 pointer-events-none opacity-25">
-          <div className="absolute top-0 left-1/3 w-80 h-80 bg-[#4A3AFF] rounded-full blur-3xl" />
-          <div className="absolute bottom-0 right-1/3 w-80 h-80 bg-[#14C88C] rounded-full blur-3xl" />
+        {/* Background Radial Glow & Decorative Grid */}
+        <div className="absolute inset-0 pointer-events-none opacity-25 overflow-hidden">
+          <div className="absolute -top-32 left-1/4 w-96 h-96 bg-[#4A3AFF]/35 rounded-full blur-3xl" />
+          <div className="absolute -bottom-32 right-1/4 w-96 h-96 bg-[#14C88C]/20 rounded-full blur-3xl" />
           <div 
             className="w-full h-full"
             style={{
               backgroundImage: "linear-gradient(to right, rgba(255,255,255,0.08) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.08) 1px, transparent 1px)",
-              backgroundSize: "40px 40px",
+              backgroundSize: "44px 44px",
             }}
           />
         </div>
 
-        <div className="container max-w-7xl mx-auto px-4 sm:px-6 relative z-10 space-y-4">
-          <div className="inline-flex items-center gap-2 bg-[#4A3AFF]/20 border border-[#4A3AFF]/40 px-3.5 py-1 rounded-full text-xs font-bold text-indigo-300">
-            <Sparkles className="w-3.5 h-3.5 text-[#4A3AFF]" />
-            <span>Discover Knowledge & Master Skills</span>
+        <div className="container max-w-7xl mx-auto px-4 sm:px-6 relative z-10 space-y-6">
+          
+          {/* Breadcrumb Navigation */}
+          <div className="flex items-center gap-2 text-xs font-semibold text-slate-400 flex-wrap">
+            <Link href="/" className="hover:text-white transition">Home</Link>
+            <ChevronRight className="w-3.5 h-3.5 text-slate-600" />
+            <span className="text-[#4A3AFF] font-bold">Courses</span>
+            {category && (
+              <>
+                <ChevronRight className="w-3.5 h-3.5 text-slate-600" />
+                <span className="text-slate-300 capitalize">{category.replace(/-/g, " ")}</span>
+              </>
+            )}
           </div>
 
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight leading-tight">
-            Explore All Courses
-          </h1>
+          {/* Title & Badge */}
+          <div className="max-w-3xl space-y-4">
+            <div className="inline-flex items-center gap-2 bg-[#4A3AFF]/20 border border-[#4A3AFF]/40 px-3.5 py-1 rounded-full text-xs font-bold text-indigo-300">
+              <Sparkles className="w-3.5 h-3.5 text-[#4A3AFF]" />
+              <span>Discover Knowledge & Master Skills</span>
+            </div>
 
-          <p className="text-xs sm:text-sm md:text-base text-slate-300 max-w-2xl leading-relaxed">
-            Gain in-demand skills from world-class instructors. Find the perfect hands-on curriculum to advance your career.
-          </p>
+            <div className="relative inline-block">
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-extrabold tracking-tight leading-tight">
+                Explore All Courses
+              </h1>
+              {/* Signature Hand-drawn Wavy Underline */}
+              <div className="mt-2.5">
+                <svg className="w-36 sm:w-48 text-[#4A3AFF]" viewBox="0 0 144 14" fill="none">
+                  <path d="M2 10.5C28.5 2 64.5 14 142 3.5" stroke="currentColor" strokeWidth="4" strokeLinecap="round" />
+                </svg>
+              </div>
+            </div>
+
+            <p className="text-xs sm:text-sm md:text-base text-slate-300 max-w-2xl leading-relaxed font-normal pt-1">
+              Gain in-demand skills with hands-on projects taught by industry veterans. Learn at your own pace with lifetime access and verified certificates.
+            </p>
+          </div>
+
+          {/* Highlight Stats Strip */}
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 pt-4 max-w-4xl">
+            <div className="bg-slate-900/80 border border-slate-800/80 rounded-2xl p-3.5 sm:p-4 backdrop-blur-sm">
+              <div className="flex items-center gap-2.5">
+                <BookOpen className="w-4 h-4 sm:w-5 sm:h-5 text-[#4A3AFF]" />
+                <div>
+                  <span className="text-base sm:text-lg font-bold text-white block">{allCourses.length}+</span>
+                  <span className="text-[11px] text-slate-400">Total Courses</span>
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-slate-900/80 border border-slate-800/80 rounded-2xl p-3.5 sm:p-4 backdrop-blur-sm">
+              <div className="flex items-center gap-2.5">
+                <Users className="w-4 h-4 sm:w-5 sm:h-5 text-[#14C88C]" />
+                <div>
+                  <span className="text-base sm:text-lg font-bold text-white block">10,000+</span>
+                  <span className="text-[11px] text-slate-400">Active Students</span>
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-slate-900/80 border border-slate-800/80 rounded-2xl p-3.5 sm:p-4 backdrop-blur-sm">
+              <div className="flex items-center gap-2.5">
+                <Award className="w-4 h-4 sm:w-5 sm:h-5 text-[#4A3AFF]" />
+                <div>
+                  <span className="text-base sm:text-lg font-bold text-white block">100%</span>
+                  <span className="text-[11px] text-slate-400">Verified Certificate</span>
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-slate-900/80 border border-slate-800/80 rounded-2xl p-3.5 sm:p-4 backdrop-blur-sm">
+              <div className="flex items-center gap-2.5">
+                <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5 text-[#14C88C]" />
+                <div>
+                  <span className="text-base sm:text-lg font-bold text-white block">Lifetime</span>
+                  <span className="text-[11px] text-slate-400">Full Access</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
 
@@ -103,7 +173,7 @@ const CoursesPage = async ({ searchParams }) => {
       {/* ======================================================== */}
       {/* FILTER CONTROLS BAR: Search, Sort & Mobile Sheet */}
       {/* ======================================================== */}
-      <div className="sticky top-0 z-20 bg-white/90 backdrop-blur-md border-b border-slate-200/80 shadow-xs py-4">
+      <div className="sticky top-0 z-20 bg-white/95 backdrop-blur-md border-b border-slate-200/80 shadow-xs py-4">
         <div className="container max-w-7xl mx-auto px-4 sm:px-6">
           <div className="flex items-center justify-between gap-4 flex-col sm:flex-row">
             {/* Search Input */}
@@ -125,7 +195,7 @@ const CoursesPage = async ({ searchParams }) => {
       {/* ======================================================== */}
       {/* MAIN LAYOUT: Sidebar Filters + Course Grid */}
       {/* ======================================================== */}
-      <div className="container max-w-7xl mx-auto px-4 sm:px-6 py-10">
+      <div className="container max-w-7xl mx-auto px-4 sm:px-6 py-12">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start">
           
           {/* Desktop Filter Sidebar (3 cols) */}
@@ -136,7 +206,7 @@ const CoursesPage = async ({ searchParams }) => {
           {/* Course Grid & Results (9 cols) */}
           <div className="lg:col-span-9 space-y-6">
             
-            {/* Results Header */}
+            {/* Results Count Header */}
             <div className="flex items-center justify-between text-xs sm:text-sm font-bold text-slate-600 pb-2">
               <span>
                 Showing <strong className="text-slate-900">{filteredCourses.length}</strong> of <strong className="text-slate-900">{allCourses.length}</strong> Courses
@@ -177,6 +247,11 @@ const CoursesPage = async ({ searchParams }) => {
 
         </div>
       </div>
+
+      {/* ======================================================== */}
+      {/* SIGNATURE CTA BANNERS (Matching Landing Page Experience) */}
+      {/* ======================================================== */}
+      <CtaBanners />
 
     </div>
   );
