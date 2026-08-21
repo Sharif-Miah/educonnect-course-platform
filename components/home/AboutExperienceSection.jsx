@@ -3,6 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight, Check, GraduationCap, Users, UserCheck, Award, Heart } from "lucide-react";
+import CountUp from "./CountUp";
 
 export default function AboutExperienceSection() {
   const features = [
@@ -15,10 +16,10 @@ export default function AboutExperienceSection() {
   ];
 
   const stats = [
-    { icon: Users, value: "118k", label: "Our Happy Students" },
-    { icon: GraduationCap, value: "150k", label: "Enrolled Learner" },
-    { icon: UserCheck, value: "120+", label: "Expert Instructor" },
-    { icon: Award, value: "96%", label: "Satisfaction Rate" },
+    { icon: Users, end: 118, suffix: "k", label: "Our Happy Students" },
+    { icon: GraduationCap, end: 150, suffix: "k", label: "Enrolled Learner" },
+    { icon: UserCheck, end: 120, suffix: "+", label: "Expert Instructor" },
+    { icon: Award, end: 96, suffix: "%", label: "Satisfaction Rate" },
   ];
 
   return (
@@ -163,7 +164,7 @@ export default function AboutExperienceSection() {
                     <StatIcon className="w-6 h-6" />
                   </div>
                   <h3 className="text-3xl sm:text-4xl font-extrabold tracking-tight">
-                    {stat.value}
+                    <CountUp end={stat.end} suffix={stat.suffix} duration={2200} />
                   </h3>
                   <p className="text-xs sm:text-sm font-medium text-indigo-100 mt-1">
                     {stat.label}

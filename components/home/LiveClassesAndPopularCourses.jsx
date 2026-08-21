@@ -96,22 +96,22 @@ export default function LiveClassesAndPopularCourses({ courses = [] }) {
   // Map courses from database or default
   const mappedCourses = courses.length > 0
     ? courses.slice(0, 6).map((c, idx) => {
-        const fallback = defaultCourses[idx % defaultCourses.length];
-        const catTitle = c.category?.title || fallback.category;
-        return {
-          id: c.id || c._id,
-          title: c.title || fallback.title,
-          category: catTitle,
-          rating: "4.8",
-          reviews: c.testimonials?.length || "3",
-          lessons: c.modules?.length ? c.modules.length * 8 : fallback.lessons,
-          students: 50 + idx * 12,
-          price: c.price ? `${c.price}.00` : fallback.price,
-          instructor: `${c.instructor?.firstName || "Dev"} ${c.instructor?.lastName || "Masum Billah"}`.trim(),
-          instructorAvatar: c.instructor?.profilePicture || fallback.instructorAvatar,
-          thumbnail: c.thumbnail ? getImageUrl(c.thumbnail, "courses") : fallback.thumbnail,
-        };
-      })
+      const fallback = defaultCourses[idx % defaultCourses.length];
+      const catTitle = c.category?.title || fallback.category;
+      return {
+        id: c.id || c._id,
+        title: c.title || fallback.title,
+        category: catTitle,
+        rating: "4.8",
+        reviews: c.testimonials?.length || "3",
+        lessons: c.modules?.length ? c.modules.length * 8 : fallback.lessons,
+        students: 50 + idx * 12,
+        price: c.price ? `${c.price}.00` : fallback.price,
+        instructor: `${c.instructor?.firstName || "Dev"} ${c.instructor?.lastName || "Masum Billah"}`.trim(),
+        instructorAvatar: c.instructor?.profilePicture || fallback.instructorAvatar,
+        thumbnail: c.thumbnail ? getImageUrl(c.thumbnail, "courses") : fallback.thumbnail,
+      };
+    })
     : defaultCourses;
 
   // Filter based on active tab
@@ -124,12 +124,12 @@ export default function LiveClassesAndPopularCourses({ courses = [] }) {
   return (
     <section id="live-classes" className="py-20 bg-slate-50/50 relative">
       <div className="container max-w-7xl mx-auto px-4 sm:px-6">
-        
+
         {/* ======================================================== */}
         {/* TOP BANNER: LIVE CLASSES */}
         {/* ======================================================== */}
         <div className="mb-24">
-          
+
           {/* Section Header */}
           <div className="text-center max-w-2xl mx-auto mb-12">
             <p className="text-xs sm:text-sm font-bold uppercase tracking-wider text-[#4A3AFF] mb-2">
@@ -150,7 +150,7 @@ export default function LiveClassesAndPopularCourses({ courses = [] }) {
 
           {/* 2 Side-by-Side Live Showcase Cards */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center max-w-5xl mx-auto">
-            
+
             {/* Left Card: Live Video Screen with Instructor */}
             <div className="lg:col-span-7 relative">
               {/* Green dot grid decor */}
@@ -267,7 +267,7 @@ export default function LiveClassesAndPopularCourses({ courses = [] }) {
         {/* BOTTOM SECTION: MOST POPULAR COURSES */}
         {/* ======================================================== */}
         <div id="popular-courses">
-          
+
           {/* Section Header with Category Tabs */}
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
             <div>
@@ -293,11 +293,10 @@ export default function LiveClassesAndPopularCourses({ courses = [] }) {
                 <button
                   key={tab}
                   onClick={() => setActiveCategory(tab)}
-                  className={`text-xs sm:text-sm font-semibold px-4 py-2 rounded-full transition-all duration-200 ${
-                    activeCategory === tab
+                  className={`text-xs sm:text-sm font-semibold px-4 py-2 rounded-full transition-all duration-200 ${activeCategory === tab
                       ? "bg-[#4A3AFF] text-white shadow-md shadow-indigo-500/25"
                       : "text-slate-600 hover:text-slate-900 hover:bg-slate-100"
-                  }`}
+                    }`}
                 >
                   {tab}
                 </button>
@@ -324,7 +323,7 @@ export default function LiveClassesAndPopularCourses({ courses = [] }) {
 
                     {/* Top-to-bottom sliding dark overlay on hover */}
                     <div className="absolute inset-0 bg-black/50 -translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out pointer-events-none z-10" />
-                    
+
                     {/* Category pill badge on top left */}
                     <div className="absolute top-3 left-3 bg-[#4A3AFF] text-white text-xs font-semibold px-3 py-1 rounded-full flex items-center gap-1.5 shadow-md z-20">
                       <Video className="w-3.5 h-3.5" />

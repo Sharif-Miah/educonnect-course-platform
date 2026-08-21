@@ -3,6 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight, GraduationCap, BookOpen, Star, Video, FileText, Users } from "lucide-react";
+import CountUp from "./CountUp";
 
 export default function HeroSection({ featuredCourse }) {
   return (
@@ -107,7 +108,9 @@ export default function HeroSection({ featuredCourse }) {
                 <div className="w-12 h-12 rounded-full bg-indigo-50/80 flex items-center justify-center text-[#4A3AFF] mb-1.5">
                   <GraduationCap className="w-7 h-7" />
                 </div>
-                <h4 className="text-2xl font-extrabold text-slate-900 tracking-tight">250+</h4>
+                <h4 className="text-2xl font-extrabold text-slate-900 tracking-tight">
+                  <CountUp end={250} suffix="+" duration={1800} />
+                </h4>
                 <p className="text-[11px] text-slate-500 font-medium mt-0.5">Enrolled Students</p>
               </div>
 
@@ -116,7 +119,9 @@ export default function HeroSection({ featuredCourse }) {
                 <div className="w-12 h-12 rounded-full bg-white/15 flex items-center justify-center text-white mb-1.5">
                   <BookOpen className="w-6 h-6" />
                 </div>
-                <h4 className="text-2xl font-extrabold text-white tracking-tight">3652+</h4>
+                <h4 className="text-2xl font-extrabold text-white tracking-tight">
+                  <CountUp end={3652} suffix="+" duration={2000} />
+                </h4>
                 <p className="text-[11px] text-indigo-100 font-medium mt-0.5">Finished Session</p>
               </div>
             </div>
@@ -134,7 +139,7 @@ export default function HeroSection({ featuredCourse }) {
 
                 {/* Top-to-bottom sliding dark overlay on hover */}
                 <div className="absolute inset-0 bg-black/50 -translate-y-full group-hover/card:translate-y-0 transition-transform duration-500 ease-out pointer-events-none z-10" />
-                
+
                 {/* Badge top-left: Programming */}
                 <div className="absolute top-3 left-3 bg-[#4A3AFF] text-white text-[11px] font-bold px-3 py-1 rounded-full flex items-center gap-1.5 shadow-md z-20">
                   <Video className="w-3.5 h-3.5" />
