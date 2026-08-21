@@ -1,23 +1,19 @@
 import CourseDetailsIntro from "./_components/CourseDetailsIntro";
-import Testimonials from "./_components/Testimonials";
-import RelatedCourses from "./_components/RelatedCourses";
 import CourseDetails from "./_components/CourseDetails";
-
 import { getCourseDetails } from "@/queries/courses";
-import { replaceMongoIdInArray } from "@/lib/convertData";
 
-const SingleCoursePage = async ({params: {id}}) => {
-    const course = await getCourseDetails(id);
-    return (
-        <>
-            <CourseDetailsIntro course={course} />
+const SingleCoursePage = async ({ params: { id } }) => {
+  const course = await getCourseDetails(id);
 
-            <CourseDetails course={course} />
+  return (
+    <div className="w-full min-h-screen bg-slate-50/50">
+      {/* 1. Hero Banner with Title, Badges, Breadcrumbs, Instructor Pill */}
+      <CourseDetailsIntro course={course} />
 
-            {course?.testimonials && <Testimonials testimonials={replaceMongoIdInArray(course?.testimonials)} />}
-
-            {/*<RelatedCourses />*/}
-        </>
-    );
+      {/* 2. Main 2-Column Content: Media Preview, Interactive Tabs, & Sticky Enrollment Card */}
+      <CourseDetails course={course} />
+    </div>
+  );
 };
+
 export default SingleCoursePage;

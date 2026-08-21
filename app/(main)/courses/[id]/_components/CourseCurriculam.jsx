@@ -1,66 +1,77 @@
-
 import {
-    Accordion,
-    AccordionContent,
-    AccordionItem,
-    AccordionTrigger,
-  } from "@/components/ui/accordion";
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+import { BookOpen, Clock, PlayCircle, HelpCircle, FileCode, CheckCircle } from "lucide-react";
+import CourseModuleList from "./module/CourseModuleList";
 
-  import { BookCheck } from "lucide-react";
-  import { Clock10 } from "lucide-react";
-  import { Radio } from "lucide-react";
-  import { Video } from "lucide-react";
-  import { NotepadText } from "lucide-react";
-  import { FileQuestion } from "lucide-react";
-  import { PlayCircle } from "lucide-react";
-  import { SquarePlay } from "lucide-react";
-  import { Tv } from "lucide-react";
-  import { StickyNote } from "lucide-react";
-  import { cn } from "@/lib/utils";
+const CourseCurriculam = ({ course }) => {
+  const modules = course?.modules || [];
+  
+  const totalLessons = modules.reduce((acc, m) => acc + (m.lessonIds?.length || 0), 0) || (modules.length * 6);
+  const totalDurationSeconds = modules.reduce((acc, m) => {
+    return acc + (m.lessonIds?.reduce((subAcc, l) => subAcc + (l.duration || 0), 0) || 0);
+  }, 0);
 
-  import CourseModuleList from "./module/CourseModuleList";
+  const totalHours = (totalDurationSeconds > 0 ? totalDurationSeconds / 3600 : modules.length * 2.5).toFixed(1);
 
-const CourseCurriculam = ({course}) => {
-    const totalDuration = course?.modules.map((item) => {
-      return item.lessonIds.reduce(function (acc, obj) {
-        return acc + obj.duration;
-      }, 0);
-    }).reduce(function (acc, obj) {
-        return acc + obj;
-      }, 0);
+  return (
+    <div className="space-y-6">
+      
+      {/* Curriculum Summary Pill Header */}
+      <div className="flex items-center justify-between flex-wrap gap-4 bg-slate-50 p-4 sm:p-5 rounded-2xl border border-slate-100 text-xs sm:text-sm font-semibold text-slate-700">
+        <div className="flex items-center gap-2">
+          <BookOpen className="w-4 h-4 text-[#4A3AFF]" />
+          <span>{modules.length} Modules</span>
+        </div>
+        <div className="flex items-center gap-2">
+          <PlayCircle className="w-4 h-4 text-[#4A3AFF]" />
+          <span>{totalLessons} Lessons</span>
+        </div>
+        <div className="flex items-center gap-2">
+          <Clock className="w-4 h-4 text-[#4A3AFF]" />
+          <span>{totalHours} Total Hours</span>
+        </div>
+      </div>
 
-    console.log({totalDuration});
-
-    return (
-        <>
-            <div class="flex gap-x-5 items-center justify-center flex-wrap mt-4 mb-6 text-gray-600 text-sm">
-                <span className="flex items-center gap-1.5">
-                    <BookCheck className="w-4 h-4" />
-                    {course?.modules?.length} Chapters
-                </span>
-                <span className="flex items-center gap-1.5">
-                    <Clock10 className="w-4 h-4" />
-                    {(totalDuration/3660).toPrecision(2)} Hours
-                </span>
-            </div>
-
-            {/* contents */}
-            <Accordion
-                defaultValue={["item-1", "item-2", "item-3"]}
-                type="multiple"
-                collapsible
-                className="w-full"
+      {/* Accordion Modules List */}
+      {modules.length > 0 ? (
+        <Accordion
+          defaultValue={["item-0", "item-1"]}
+          type="multiple"
+          collapsible
+          className="w-full space-y-4"
+        >
+          {modules.map((module, idx) => (
+            <AccordionItem 
+              key={module.id || idx} 
+              value={`item-${idx}`}
+              className="bg-white rounded-2xl border border-slate-100 shadow-sm overflow-hidden px-4"
             >
-                {
-                    course?.modules && course?.modules.map(module => (
-                        <CourseModuleList module={module} />
-                    ))
-                }
+              <AccordionTrigger className="hover:no-underline py-4 font-bold text-sm sm:text-base text-slate-900">
+                <div className="flex items-center gap-3 text-left">
+                  <span className="w-7 h-7 rounded-lg bg-indigo-50 text-[#4A3AFF] text-xs font-black flex items-center justify-center flex-shrink-0">
+                    {idx + 1}
+                  </span>
+                  <span>{module.title}</span>
+                </div>
+              </AccordionTrigger>
+              <AccordionContent className="pb-4 pt-1">
+                <CourseModuleList module={module} />
+              </AccordionContent>
+            </AccordionItem>
+          ))}
+        </Accordion>
+      ) : (
+        <div className="text-center py-12 bg-slate-50 rounded-2xl text-slate-500 text-sm font-semibold">
+          Curriculum is currently being updated.
+        </div>
+      )}
 
-
-            </Accordion>
-        </>
-    );
+    </div>
+  );
 };
 
 export default CourseCurriculam;

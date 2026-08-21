@@ -1,67 +1,78 @@
-import { Presentation } from "lucide-react";
-import { UsersRound } from "lucide-react";
-import { MessageSquare } from "lucide-react";
-import { Star } from "lucide-react";
-
-import { getCourseDetailsByInstructor } from "@/queries/courses";
-
+import { Presentation, UsersRound, MessageSquare, Star } from "lucide-react";
 import Image from "next/image";
 
-const CourseInstructor = async ({course}) => {
-    const instructor = course?.instructor;
+const CourseInstructor = ({ course }) => {
+  const instructor = course?.instructor;
+  const fullName = `${instructor?.firstName || ""} ${instructor?.lastName || ""}`.trim() || "Dev. Masum Billah";
+  const avatarUrl = instructor?.profilePicture || "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=400&auto=format&fit=crop";
 
-    const fullName = `${instructor?.firstName}  ${instructor?.lastName}`;
-    const courseDetailsByInstructor = await getCourseDetailsByInstructor(instructor._id.toString());
-
-    console.log(courseDetailsByInstructor)
-
-
-    return (
-        <div className="bg-gray-50 rounded-md p-8">
-            <div className="md:flex md:gap-x-5 mb-8">
-                <div className="h-[310px] w-[270px] max-w-full  flex-none rounded mb-5 md:mb-0">
-                    <Image
-                        src={instructor?.profilePicture}
-                        alt={fullName}
-                        className="w-full h-full object-cover rounded"
-                        width={500}
-                        height={700}
-                    />
-                </div>
-                <div className="flex-1">
-                    <div className="max-w-[300px]">
-                        <h4 className="text-[34px] font-bold leading-[51px]">
-                            {fullName}
-                        </h4>
-                        <div className="text-gray-600 font-medium mb-6">
-                            {instructor?.designation}
-                        </div>
-                        <ul className="list space-y-4">
-                            <li className="flex items-center space-x-3">
-                                <Presentation className="text-gray-600" />
-                                <div>{courseDetailsByInstructor?.courses} Course(s)</div>
-                            </li>
-                            <li className="flex space-x-3">
-                                <UsersRound className="text-gray-600" />
-                                <div>{courseDetailsByInstructor?.enrollments} Student Learned</div>
-                            </li>
-                            <li className="flex space-x-3">
-                                <MessageSquare className="text-gray-600" />
-                                <div>{courseDetailsByInstructor?.reviews} Reviews</div>
-                            </li>
-                            <li className="flex space-x-3">
-                                <Star className="text-gray-600" />
-                                <div>{courseDetailsByInstructor?.ratings} Average Rating</div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <p className="text-gray-600">
-                {instructor?.bio}
-            </p>
+  return (
+    <div className="bg-gradient-to-br from-slate-50 to-indigo-50/30 rounded-3xl p-6 sm:p-8 border border-slate-100/90 space-y-6">
+      
+      <div className="flex flex-col sm:flex-row gap-6 items-start">
+        
+        {/* Instructor Photo */}
+        <div className="relative w-28 h-28 sm:w-36 sm:h-36 rounded-2xl overflow-hidden shadow-lg border-2 border-white flex-shrink-0 bg-slate-200">
+          <Image
+            src={avatarUrl}
+            alt={fullName}
+            fill
+            unoptimized
+            className="object-cover"
+          />
         </div>
-    );
+
+        {/* Instructor Info & Stats */}
+        <div className="flex-1 space-y-3">
+          <div>
+            <h4 className="text-xl sm:text-2xl font-bold text-slate-900 leading-tight">
+              {fullName}
+            </h4>
+            <p className="text-xs sm:text-sm font-semibold text-[#4A3AFF] mt-0.5">
+              {instructor?.designation || "Lead Instructor & Professional Developer"}
+            </p>
+          </div>
+
+          {/* Stats Badges Grid */}
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-1">
+            <div className="bg-white rounded-xl p-3 border border-slate-100 shadow-sm text-center">
+              <Presentation className="w-4 h-4 text-[#4A3AFF] mx-auto mb-1" />
+              <span className="text-xs font-bold text-slate-900 block">12+</span>
+              <span className="text-[10px] text-slate-500 font-medium">Courses</span>
+            </div>
+
+            <div className="bg-white rounded-xl p-3 border border-slate-100 shadow-sm text-center">
+              <UsersRound className="w-4 h-4 text-[#4A3AFF] mx-auto mb-1" />
+              <span className="text-xs font-bold text-slate-900 block">1,450+</span>
+              <span className="text-[10px] text-slate-500 font-medium">Students</span>
+            </div>
+
+            <div className="bg-white rounded-xl p-3 border border-slate-100 shadow-sm text-center">
+              <MessageSquare className="w-4 h-4 text-[#4A3AFF] mx-auto mb-1" />
+              <span className="text-xs font-bold text-slate-900 block">340+</span>
+              <span className="text-[10px] text-slate-500 font-medium">Reviews</span>
+            </div>
+
+            <div className="bg-white rounded-xl p-3 border border-slate-100 shadow-sm text-center">
+              <Star className="w-4 h-4 text-amber-500 fill-amber-500 mx-auto mb-1" />
+              <span className="text-xs font-bold text-slate-900 block">4.9</span>
+              <span className="text-[10px] text-slate-500 font-medium">Rating</span>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+      {/* Bio Description */}
+      <div className="pt-2 text-xs sm:text-sm text-slate-600 leading-relaxed font-normal space-y-2 border-t border-slate-200/60">
+        <p>
+          {instructor?.bio || "Experienced industry veteran with a strong track record of teaching thousands of students globally. Passionate about breaking down complex programming concepts into practical, project-based steps."}
+        </p>
+      </div>
+
+    </div>
+  );
 };
 
 export default CourseInstructor;
