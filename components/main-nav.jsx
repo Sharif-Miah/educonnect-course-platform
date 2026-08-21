@@ -74,7 +74,7 @@ export function MainNav({ items, children }) {
           </Link>
 
           <Link
-            href="/#about"
+            href="/about"
             className="text-sm font-medium text-gray-700 hover:text-[#4A3AFF] transition-colors"
           >
             About
@@ -125,7 +125,7 @@ export function MainNav({ items, children }) {
           </Link>
 
           <Link
-            href="/#contact"
+            href="/contact"
             className="text-sm font-medium text-gray-700 hover:text-[#4A3AFF] transition-colors"
           >
             Contact
