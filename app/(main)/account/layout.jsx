@@ -4,7 +4,7 @@ import Link from "next/link";
 
 function Layout({ tabs }) {
   return (
-    <div className="min-h-screen bg-[#F8FAFC]">
+    <div className="min-h-screen bg-[#F8FAFC] dark:bg-[#0b1120] transition-colors duration-200">
       
       {/* ======================================================== */}
       {/* HERO BANNER: My Account & Student Dashboard */}

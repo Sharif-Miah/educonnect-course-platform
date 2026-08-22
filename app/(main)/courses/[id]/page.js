@@ -11,7 +11,7 @@ const SingleCoursePage = async ({ params: { id } }) => {
   }
 
   return (
-    <div className="w-full min-h-screen bg-slate-50/50">
+    <div className="w-full min-h-screen bg-slate-50/50 dark:bg-[#0b1120] transition-colors duration-200">
       {/* 1. Hero Banner with Title, Badges, Breadcrumbs, Instructor Pill */}
       <CourseDetailsIntro course={course} />
 

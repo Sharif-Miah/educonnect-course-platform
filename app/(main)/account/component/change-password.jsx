@@ -48,16 +48,16 @@ const ChangePassword = ({ email }) => {
 
   return (
     <div className="space-y-5">
-      <div className="flex items-center gap-2.5 pb-2 border-b border-slate-100">
-        <KeyRound className="w-5 h-5 text-[#4A3AFF]" />
-        <h4 className="text-base font-bold text-slate-900 tracking-tight">
+      <div className="flex items-center gap-2.5 pb-2 border-b border-slate-100 dark:border-slate-800">
+        <KeyRound className="w-5 h-5 text-[#4A3AFF] dark:text-indigo-400" />
+        <h4 className="text-base font-bold text-slate-900 dark:text-white tracking-tight">
           Security & Password
         </h4>
       </div>
 
       <form onSubmit={doPassowrdChange} className="space-y-4">
         <div className="space-y-1.5">
-          <Label className="text-xs font-bold text-slate-700">
+          <Label className="text-xs font-bold text-slate-700 dark:text-slate-200">
             Current Password <span className="text-rose-500">*</span>
           </Label>
           <Input
@@ -67,12 +67,12 @@ const ChangePassword = ({ email }) => {
             value={passwordState.oldPassword}
             onChange={handleChange}
             required
-            className="bg-slate-50/50 border-slate-200/90 rounded-2xl py-2.5 px-4 text-xs sm:text-sm focus:ring-2 focus:ring-[#4A3AFF]/30"
+            className="bg-slate-50/50 dark:bg-slate-800 border-slate-200/90 dark:border-slate-700 text-slate-900 dark:text-white dark:placeholder-slate-500 rounded-2xl py-2.5 px-4 text-xs sm:text-sm focus:ring-2 focus:ring-[#4A3AFF]/30"
           />
         </div>
 
         <div className="space-y-1.5">
-          <Label className="text-xs font-bold text-slate-700">
+          <Label className="text-xs font-bold text-slate-700 dark:text-slate-200">
             New Password <span className="text-rose-500">*</span>
           </Label>
           <Input
@@ -82,12 +82,12 @@ const ChangePassword = ({ email }) => {
             value={passwordState.newPassword}
             onChange={handleChange}
             required
-            className="bg-slate-50/50 border-slate-200/90 rounded-2xl py-2.5 px-4 text-xs sm:text-sm focus:ring-2 focus:ring-[#4A3AFF]/30"
+            className="bg-slate-50/50 dark:bg-slate-800 border-slate-200/90 dark:border-slate-700 text-slate-900 dark:text-white dark:placeholder-slate-500 rounded-2xl py-2.5 px-4 text-xs sm:text-sm focus:ring-2 focus:ring-[#4A3AFF]/30"
           />
         </div>
 
         <div className="space-y-1.5">
-          <Label className="text-xs font-bold text-slate-700">
+          <Label className="text-xs font-bold text-slate-700 dark:text-slate-200">
             Confirm New Password <span className="text-rose-500">*</span>
           </Label>
           <Input
@@ -97,7 +97,7 @@ const ChangePassword = ({ email }) => {
             value={passwordState.confirmPassword}
             onChange={handleChange}
             required
-            className="bg-slate-50/50 border-slate-200/90 rounded-2xl py-2.5 px-4 text-xs sm:text-sm focus:ring-2 focus:ring-[#4A3AFF]/30"
+            className="bg-slate-50/50 dark:bg-slate-800 border-slate-200/90 dark:border-slate-700 text-slate-900 dark:text-white dark:placeholder-slate-500 rounded-2xl py-2.5 px-4 text-xs sm:text-sm focus:ring-2 focus:ring-[#4A3AFF]/30"
           />
         </div>
 
@@ -105,7 +105,7 @@ const ChangePassword = ({ email }) => {
           <button
             type="submit"
             disabled={loading}
-            className="w-full bg-[#4A3AFF] hover:bg-[#3D2FE6] text-white text-xs sm:text-sm font-bold py-3 px-5 rounded-2xl shadow-md transition-all active:scale-95 disabled:opacity-50"
+            className="w-full bg-[#4A3AFF] hover:bg-[#3D2FE6] text-white text-xs sm:text-sm font-bold py-3 px-5 rounded-2xl shadow-md transition-all active:scale-95 disabled:opacity-50 cursor-pointer"
           >
             {loading ? "Updating..." : "Update Password"}
           </button>

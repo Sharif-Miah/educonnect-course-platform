@@ -46,19 +46,19 @@ const PersonalDetails = ({ userInfo }) => {
   };
 
   return (
-    <div className="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-slate-100/90 space-y-6">
+    <div className="bg-white dark:bg-slate-900 rounded-3xl p-6 sm:p-8 shadow-sm border border-slate-100/90 dark:border-slate-800 space-y-6 transition-colors">
       
       {/* Header */}
-      <div className="flex items-center justify-between pb-4 border-b border-slate-100">
+      <div className="flex items-center justify-between pb-4 border-b border-slate-100 dark:border-slate-800">
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-2xl bg-indigo-50 text-[#4A3AFF] flex items-center justify-center">
+          <div className="w-10 h-10 rounded-2xl bg-indigo-50 dark:bg-indigo-950/60 text-[#4A3AFF] dark:text-indigo-400 flex items-center justify-center">
             <User className="w-5 h-5" />
           </div>
           <div>
-            <h4 className="text-lg font-extrabold text-slate-900 tracking-tight">
+            <h4 className="text-lg font-extrabold text-slate-900 dark:text-white tracking-tight">
               Personal Information
             </h4>
-            <p className="text-xs text-slate-400 font-medium">
+            <p className="text-xs text-slate-400 dark:text-slate-400 font-medium">
               Update your public bio, name, and professional occupation.
             </p>
           </div>
@@ -70,7 +70,7 @@ const PersonalDetails = ({ userInfo }) => {
           
           {/* First Name */}
           <div className="space-y-2">
-            <Label className="text-xs font-bold text-slate-700">
+            <Label className="text-xs font-bold text-slate-700 dark:text-slate-200">
               First Name <span className="text-rose-500">*</span>
             </Label>
             <Input
@@ -80,13 +80,13 @@ const PersonalDetails = ({ userInfo }) => {
               value={infoState.firstName}
               onChange={handleChange}
               required
-              className="bg-slate-50/50 border-slate-200/90 rounded-2xl py-3 px-4 text-xs sm:text-sm focus:ring-2 focus:ring-[#4A3AFF]/30 focus:border-[#4A3AFF]"
+              className="bg-slate-50/50 dark:bg-slate-800 border-slate-200/90 dark:border-slate-700 text-slate-900 dark:text-white dark:placeholder-slate-500 rounded-2xl py-3 px-4 text-xs sm:text-sm focus:ring-2 focus:ring-[#4A3AFF]/30 focus:border-[#4A3AFF]"
             />
           </div>
 
           {/* Last Name */}
           <div className="space-y-2">
-            <Label className="text-xs font-bold text-slate-700">
+            <Label className="text-xs font-bold text-slate-700 dark:text-slate-200">
               Last Name <span className="text-rose-500">*</span>
             </Label>
             <Input
@@ -96,13 +96,13 @@ const PersonalDetails = ({ userInfo }) => {
               value={infoState.lastName}
               onChange={handleChange}
               required
-              className="bg-slate-50/50 border-slate-200/90 rounded-2xl py-3 px-4 text-xs sm:text-sm focus:ring-2 focus:ring-[#4A3AFF]/30 focus:border-[#4A3AFF]"
+              className="bg-slate-50/50 dark:bg-slate-800 border-slate-200/90 dark:border-slate-700 text-slate-900 dark:text-white dark:placeholder-slate-500 rounded-2xl py-3 px-4 text-xs sm:text-sm focus:ring-2 focus:ring-[#4A3AFF]/30 focus:border-[#4A3AFF]"
             />
           </div>
 
           {/* Email Address */}
           <div className="space-y-2">
-            <Label className="text-xs font-bold text-slate-700">
+            <Label className="text-xs font-bold text-slate-700 dark:text-slate-200">
               Email Address <span className="text-slate-400 font-normal">(Read-only)</span>
             </Label>
             <Input
@@ -110,13 +110,13 @@ const PersonalDetails = ({ userInfo }) => {
               name="email"
               value={infoState.email}
               disabled
-              className="bg-slate-100/70 border-slate-200 text-slate-500 rounded-2xl py-3 px-4 text-xs sm:text-sm cursor-not-allowed"
+              className="bg-slate-100/70 dark:bg-slate-800/50 border-slate-200 dark:border-slate-700 text-slate-500 dark:text-slate-400 rounded-2xl py-3 px-4 text-xs sm:text-sm cursor-not-allowed"
             />
           </div>
 
           {/* Occupation / Designation */}
           <div className="space-y-2">
-            <Label className="text-xs font-bold text-slate-700">
+            <Label className="text-xs font-bold text-slate-700 dark:text-slate-200">
               Occupation / Role
             </Label>
             <Input
@@ -125,7 +125,7 @@ const PersonalDetails = ({ userInfo }) => {
               placeholder="e.g. Frontend Developer"
               value={infoState.designation}
               onChange={handleChange}
-              className="bg-slate-50/50 border-slate-200/90 rounded-2xl py-3 px-4 text-xs sm:text-sm focus:ring-2 focus:ring-[#4A3AFF]/30 focus:border-[#4A3AFF]"
+              className="bg-slate-50/50 dark:bg-slate-800 border-slate-200/90 dark:border-slate-700 text-slate-900 dark:text-white dark:placeholder-slate-500 rounded-2xl py-3 px-4 text-xs sm:text-sm focus:ring-2 focus:ring-[#4A3AFF]/30 focus:border-[#4A3AFF]"
             />
           </div>
 
@@ -133,7 +133,7 @@ const PersonalDetails = ({ userInfo }) => {
 
         {/* Bio Textarea */}
         <div className="space-y-2">
-          <Label className="text-xs font-bold text-slate-700">
+          <Label className="text-xs font-bold text-slate-700 dark:text-slate-200">
             About Yourself / Bio
           </Label>
           <Textarea
@@ -142,7 +142,7 @@ const PersonalDetails = ({ userInfo }) => {
             value={infoState.bio}
             placeholder="Share a short bio about your passions, learning goals, or background..."
             onChange={handleChange}
-            className="bg-slate-50/50 border-slate-200/90 rounded-2xl p-4 text-xs sm:text-sm focus:ring-2 focus:ring-[#4A3AFF]/30 focus:border-[#4A3AFF] resize-none"
+            className="bg-slate-50/50 dark:bg-slate-800 border-slate-200/90 dark:border-slate-700 text-slate-900 dark:text-white dark:placeholder-slate-500 rounded-2xl p-4 text-xs sm:text-sm focus:ring-2 focus:ring-[#4A3AFF]/30 focus:border-[#4A3AFF] resize-none"
           />
         </div>
 

@@ -72,10 +72,10 @@ const ActiveFilters = () => {
       {searchTerm && (
         <button
           onClick={removeSearch}
-          className="inline-flex items-center gap-1.5 bg-indigo-50 hover:bg-indigo-100 text-[#4A3AFF] text-xs font-bold px-3 py-1.5 rounded-full border border-indigo-200/60 transition"
+          className="inline-flex items-center gap-1.5 bg-indigo-50 dark:bg-indigo-950/80 hover:bg-indigo-100 dark:hover:bg-indigo-900 text-[#4A3AFF] dark:text-indigo-300 text-xs font-bold px-3 py-1.5 rounded-full border border-indigo-200/60 dark:border-indigo-800 transition cursor-pointer"
         >
           <span>Keyword: "{searchTerm}"</span>
-          <X className="w-3 h-3 text-[#4A3AFF]" />
+          <X className="w-3 h-3 text-[#4A3AFF] dark:text-indigo-300" />
         </button>
       )}
 
@@ -84,7 +84,7 @@ const ActiveFilters = () => {
         <button
           key={cat}
           onClick={() => removeCategory(cat)}
-          className="inline-flex items-center gap-1.5 bg-slate-100 hover:bg-rose-50 hover:text-rose-600 hover:border-rose-200 text-slate-700 text-xs font-bold px-3 py-1.5 rounded-full border border-slate-200 transition capitalize"
+          className="inline-flex items-center gap-1.5 bg-slate-100 dark:bg-slate-800 hover:bg-rose-50 dark:hover:bg-rose-950/60 hover:text-rose-600 dark:hover:text-rose-400 hover:border-rose-200 dark:hover:border-rose-800 text-slate-700 dark:text-slate-200 text-xs font-bold px-3 py-1.5 rounded-full border border-slate-200 dark:border-slate-700 transition capitalize cursor-pointer"
         >
           <span>{cat.replace(/-/g, " ")}</span>
           <X className="w-3 h-3" />
@@ -96,7 +96,7 @@ const ActiveFilters = () => {
         <button
           key={p}
           onClick={() => removePrice(p)}
-          className="inline-flex items-center gap-1.5 bg-slate-100 hover:bg-rose-50 hover:text-rose-600 hover:border-rose-200 text-slate-700 text-xs font-bold px-3 py-1.5 rounded-full border border-slate-200 transition capitalize"
+          className="inline-flex items-center gap-1.5 bg-slate-100 dark:bg-slate-800 hover:bg-rose-50 dark:hover:bg-rose-950/60 hover:text-rose-600 dark:hover:text-rose-400 hover:border-rose-200 dark:hover:border-rose-800 text-slate-700 dark:text-slate-200 text-xs font-bold px-3 py-1.5 rounded-full border border-slate-200 dark:border-slate-700 transition capitalize cursor-pointer"
         >
           <span>{p} courses</span>
           <X className="w-3 h-3" />
@@ -106,7 +106,7 @@ const ActiveFilters = () => {
       {/* Clear All Button */}
       <button
         onClick={clearAll}
-        className="text-xs font-bold text-rose-500 hover:underline ml-2"
+        className="text-xs font-bold text-rose-500 hover:underline ml-2 cursor-pointer"
       >
         Clear all
       </button>

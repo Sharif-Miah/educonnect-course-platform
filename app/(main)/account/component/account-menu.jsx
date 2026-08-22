@@ -28,7 +28,7 @@ export default function Menu() {
                 "flex items-center justify-between px-4 py-3 rounded-2xl text-xs sm:text-sm font-bold transition-all duration-200 group",
                 isActive
                   ? "bg-[#4A3AFF] text-white shadow-lg shadow-indigo-500/25"
-                  : "text-slate-600 hover:bg-indigo-50/70 hover:text-[#4A3AFF]"
+                  : "text-slate-600 dark:text-slate-300 hover:bg-indigo-50/70 dark:hover:bg-slate-800 hover:text-[#4A3AFF] dark:hover:text-[#4A3AFF]"
               )}
             >
               <div className="flex items-center gap-3">
@@ -45,7 +45,7 @@ export default function Menu() {
       <li className="pt-2">
         <button
           onClick={() => signOut({ callbackUrl: "/" })}
-          className="w-full flex items-center justify-between px-4 py-3 rounded-2xl text-xs sm:text-sm font-bold text-rose-600 hover:bg-rose-50 transition-all duration-200 group"
+          className="w-full flex items-center justify-between px-4 py-3 rounded-2xl text-xs sm:text-sm font-bold text-rose-600 dark:text-rose-400 hover:bg-rose-50 dark:hover:bg-rose-950/40 transition-all duration-200 group cursor-pointer"
         >
           <div className="flex items-center gap-3">
             <LogOut className="w-4 h-4 text-rose-400 group-hover:text-rose-600" />

@@ -102,7 +102,7 @@ export default function InstructorsAndPartners() {
     {
       id: "trustpilot",
       render: (
-        <div className="flex items-center gap-1.5 text-slate-900 font-extrabold text-xl sm:text-2xl whitespace-nowrap">
+        <div className="flex items-center gap-1.5 text-slate-900 dark:text-white font-extrabold text-xl sm:text-2xl whitespace-nowrap">
           <span className="text-[#00B67A] text-2xl font-black">★</span>
           <span>Trustpilot</span>
         </div>
@@ -111,7 +111,7 @@ export default function InstructorsAndPartners() {
     {
       id: "coursera",
       render: (
-        <div className="flex items-center gap-1 font-black text-2xl sm:text-3xl text-[#0056D2] tracking-tighter whitespace-nowrap">
+        <div className="flex items-center gap-1 font-black text-2xl sm:text-3xl text-[#0056D2] dark:text-[#4A88FF] tracking-tighter whitespace-nowrap">
           <span>coursera</span>
         </div>
       ),
@@ -121,7 +121,7 @@ export default function InstructorsAndPartners() {
       render: (
         <div className="flex items-center gap-1.5 font-bold text-2xl sm:text-3xl whitespace-nowrap">
           <span className="text-[#A435F0] text-3xl font-black">u</span>
-          <span className="text-slate-900 font-extrabold tracking-tight">Udemy</span>
+          <span className="text-slate-900 dark:text-white font-extrabold tracking-tight">Udemy</span>
         </div>
       ),
     },
@@ -129,7 +129,7 @@ export default function InstructorsAndPartners() {
       id: "british-council",
       render: (
         <div className="flex items-center gap-2 whitespace-nowrap">
-          <div className="flex flex-col text-[11px] sm:text-xs font-black leading-none tracking-wider text-slate-900">
+          <div className="flex flex-col text-[11px] sm:text-xs font-black leading-none tracking-wider text-slate-900 dark:text-white">
             <span>BRITISH</span>
             <span>COUNCIL</span>
           </div>
@@ -145,7 +145,7 @@ export default function InstructorsAndPartners() {
     {
       id: "hubspot",
       render: (
-        <div className="flex items-center font-black text-2xl sm:text-3xl text-slate-900 whitespace-nowrap">
+        <div className="flex items-center font-black text-2xl sm:text-3xl text-slate-900 dark:text-white whitespace-nowrap">
           <span>HubSp</span>
           <div className="w-4 h-4 rounded-full border-[3.5px] border-[#FF7A59] -ml-0.5 -mr-0.5" />
           <span>t</span>
@@ -155,16 +155,16 @@ export default function InstructorsAndPartners() {
     {
       id: "edx",
       render: (
-        <div className="flex items-center gap-1 text-2xl sm:text-3xl font-black text-slate-900 whitespace-nowrap">
+        <div className="flex items-center gap-1 text-2xl sm:text-3xl font-black text-slate-900 dark:text-white whitespace-nowrap">
           <span className="text-[#B52555]">ed</span>
-          <span className="text-slate-900">X</span>
+          <span className="text-slate-900 dark:text-white">X</span>
         </div>
       ),
     },
     {
       id: "skillshare",
       render: (
-        <div className="flex items-center text-xl sm:text-2xl font-black text-[#00FF84] bg-slate-900 px-3 py-1 rounded-md tracking-wider whitespace-nowrap">
+        <div className="flex items-center text-xl sm:text-2xl font-black text-[#00FF84] bg-slate-900 dark:bg-slate-800 px-3 py-1 rounded-md tracking-wider whitespace-nowrap">
           <span>SKILLSHARE</span>
         </div>
       ),
@@ -172,7 +172,7 @@ export default function InstructorsAndPartners() {
     {
       id: "khan-academy",
       render: (
-        <div className="flex items-center gap-1.5 text-xl sm:text-2xl font-extrabold text-slate-900 whitespace-nowrap">
+        <div className="flex items-center gap-1.5 text-xl sm:text-2xl font-extrabold text-slate-900 dark:text-white whitespace-nowrap">
           <span className="text-[#14BF96] text-2xl">🌱</span>
           <span>Khan Academy</span>
         </div>
@@ -181,7 +181,7 @@ export default function InstructorsAndPartners() {
     {
       id: "linkedin-learning",
       render: (
-        <div className="flex items-center gap-1.5 text-xl sm:text-2xl font-bold text-slate-900 whitespace-nowrap">
+        <div className="flex items-center gap-1.5 text-xl sm:text-2xl font-bold text-slate-900 dark:text-white whitespace-nowrap">
           <span className="bg-[#0A66C2] text-white px-1.5 py-0.5 rounded text-sm font-black">in</span>
           <span className="font-extrabold">Learning</span>
         </div>
@@ -230,7 +230,7 @@ export default function InstructorsAndPartners() {
   }, [isBrandPaused, maxBrandIndex]);
 
   return (
-    <section id="instructors" className="py-24 bg-white relative overflow-hidden">
+    <section id="instructors" className="py-24 bg-white dark:bg-[#0b1120] relative overflow-hidden transition-colors duration-200">
       {/* SVG ClipPath Definition for the exact notched shape */}
       <svg width="0" height="0" className="absolute pointer-events-none">
         <defs>
@@ -262,7 +262,7 @@ export default function InstructorsAndPartners() {
             INSTRUCTORS
           </p>
           <div className="relative inline-block">
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight leading-tight">
               Our Expert Instructors
             </h2>
             {/* Hand-drawn blue wavy underline */}
@@ -298,7 +298,7 @@ export default function InstructorsAndPartners() {
                   
                   {/* Photo area with exact SVG Cutout Notch */}
                   <div 
-                    className="relative w-full aspect-[4/4.5] bg-[#E2E5EB] overflow-hidden"
+                    className="relative w-full aspect-[4/4.5] bg-[#E2E5EB] dark:bg-slate-800 overflow-hidden"
                     style={{
                       clipPath: "url(#instructor-card-notch)",
                     }}
@@ -321,47 +321,47 @@ export default function InstructorsAndPartners() {
                     <Link
                       href="#"
                       aria-label="Facebook"
-                      className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white text-slate-800 hover:bg-[#4A3AFF] hover:text-white shadow-md border border-slate-100 flex items-center justify-center transition-all duration-200"
+                      className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white dark:bg-slate-800 text-slate-800 dark:text-white hover:bg-[#4A3AFF] dark:hover:bg-[#4A3AFF] hover:text-white shadow-md border border-slate-100 dark:border-slate-700 flex items-center justify-center transition-all duration-200"
                     >
                       <Facebook className="w-4 h-4 fill-current" />
                     </Link>
                     <Link
                       href="#"
                       aria-label="X Twitter"
-                      className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white text-slate-800 hover:bg-[#4A3AFF] hover:text-white shadow-md border border-slate-100 flex items-center justify-center transition-all duration-200"
+                      className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white dark:bg-slate-800 text-slate-800 dark:text-white hover:bg-[#4A3AFF] dark:hover:bg-[#4A3AFF] hover:text-white shadow-md border border-slate-100 dark:border-slate-700 flex items-center justify-center transition-all duration-200"
                     >
                       <span className="text-sm font-black">✕</span>
                     </Link>
                     <Link
                       href="#"
                       aria-label="YouTube"
-                      className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white text-slate-800 hover:bg-[#4A3AFF] hover:text-white shadow-md border border-slate-100 flex items-center justify-center transition-all duration-200"
+                      className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white dark:bg-slate-800 text-slate-800 dark:text-white hover:bg-[#4A3AFF] dark:hover:bg-[#4A3AFF] hover:text-white shadow-md border border-slate-100 dark:border-slate-700 flex items-center justify-center transition-all duration-200"
                     >
                       <Youtube className="w-4 h-4 fill-current" />
                     </Link>
                   </div>
 
                   {/* Elevated White Card overlapping the bottom of photo */}
-                  <div className="relative -mt-12 mx-3 bg-white rounded-2xl p-4 sm:p-4.5 shadow-xl border border-slate-100 text-center z-20 transition-transform duration-300 group-hover:-translate-y-1">
-                    <h3 className="text-base sm:text-lg font-bold text-slate-900 group-hover:text-[#4A3AFF] transition-colors leading-snug">
+                  <div className="relative -mt-12 mx-3 bg-white dark:bg-slate-900 rounded-2xl p-4 sm:p-4.5 shadow-xl border border-slate-100 dark:border-slate-800 text-center z-20 transition-transform duration-300 group-hover:-translate-y-1">
+                    <h3 className="text-base sm:text-lg font-bold text-slate-900 dark:text-white group-hover:text-[#4A3AFF] transition-colors leading-snug">
                       {inst.name}
                     </h3>
-                    <p className="text-xs font-medium text-slate-500 mt-0.5">
+                    <p className="text-xs font-medium text-slate-500 dark:text-slate-400 mt-0.5">
                       {inst.role}
                     </p>
 
                     {/* Faint Dashed Divider matching image */}
-                    <div className="border-t border-dashed border-indigo-100 my-2.5" />
+                    <div className="border-t border-dashed border-indigo-100 dark:border-slate-800 my-2.5" />
 
                     {/* Meta Row: Courses & Students */}
                     <div className="flex items-center justify-between text-xs font-semibold px-1">
-                      <div className="flex items-center gap-1.5 text-[#4A3AFF]">
+                      <div className="flex items-center gap-1.5 text-[#4A3AFF] dark:text-indigo-300">
                         <BookOpen className="w-3.5 h-3.5" />
-                        <span className="text-slate-600 text-[11px] sm:text-xs font-bold">{inst.courses} Courses</span>
+                        <span className="text-slate-600 dark:text-slate-300 text-[11px] sm:text-xs font-bold">{inst.courses} Courses</span>
                       </div>
-                      <div className="flex items-center gap-1.5 text-[#4A3AFF]">
+                      <div className="flex items-center gap-1.5 text-[#4A3AFF] dark:text-indigo-300">
                         <GraduationCap className="w-3.5 h-3.5" />
-                        <span className="text-slate-600 text-[11px] sm:text-xs font-bold">{inst.students} Students</span>
+                        <span className="text-slate-600 dark:text-slate-300 text-[11px] sm:text-xs font-bold">{inst.students} Students</span>
                       </div>
                     </div>
                   </div>
@@ -380,7 +380,7 @@ export default function InstructorsAndPartners() {
           
           {/* Pill Container */}
           <div 
-            className="relative rounded-full border border-indigo-100/90 py-6 sm:py-7 px-8 sm:px-14 bg-white shadow-sm hover:shadow-md transition-shadow duration-300 overflow-hidden"
+            className="relative rounded-full border border-indigo-100/90 dark:border-slate-800 py-6 sm:py-7 px-8 sm:px-14 bg-white dark:bg-slate-900 shadow-sm hover:shadow-md transition-shadow duration-300 overflow-hidden"
             onMouseEnter={() => setIsBrandPaused(true)}
             onMouseLeave={() => setIsBrandPaused(false)}
           >
@@ -406,7 +406,7 @@ export default function InstructorsAndPartners() {
           <button 
             onClick={handlePrevBrand} 
             aria-label="Previous Brand"
-            className="absolute left-1 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-white border border-indigo-100/90 hover:bg-[#4A3AFF] hover:border-transparent hover:text-white text-slate-500 shadow-md flex items-center justify-center transition-all duration-200 z-20"
+            className="absolute left-1 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-white dark:bg-slate-800 border border-indigo-100/90 dark:border-slate-700 hover:bg-[#4A3AFF] dark:hover:bg-[#4A3AFF] hover:border-transparent hover:text-white text-slate-500 dark:text-slate-300 shadow-md flex items-center justify-center transition-all duration-200 z-20 cursor-pointer"
           >
             <ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5" />
           </button>
@@ -415,7 +415,7 @@ export default function InstructorsAndPartners() {
           <button 
             onClick={handleNextBrand} 
             aria-label="Next Brand"
-            className="absolute right-1 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-white border border-indigo-100/90 hover:bg-[#4A3AFF] hover:border-transparent hover:text-white text-slate-500 shadow-md flex items-center justify-center transition-all duration-200 z-20"
+            className="absolute right-1 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-white dark:bg-slate-800 border border-indigo-100/90 dark:border-slate-700 hover:bg-[#4A3AFF] dark:hover:bg-[#4A3AFF] hover:border-transparent hover:text-white text-slate-500 dark:text-slate-300 shadow-md flex items-center justify-center transition-all duration-200 z-20 cursor-pointer"
           >
             <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5" />
           </button>

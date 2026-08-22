@@ -82,7 +82,7 @@ export default function HowItWorksAndTestimonials() {
   }, [isPaused, maxIndex]);
 
   return (
-    <section className="py-24 bg-white relative overflow-hidden">
+    <section className="py-24 bg-white dark:bg-[#0b1120] relative overflow-hidden transition-colors duration-200">
       <div className="container max-w-7xl mx-auto px-4 sm:px-6">
         
         {/* ======================================================== */}
@@ -96,7 +96,7 @@ export default function HowItWorksAndTestimonials() {
               WORKING PROCESS
             </p>
             <div className="relative inline-block">
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight">
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight leading-tight">
                 How It Work
               </h2>
               {/* Hand-drawn blue wavy underline */}
@@ -125,7 +125,7 @@ export default function HowItWorksAndTestimonials() {
               <span className="text-3xl font-bold tracking-tighter">{"»»"}</span>
             </div>
 
-            <div className="relative aspect-[16/8] sm:aspect-[21/9] rounded-[32px] overflow-hidden shadow-2xl bg-slate-900 z-10 group border-4 border-white">
+            <div className="relative aspect-[16/8] sm:aspect-[21/9] rounded-[32px] overflow-hidden shadow-2xl bg-slate-900 z-10 group border-4 border-white dark:border-slate-800">
               <Image
                 src="/assets/home/how_it_works_video.jpg"
                 alt="Students collaborating"
@@ -153,7 +153,7 @@ export default function HowItWorksAndTestimonials() {
                 <button
                   onClick={() => setIsPlaying(true)}
                   aria-label="Play Intro Video"
-                  className="relative w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-white/95 text-[#4A3AFF] flex items-center justify-center shadow-2xl hover:scale-110 active:scale-95 transition-all duration-300 group/btn"
+                  className="relative w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-white/95 text-[#4A3AFF] flex items-center justify-center shadow-2xl hover:scale-110 active:scale-95 transition-all duration-300 group/btn cursor-pointer"
                 >
                   {/* Pulsing ring */}
                   <span className="absolute inset-0 rounded-full bg-white/40 animate-ping opacity-60 pointer-events-none" />
@@ -173,7 +173,7 @@ export default function HowItWorksAndTestimonials() {
                   />
                   <button
                     onClick={() => setIsPlaying(false)}
-                    className="absolute top-4 right-4 text-white bg-slate-800/80 rounded-full px-3 py-1 text-xs font-bold"
+                    className="absolute top-4 right-4 text-white bg-slate-800/80 rounded-full px-3 py-1 text-xs font-bold cursor-pointer"
                   >
                     Close ✕
                   </button>
@@ -198,7 +198,7 @@ export default function HowItWorksAndTestimonials() {
                 TESTIMONIALS
               </p>
               <div className="relative inline-block">
-                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight">
+                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight leading-tight">
                   People’s Say About Our <br className="hidden sm:inline" />
                   Edplus
                 </h2>
@@ -216,14 +216,14 @@ export default function HowItWorksAndTestimonials() {
               <button
                 onClick={handlePrev}
                 aria-label="Previous Testimonial"
-                className="w-11 h-11 rounded-full bg-white border border-slate-200 hover:bg-[#4A3AFF] hover:border-transparent hover:text-white text-slate-700 flex items-center justify-center transition-all duration-200 shadow-sm hover:shadow-md"
+                className="w-11 h-11 rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:bg-[#4A3AFF] dark:hover:bg-[#4A3AFF] hover:border-transparent hover:text-white text-slate-700 dark:text-slate-200 flex items-center justify-center transition-all duration-200 shadow-sm hover:shadow-md cursor-pointer"
               >
                 <ChevronLeft className="w-5 h-5" />
               </button>
               <button
                 onClick={handleNext}
                 aria-label="Next Testimonial"
-                className="w-11 h-11 rounded-full bg-white border border-slate-200 hover:bg-[#4A3AFF] hover:border-transparent hover:text-white text-slate-700 flex items-center justify-center transition-all duration-200 shadow-sm hover:shadow-md"
+                className="w-11 h-11 rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:bg-[#4A3AFF] dark:hover:bg-[#4A3AFF] hover:border-transparent hover:text-white text-slate-700 dark:text-slate-200 flex items-center justify-center transition-all duration-200 shadow-sm hover:shadow-md cursor-pointer"
               >
                 <ChevronRight className="w-5 h-5" />
               </button>
@@ -272,12 +272,12 @@ export default function HowItWorksAndTestimonials() {
                 {testimonials.map((item) => (
                   <div
                     key={item.id}
-                    className="w-full sm:w-[calc(50%-12px)] flex-shrink-0 bg-white rounded-3xl p-6 sm:p-7 shadow-md hover:shadow-2xl border border-slate-100/90 flex flex-col justify-between relative transition-all duration-300"
+                    className="w-full sm:w-[calc(50%-12px)] flex-shrink-0 bg-white dark:bg-slate-900 rounded-3xl p-6 sm:p-7 shadow-md hover:shadow-2xl border border-slate-100/90 dark:border-slate-800 flex flex-col justify-between relative transition-all duration-300"
                   >
                     <div>
                       {/* Author Info */}
                       <div className="flex items-center gap-3.5 mb-4">
-                        <div className="w-12 h-12 rounded-full overflow-hidden relative ring-2 ring-indigo-50 flex-shrink-0">
+                        <div className="w-12 h-12 rounded-full overflow-hidden relative ring-2 ring-indigo-50 dark:ring-indigo-950 flex-shrink-0">
                           <Image
                             src={item.avatar}
                             alt={item.name}
@@ -287,25 +287,25 @@ export default function HowItWorksAndTestimonials() {
                           />
                         </div>
                         <div>
-                          <h4 className="text-base font-bold text-slate-900">{item.name}</h4>
+                          <h4 className="text-base font-bold text-slate-900 dark:text-white">{item.name}</h4>
                           <p className="text-xs font-semibold text-[#4A3AFF]">{item.location}</p>
                         </div>
                       </div>
 
                       {/* Quote Content */}
-                      <p className="text-xs sm:text-sm text-slate-600 leading-relaxed mb-6 font-normal">
+                      <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed mb-6 font-normal">
                         {item.content}
                       </p>
                     </div>
 
                     {/* Bottom Row: Rating Stars + Quotation Mark SVG */}
-                    <div className="flex items-center justify-between pt-3 border-t border-slate-50">
+                    <div className="flex items-center justify-between pt-3 border-t border-slate-50 dark:border-slate-800">
                       <div className="flex text-amber-400 text-sm">
                         {"★★★★★"}
                       </div>
                       
                       {/* Stylized Quotation Mark */}
-                      <svg className="w-8 h-8 text-indigo-100 fill-current opacity-80" viewBox="0 0 24 24">
+                      <svg className="w-8 h-8 text-indigo-100 dark:text-slate-800 fill-current opacity-80" viewBox="0 0 24 24">
                         <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
                       </svg>
                     </div>

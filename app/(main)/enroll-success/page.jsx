@@ -84,21 +84,21 @@ const Success = async ({ searchParams: { session_id, courseId } }) => {
     }
 
     return (
-        <div className="h-full w-full flex-1 flex flex-col items-center justify-center">
+        <div className="h-full w-full flex-1 flex flex-col items-center justify-center py-20">
             <div className="flex flex-col items-center gap-6 max-w-[600px] text-center">
                 {paymentStatus === "succeeded" && (
                     <>
-                        <CircleCheck className="w-32 h-32 bg-success rounded-full p-0 text-white" />
-                        <h1 className="text-xl md:text-2xl lg:text-3xl">
+                        <CircleCheck className="w-32 h-32 bg-emerald-500 rounded-full p-0 text-white" />
+                        <h1 className="text-xl md:text-2xl lg:text-3xl text-slate-900 dark:text-white">
                             Congratulations, <strong>{customerName}</strong>! Your Enrollment was Successful for <strong>{productName}</strong>
                         </h1>
                     </>
                 )}
                 <div className="flex items-center gap-3">
-                    <Button asChild size="sm">
+                    <Button asChild size="sm" className="bg-[#4A3AFF] hover:bg-[#3D2FE6] text-white">
                         <Link href="/courses">Browse Courses</Link>
                     </Button>
-                    <Button asChild variant="outline" size="sm">
+                    <Button asChild variant="outline" size="sm" className="dark:border-slate-700 dark:text-slate-200">
                         <Link href={`/courses/${courseId}/lesson`}>
                             Play Course
                         </Link>

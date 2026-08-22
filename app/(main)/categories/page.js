@@ -25,7 +25,7 @@ const CATEGORY_STYLES = [
   {
     icon: Palette,
     color: "#E056FD",
-    bgColor: "bg-[#FDF2FF]",
+    bgColor: "bg-[#FDF2FF] dark:bg-fuchsia-950/40",
     borderColor: "group-hover:border-[#E056FD]/40",
     slug: "design",
     defaultDesc: "UI/UX, graphic design, illustration, and creative design systems.",
@@ -33,7 +33,7 @@ const CATEGORY_STYLES = [
   {
     icon: Code,
     color: "#4834D4",
-    bgColor: "bg-[#F0EDFF]",
+    bgColor: "bg-[#F0EDFF] dark:bg-indigo-950/50",
     borderColor: "group-hover:border-[#4834D4]/40",
     slug: "development",
     defaultDesc: "Full-stack development, React, Next.js, Node.js, and backend APIs.",
@@ -41,7 +41,7 @@ const CATEGORY_STYLES = [
   {
     icon: TrendingUp,
     color: "#F0932B",
-    bgColor: "bg-[#FFF6EC]",
+    bgColor: "bg-[#FFF6EC] dark:bg-amber-950/40",
     borderColor: "group-hover:border-[#F0932B]/40",
     slug: "business",
     defaultDesc: "Financial accounting, crypto, stock markets, and investment strategies.",
@@ -49,7 +49,7 @@ const CATEGORY_STYLES = [
   {
     icon: Megaphone,
     color: "#6AB04C",
-    bgColor: "bg-[#F1F8EE]",
+    bgColor: "bg-[#F1F8EE] dark:bg-emerald-950/40",
     borderColor: "group-hover:border-[#6AB04C]/40",
     slug: "marketing",
     defaultDesc: "Digital marketing, SEO optimization, social media ads, and branding.",
@@ -57,7 +57,7 @@ const CATEGORY_STYLES = [
   {
     icon: Cpu,
     color: "#00CEC9",
-    bgColor: "bg-[#ECFDFC]",
+    bgColor: "bg-[#ECFDFC] dark:bg-cyan-950/40",
     borderColor: "group-hover:border-[#00CEC9]/40",
     slug: "it-software",
     defaultDesc: "Cloud computing, cybersecurity, DevOps, Linux, and system administration.",
@@ -65,7 +65,7 @@ const CATEGORY_STYLES = [
   {
     icon: Sparkles,
     color: "#FF7675",
-    bgColor: "bg-[#FFF0F0]",
+    bgColor: "bg-[#FFF0F0] dark:bg-rose-950/40",
     borderColor: "group-hover:border-[#FF7675]/40",
     slug: "personal-development",
     defaultDesc: "Productivity, public speaking, leadership, and personal growth.",
@@ -73,7 +73,7 @@ const CATEGORY_STYLES = [
   {
     icon: Camera,
     color: "#0984E3",
-    bgColor: "bg-[#EEF7FE]",
+    bgColor: "bg-[#EEF7FE] dark:bg-blue-950/40",
     borderColor: "group-hover:border-[#0984E3]/40",
     slug: "photography",
     defaultDesc: "Digital photography, studio lighting, editing, and cinematic videography.",
@@ -81,7 +81,7 @@ const CATEGORY_STYLES = [
   {
     icon: Music,
     color: "#E84393",
-    bgColor: "bg-[#FDF0F6]",
+    bgColor: "bg-[#FDF0F6] dark:bg-pink-950/40",
     borderColor: "group-hover:border-[#E84393]/40",
     slug: "music",
     defaultDesc: "Music production, sound design, guitar, piano, and audio engineering.",
@@ -106,7 +106,7 @@ export default async function CategoriesPage() {
   const categories = (dbCategories && dbCategories.length > 0) ? dbCategories : DEFAULT_CATEGORIES;
 
   return (
-    <div className="min-h-screen bg-[#F8FAFC]">
+    <div className="min-h-screen bg-[#F8FAFC] dark:bg-[#0b1120] transition-colors duration-200">
       
       {/* ======================================================== */}
       {/* HERO BANNER: Explore All Categories */}
@@ -195,17 +195,17 @@ export default async function CategoriesPage() {
       <section className="py-16 sm:py-20">
         <div className="container max-w-7xl mx-auto px-4 sm:px-6">
           
-          <div className="flex items-center justify-between pb-8 border-b border-slate-200/80 mb-10">
+          <div className="flex items-center justify-between pb-8 border-b border-slate-200/80 dark:border-slate-800 mb-10">
             <div>
-              <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
+              <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight">
                 Choose a Category to Explore
               </h2>
-              <p className="text-xs sm:text-sm text-slate-500 font-medium mt-1">
+              <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 font-medium mt-1">
                 Click any topic below to view all available courses with verified certificates.
               </p>
             </div>
             
-            <span className="bg-[#4A3AFF]/10 text-[#4A3AFF] text-xs font-extrabold px-4 py-2 rounded-full hidden sm:inline-block">
+            <span className="bg-[#4A3AFF]/10 dark:bg-[#4A3AFF]/20 text-[#4A3AFF] dark:text-indigo-300 text-xs font-extrabold px-4 py-2 rounded-full hidden sm:inline-block">
               {categories.length} Categories Found
             </span>
           </div>
@@ -228,7 +228,7 @@ export default async function CategoriesPage() {
                 <Link
                   key={cat.id || cat._id || idx}
                   href={`/courses?category=${slug}`}
-                  className={`group relative bg-white rounded-3xl p-6 sm:p-7 shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100/90 flex flex-col justify-between overflow-hidden ${style.borderColor}`}
+                  className={`group relative bg-white dark:bg-slate-900 rounded-3xl p-6 sm:p-7 shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100/90 dark:border-slate-800 flex flex-col justify-between overflow-hidden ${style.borderColor}`}
                 >
                   {/* Top Header with Icon & Course Count */}
                   <div>
@@ -239,26 +239,26 @@ export default async function CategoriesPage() {
                         <Icon className="w-7 h-7" style={{ color: style.color }} />
                       </div>
 
-                      <span className="bg-slate-100 group-hover:bg-[#4A3AFF] group-hover:text-white text-slate-600 text-[11px] font-bold px-3 py-1 rounded-full transition-colors duration-300">
+                      <span className="bg-slate-100 dark:bg-slate-800 group-hover:bg-[#4A3AFF] group-hover:text-white text-slate-600 dark:text-slate-300 text-[11px] font-bold px-3 py-1 rounded-full transition-colors duration-300">
                         {courseCount}+ Courses
                       </span>
                     </div>
 
                     {/* Category Title */}
-                    <h3 className="text-lg sm:text-xl font-extrabold text-slate-900 group-hover:text-[#4A3AFF] transition-colors leading-snug mb-2">
+                    <h3 className="text-lg sm:text-xl font-extrabold text-slate-900 dark:text-white group-hover:text-[#4A3AFF] transition-colors leading-snug mb-2">
                       {cat.title}
                     </h3>
 
                     {/* Description */}
-                    <p className="text-xs sm:text-sm text-slate-500 leading-relaxed line-clamp-2 font-medium">
+                    <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 leading-relaxed line-clamp-2 font-medium">
                       {cat.description || style.defaultDesc}
                     </p>
                   </div>
 
                   {/* Bottom Action Arrow */}
-                  <div className="pt-6 mt-4 border-t border-slate-100/80 flex items-center justify-between text-xs font-bold text-[#4A3AFF]">
+                  <div className="pt-6 mt-4 border-t border-slate-100/80 dark:border-slate-800 flex items-center justify-between text-xs font-bold text-[#4A3AFF] dark:text-indigo-400">
                     <span>Explore Courses</span>
-                    <div className="w-8 h-8 rounded-full bg-indigo-50 group-hover:bg-[#4A3AFF] group-hover:text-white flex items-center justify-center transition-all duration-300 shadow-xs">
+                    <div className="w-8 h-8 rounded-full bg-indigo-50 dark:bg-slate-800 group-hover:bg-[#4A3AFF] group-hover:text-white dark:text-indigo-300 flex items-center justify-center transition-all duration-300 shadow-xs">
                       <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
                     </div>
                   </div>

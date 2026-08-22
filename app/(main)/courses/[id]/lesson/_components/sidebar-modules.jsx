@@ -48,19 +48,19 @@ export const SidebarModules = ({ courseId, modules }) => {
           <AccordionItem
             key={module.id || idx}
             value={module.id || `module-${idx}`}
-            className="bg-white rounded-2xl border border-slate-100/90 shadow-xs overflow-hidden transition-all duration-200 data-[state=open]:border-indigo-100 data-[state=open]:ring-2 data-[state=open]:ring-[#4A3AFF]/10"
+            className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-100/90 dark:border-slate-800 shadow-xs overflow-hidden transition-all duration-200 data-[state=open]:border-indigo-100 dark:data-[state=open]:border-slate-700 data-[state=open]:ring-2 data-[state=open]:ring-[#4A3AFF]/10"
           >
             <AccordionTrigger className="px-4 py-3.5 hover:no-underline text-left group cursor-pointer">
               <div className="flex items-center gap-3 pr-2 w-full">
-                <span className="w-7 h-7 rounded-xl bg-indigo-50 text-[#4A3AFF] text-xs font-black flex items-center justify-center flex-shrink-0 group-hover:scale-105 transition-transform">
+                <span className="w-7 h-7 rounded-xl bg-indigo-50 dark:bg-indigo-950/60 text-[#4A3AFF] dark:text-indigo-300 text-xs font-black flex items-center justify-center flex-shrink-0 group-hover:scale-105 transition-transform">
                   {idx + 1}
                 </span>
                 
                 <div className="flex-1 min-w-0">
-                  <h4 className="text-xs sm:text-sm font-bold text-slate-800 group-hover:text-[#4A3AFF] transition-colors truncate">
+                  <h4 className="text-xs sm:text-sm font-bold text-slate-800 dark:text-slate-100 group-hover:text-[#4A3AFF] transition-colors truncate">
                     {module.title}
                   </h4>
-                  <p className="text-[11px] text-slate-400 font-medium mt-0.5">
+                  <p className="text-[11px] text-slate-400 dark:text-slate-400 font-medium mt-0.5">
                     {completedLessons} / {totalModuleLessons} Completed
                   </p>
                 </div>

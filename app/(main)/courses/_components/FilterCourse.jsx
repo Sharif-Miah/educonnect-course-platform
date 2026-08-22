@@ -99,13 +99,13 @@ const FilterCourse = ({ categories = DEFAULT_CATEGORIES }) => {
   const hasActiveFilters = selectedCategories.length > 0 || selectedPrices.length > 0 || searchParams.has("search");
 
   return (
-    <div className="hidden lg:block bg-white rounded-3xl p-6 shadow-sm border border-slate-100/90 sticky top-24">
+    <div className="hidden lg:block bg-white dark:bg-slate-900 rounded-3xl p-6 shadow-sm border border-slate-100/90 dark:border-slate-800 sticky top-24 transition-colors">
       
       {/* Sidebar Header */}
-      <div className="flex items-center justify-between pb-5 border-b border-slate-100 mb-2">
+      <div className="flex items-center justify-between pb-5 border-b border-slate-100 dark:border-slate-800 mb-2">
         <div className="flex items-center gap-2">
           <Filter className="w-4 h-4 text-[#4A3AFF]" />
-          <h3 className="text-base font-extrabold text-slate-900 tracking-tight">
+          <h3 className="text-base font-extrabold text-slate-900 dark:text-white tracking-tight">
             Filters
           </h3>
         </div>
@@ -113,7 +113,7 @@ const FilterCourse = ({ categories = DEFAULT_CATEGORIES }) => {
         {hasActiveFilters && (
           <button
             onClick={clearAllFilters}
-            className="text-xs font-bold text-[#4A3AFF] hover:underline flex items-center gap-1"
+            className="text-xs font-bold text-[#4A3AFF] dark:text-indigo-400 hover:underline flex items-center gap-1 cursor-pointer"
           >
             <RotateCcw className="w-3 h-3" />
             <span>Reset</span>
@@ -124,8 +124,8 @@ const FilterCourse = ({ categories = DEFAULT_CATEGORIES }) => {
       <Accordion defaultValue={["categories", "price"]} type="multiple" className="w-full">
         
         {/* Categories Section */}
-        <AccordionItem value="categories" className="border-b border-slate-100">
-          <AccordionTrigger className="hover:no-underline py-4 text-sm font-bold text-slate-900">
+        <AccordionItem value="categories" className="border-b border-slate-100 dark:border-slate-800">
+          <AccordionTrigger className="hover:no-underline py-4 text-sm font-bold text-slate-900 dark:text-white">
             Categories
           </AccordionTrigger>
           <AccordionContent className="pb-4 pt-1">
@@ -139,13 +139,13 @@ const FilterCourse = ({ categories = DEFAULT_CATEGORIES }) => {
                   <li key={slug} className="flex items-center justify-between group">
                     <label
                       htmlFor={`cat-${slug}`}
-                      className="flex items-center gap-2.5 text-xs sm:text-sm font-medium text-slate-600 group-hover:text-[#4A3AFF] cursor-pointer w-full py-0.5 select-none"
+                      className="flex items-center gap-2.5 text-xs sm:text-sm font-medium text-slate-600 dark:text-slate-300 group-hover:text-[#4A3AFF] cursor-pointer w-full py-0.5 select-none"
                     >
                       <Checkbox
                         id={`cat-${slug}`}
                         checked={isChecked}
                         onCheckedChange={() => toggleCategory(slug)}
-                        className="data-[state=checked]:bg-[#4A3AFF] data-[state=checked]:border-[#4A3AFF] rounded-md"
+                        className="data-[state=checked]:bg-[#4A3AFF] data-[state=checked]:border-[#4A3AFF] rounded-md border-slate-300 dark:border-slate-700"
                       />
                       <span>{label}</span>
                     </label>
@@ -158,7 +158,7 @@ const FilterCourse = ({ categories = DEFAULT_CATEGORIES }) => {
 
         {/* Price Section */}
         <AccordionItem value="price" className="border-none">
-          <AccordionTrigger className="hover:no-underline py-4 text-sm font-bold text-slate-900">
+          <AccordionTrigger className="hover:no-underline py-4 text-sm font-bold text-slate-900 dark:text-white">
             Price
           </AccordionTrigger>
           <AccordionContent className="pb-2 pt-1">
@@ -172,13 +172,13 @@ const FilterCourse = ({ categories = DEFAULT_CATEGORIES }) => {
                   <li key={opt.value} className="flex items-center justify-between group">
                     <label
                       htmlFor={`price-${opt.value}`}
-                      className="flex items-center gap-2.5 text-xs sm:text-sm font-medium text-slate-600 group-hover:text-[#4A3AFF] cursor-pointer w-full py-0.5 select-none"
+                      className="flex items-center gap-2.5 text-xs sm:text-sm font-medium text-slate-600 dark:text-slate-300 group-hover:text-[#4A3AFF] cursor-pointer w-full py-0.5 select-none"
                     >
                       <Checkbox
                         id={`price-${opt.value}`}
                         checked={isChecked}
                         onCheckedChange={() => togglePrice(opt.value)}
-                        className="data-[state=checked]:bg-[#4A3AFF] data-[state=checked]:border-[#4A3AFF] rounded-md"
+                        className="data-[state=checked]:bg-[#4A3AFF] data-[state=checked]:border-[#4A3AFF] rounded-md border-slate-300 dark:border-slate-700"
                       />
                       <span>{opt.label}</span>
                     </label>

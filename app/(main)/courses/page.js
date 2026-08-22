@@ -64,7 +64,7 @@ const CoursesPage = async ({ searchParams }) => {
   }
 
   return (
-    <div className="min-h-screen bg-[#F8FAFC]">
+    <div className="min-h-screen bg-[#F8FAFC] dark:bg-[#0b1120] transition-colors duration-200">
       
       {/* ======================================================== */}
       {/* HERO BANNER: Explore Our World-Class Courses */}
@@ -173,7 +173,7 @@ const CoursesPage = async ({ searchParams }) => {
       {/* ======================================================== */}
       {/* FILTER CONTROLS BAR: Search, Sort & Mobile Sheet */}
       {/* ======================================================== */}
-      <div className="sticky top-0 z-20 bg-white/95 backdrop-blur-md border-b border-slate-200/80 shadow-xs py-4">
+      <div className="sticky top-0 z-20 bg-white/95 dark:bg-[#0b1120]/95 backdrop-blur-md border-b border-slate-200/80 dark:border-slate-800 shadow-xs py-4 transition-colors">
         <div className="container max-w-7xl mx-auto px-4 sm:px-6">
           <div className="flex items-center justify-between gap-4 flex-col sm:flex-row">
             {/* Search Input */}
@@ -207,9 +207,9 @@ const CoursesPage = async ({ searchParams }) => {
           <div className="lg:col-span-9 space-y-6">
             
             {/* Results Count Header */}
-            <div className="flex items-center justify-between text-xs sm:text-sm font-bold text-slate-600 pb-2">
+            <div className="flex items-center justify-between text-xs sm:text-sm font-bold text-slate-600 dark:text-slate-400 pb-2">
               <span>
-                Showing <strong className="text-slate-900">{filteredCourses.length}</strong> of <strong className="text-slate-900">{allCourses.length}</strong> Courses
+                Showing <strong className="text-slate-900 dark:text-white">{filteredCourses.length}</strong> of <strong className="text-slate-900 dark:text-white">{allCourses.length}</strong> Courses
               </span>
             </div>
 
@@ -222,14 +222,14 @@ const CoursesPage = async ({ searchParams }) => {
               </div>
             ) : (
               /* Empty State when no matching courses found */
-              <div className="bg-white rounded-3xl p-12 text-center border border-slate-100 shadow-sm space-y-4 max-w-md mx-auto my-8">
-                <div className="w-16 h-16 rounded-full bg-indigo-50 text-[#4A3AFF] flex items-center justify-center mx-auto shadow-inner">
+              <div className="bg-white dark:bg-slate-900 rounded-3xl p-12 text-center border border-slate-100 dark:border-slate-800 shadow-sm space-y-4 max-w-md mx-auto my-8">
+                <div className="w-16 h-16 rounded-full bg-indigo-50 dark:bg-indigo-950/60 text-[#4A3AFF] dark:text-indigo-400 flex items-center justify-center mx-auto shadow-inner">
                   <SearchX className="w-8 h-8" />
                 </div>
-                <h3 className="text-lg font-bold text-slate-900">
+                <h3 className="text-lg font-bold text-slate-900 dark:text-white">
                   No courses found
                 </h3>
-                <p className="text-xs sm:text-sm text-slate-500 leading-relaxed">
+                <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 leading-relaxed">
                   We couldn't find any courses matching your filter criteria. Try searching for different keywords or resetting the filters.
                 </p>
                 <div className="pt-2">

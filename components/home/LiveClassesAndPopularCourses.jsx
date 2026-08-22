@@ -147,7 +147,7 @@ export default function LiveClassesAndPopularCourses({ courses = [] }) {
   const displayList = filteredCourses.length > 0 ? filteredCourses : mappedCourses;
 
   return (
-    <section id="live-classes" className="py-24 bg-slate-50/50 relative">
+    <section id="live-classes" className="py-24 bg-slate-50/50 dark:bg-[#0b1120] relative transition-colors duration-200">
       <div className="container max-w-7xl mx-auto px-4 sm:px-6">
 
         {/* ======================================================== */}
@@ -161,7 +161,7 @@ export default function LiveClassesAndPopularCourses({ courses = [] }) {
               LIVE CLASSES
             </p>
             <div className="relative inline-block">
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight">
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight leading-tight">
                 It&apos;s Easy to Start Learning
               </h2>
               {/* Hand-drawn blue wavy underline */}
@@ -187,7 +187,7 @@ export default function LiveClassesAndPopularCourses({ courses = [] }) {
                 </div>
               </div>
 
-              <div className="relative aspect-[16/11] rounded-3xl overflow-hidden shadow-2xl border-4 border-white bg-slate-900 z-10">
+              <div className="relative aspect-[16/11] rounded-3xl overflow-hidden shadow-2xl border-4 border-white dark:border-slate-800 bg-slate-900 z-10">
                 <Image
                   src="/assets/home/live_instructor.jpg"
                   alt="Instructor in live lecture"
@@ -219,7 +219,7 @@ export default function LiveClassesAndPopularCourses({ courses = [] }) {
             </div>
 
             {/* Right Card: Live Class Info & Join CTA */}
-            <div className="lg:col-span-5 bg-white rounded-3xl p-6 sm:p-8 shadow-xl border border-slate-100/90 relative">
+            <div className="lg:col-span-5 bg-white dark:bg-slate-900 rounded-3xl p-6 sm:p-8 shadow-xl border border-slate-100/90 dark:border-slate-800 relative transition-colors">
               {/* Decorative wave at top-left */}
               <div className="text-indigo-500 mb-3">
                 <svg width="48" height="14" viewBox="0 0 48 14" fill="none">
@@ -229,7 +229,7 @@ export default function LiveClassesAndPopularCourses({ courses = [] }) {
 
               {/* Instructor */}
               <div className="flex items-center gap-2 mb-3">
-                <div className="w-6 h-6 rounded-full overflow-hidden relative">
+                <div className="w-6 h-6 rounded-full overflow-hidden relative ring-1 ring-slate-200 dark:ring-slate-700">
                   <Image
                     src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=200&auto=format&fit=crop"
                     alt="Instructor"
@@ -238,24 +238,24 @@ export default function LiveClassesAndPopularCourses({ courses = [] }) {
                     className="object-cover"
                   />
                 </div>
-                <span className="text-xs font-semibold text-slate-500">Dev. Masum Billah</span>
+                <span className="text-xs font-semibold text-slate-500 dark:text-slate-400">Dev. Masum Billah</span>
               </div>
 
               {/* Title */}
-              <h3 className="text-lg sm:text-xl font-bold text-slate-900 mb-3 leading-snug">
+              <h3 className="text-lg sm:text-xl font-bold text-slate-900 dark:text-white mb-3 leading-snug">
                 The complete guide to build restful API
               </h3>
 
               {/* Rating */}
               <div className="flex items-center gap-1 text-amber-400 mb-6">
                 {"★★★★★"}
-                <span className="text-xs font-bold text-slate-700 ml-1">4.8</span>
+                <span className="text-xs font-bold text-slate-700 dark:text-slate-300 ml-1">4.8</span>
               </div>
 
               {/* Online Students Avatars + Join Now Button */}
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pt-4 border-t border-slate-100">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pt-4 border-t border-slate-100 dark:border-slate-800">
                 <div>
-                  <span className="text-[11px] font-semibold text-slate-600 flex items-center gap-1.5 mb-1.5">
+                  <span className="text-[11px] font-semibold text-slate-600 dark:text-slate-400 flex items-center gap-1.5 mb-1.5">
                     <span className="w-2 h-2 rounded-full bg-blue-500 animate-pulse" />
                     Online Students
                   </span>
@@ -264,11 +264,11 @@ export default function LiveClassesAndPopularCourses({ courses = [] }) {
                       "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=100&auto=format&fit=crop",
                       "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=100&auto=format&fit=crop"
                     ].map((src, i) => (
-                      <div key={i} className="w-7 h-7 rounded-full overflow-hidden relative ring-2 ring-white">
+                      <div key={i} className="w-7 h-7 rounded-full overflow-hidden relative ring-2 ring-white dark:ring-slate-900">
                         <Image src={src} alt="Student" fill unoptimized className="object-cover" />
                       </div>
                     ))}
-                    <div className="w-7 h-7 rounded-full bg-[#4A3AFF] text-white text-[10px] font-bold flex items-center justify-center ring-2 ring-white shadow-sm">
+                    <div className="w-7 h-7 rounded-full bg-[#4A3AFF] text-white text-[10px] font-bold flex items-center justify-center ring-2 ring-white dark:ring-slate-900 shadow-sm">
                       5k+
                     </div>
                   </div>
@@ -276,7 +276,7 @@ export default function LiveClassesAndPopularCourses({ courses = [] }) {
 
                 <Link
                   href="/courses"
-                  className="inline-flex items-center justify-center gap-1.5 border-2 border-[#4A3AFF] text-[#4A3AFF] hover:bg-[#4A3AFF] hover:text-white font-bold text-xs sm:text-sm px-5 py-2.5 rounded-full transition-all duration-200 shadow-sm hover:shadow-md"
+                  className="inline-flex items-center justify-center gap-1.5 border-2 border-[#4A3AFF] text-[#4A3AFF] dark:text-indigo-300 hover:bg-[#4A3AFF] hover:text-white font-bold text-xs sm:text-sm px-5 py-2.5 rounded-full transition-all duration-200 shadow-sm hover:shadow-md"
                 >
                   <Video className="w-3.5 h-3.5" />
                   <span>Join Now</span>
@@ -303,7 +303,7 @@ export default function LiveClassesAndPopularCourses({ courses = [] }) {
                 COURSES
               </p>
               <div className="relative inline-block">
-                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight">
+                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight">
                   Most Popular Courses
                 </h2>
                 {/* Hand-drawn blue wavy underline */}
@@ -321,10 +321,10 @@ export default function LiveClassesAndPopularCourses({ courses = [] }) {
                 <button
                   key={tab}
                   onClick={() => setActiveCategory(tab)}
-                  className={`text-xs sm:text-sm font-semibold px-4 py-2 rounded-full transition-all duration-200 ${
+                  className={`text-xs sm:text-sm font-semibold px-4 py-2 rounded-full transition-all duration-200 cursor-pointer ${
                     activeCategory === tab
                       ? "bg-[#4A3AFF] text-white shadow-md shadow-indigo-500/25"
-                      : "text-slate-600 hover:text-slate-900 hover:bg-slate-200/60"
+                      : "text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-200/60 dark:hover:bg-slate-800"
                   }`}
                 >
                   {tab}
@@ -338,11 +338,11 @@ export default function LiveClassesAndPopularCourses({ courses = [] }) {
             {displayList.map((course) => (
               <div
                 key={course.id}
-                className="bg-white rounded-3xl p-4 shadow-sm hover:shadow-2xl border border-slate-100/90 transition-all duration-300 flex flex-col justify-between group/card"
+                className="bg-white dark:bg-slate-900 rounded-3xl p-4 shadow-sm hover:shadow-2xl border border-slate-100/90 dark:border-slate-800 transition-all duration-300 flex flex-col justify-between group/card"
               >
                 <div>
                   {/* Thumbnail with Category Badge & Video Icon */}
-                  <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden mb-4 bg-slate-100">
+                  <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden mb-4 bg-slate-100 dark:bg-slate-800">
                     <Image
                       src={course.thumbnail}
                       alt={course.title}
@@ -361,7 +361,7 @@ export default function LiveClassesAndPopularCourses({ courses = [] }) {
                     </div>
 
                     {/* Camera icon on bottom right */}
-                    <div className="absolute bottom-3 right-3 w-8 h-8 bg-white/95 backdrop-blur-sm rounded-full flex items-center justify-center text-[#4A3AFF] shadow-sm z-20">
+                    <div className="absolute bottom-3 right-3 w-8 h-8 bg-white/95 dark:bg-slate-900/95 backdrop-blur-sm rounded-full flex items-center justify-center text-[#4A3AFF] shadow-sm z-20">
                       <Video className="w-4 h-4" />
                     </div>
                   </div>
@@ -369,18 +369,18 @@ export default function LiveClassesAndPopularCourses({ courses = [] }) {
                   {/* Rating Stars */}
                   <div className="flex items-center gap-1 text-amber-500 text-xs font-semibold mb-2">
                     <span>{"★★★★☆"}</span>
-                    <span className="text-slate-500 ml-1">({course.rating} / {course.reviews} Rating)</span>
+                    <span className="text-slate-500 dark:text-slate-400 ml-1">({course.rating} / {course.reviews} Rating)</span>
                   </div>
 
                   {/* Course Title */}
                   <Link href={`/courses/${course.id}`}>
-                    <h3 className="text-base font-bold text-slate-900 line-clamp-2 hover:text-[#4A3AFF] transition duration-200 mb-3 leading-snug">
+                    <h3 className="text-base font-bold text-slate-900 dark:text-white line-clamp-2 hover:text-[#4A3AFF] transition duration-200 mb-3 leading-snug">
                       {course.title}
                     </h3>
                   </Link>
 
                   {/* Meta Information (Lessons & Students) */}
-                  <div className="flex items-center justify-between text-xs text-slate-500 pb-3.5 border-b border-slate-100 font-medium">
+                  <div className="flex items-center justify-between text-xs text-slate-500 dark:text-slate-400 pb-3.5 border-b border-slate-100 dark:border-slate-800 font-medium">
                     <div className="flex items-center gap-1.5">
                       <FileText className="w-3.5 h-3.5 text-[#4A3AFF]" />
                       <span>{course.lessons} Lessons</span>
@@ -399,7 +399,7 @@ export default function LiveClassesAndPopularCourses({ courses = [] }) {
                   </span>
 
                   <div className="flex items-center gap-2">
-                    <div className="w-7 h-7 rounded-full overflow-hidden relative ring-1 ring-slate-200">
+                    <div className="w-7 h-7 rounded-full overflow-hidden relative ring-1 ring-slate-200 dark:ring-slate-700">
                       <Image
                         src={course.instructorAvatar}
                         alt={course.instructor}
@@ -408,7 +408,7 @@ export default function LiveClassesAndPopularCourses({ courses = [] }) {
                         className="object-cover"
                       />
                     </div>
-                    <span className="text-xs font-semibold text-slate-700">
+                    <span className="text-xs font-semibold text-slate-700 dark:text-slate-300">
                       {course.instructor}
                     </span>
                   </div>

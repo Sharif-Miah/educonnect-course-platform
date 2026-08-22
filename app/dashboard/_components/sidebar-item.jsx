@@ -40,13 +40,13 @@ export const SidebarItem = ({ icon: Icon, label, href }) => {
         "flex items-center gap-x-3 text-xs sm:text-sm font-bold px-4 py-3 mx-3 my-1 rounded-2xl transition-all duration-200 group text-left select-none cursor-pointer",
         isActive
           ? "bg-[#4A3AFF] text-white shadow-lg shadow-indigo-500/25"
-          : "text-slate-600 hover:text-[#4A3AFF] hover:bg-indigo-50/70"
+          : "text-slate-600 dark:text-slate-300 hover:text-[#4A3AFF] dark:hover:text-[#4A3AFF] hover:bg-indigo-50/70 dark:hover:bg-slate-800/80"
       )}
     >
       <Icon
         className={cn(
           "w-4 h-4 transition-transform group-hover:scale-110 flex-shrink-0",
-          isActive ? "text-white" : "text-slate-400 group-hover:text-[#4A3AFF]"
+          isActive ? "text-white" : "text-slate-400 dark:text-slate-400 group-hover:text-[#4A3AFF] dark:group-hover:text-[#4A3AFF]"
         )}
       />
       <span className="whitespace-nowrap font-bold">{label}</span>

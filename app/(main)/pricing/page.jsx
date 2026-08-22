@@ -2,8 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { Check, X, Sparkles, HelpCircle, ShieldCheck, Zap, ArrowRight } from "lucide-react";
-import { Button, buttonVariants } from "@/components/ui/button";
+import { Check, X, Sparkles, HelpCircle, ShieldCheck, ArrowRight } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
 import {
@@ -12,6 +11,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import CtaBanners from "@/components/home/CtaBanners";
 
 const plans = [
   {
@@ -24,7 +24,7 @@ const plans = [
     badge: "Free Forever",
     buttonText: "Start Learning Free",
     buttonHref: "/courses",
-    buttonVariant: "outline",
+    isPrimary: false,
     features: [
       "Access to all free course previews",
       "Community discussion forum access",
@@ -50,8 +50,8 @@ const plans = [
     popular: true,
     badge: "Most Popular",
     buttonText: "Get All-Access Pro",
-    buttonHref: "/register/student",
-    buttonVariant: "default",
+    buttonHref: "/register",
+    isPrimary: true,
     features: [
       "Unlimited access to 50+ premium courses",
       "Verified digital certificates of completion",
@@ -76,8 +76,8 @@ const plans = [
     popular: false,
     badge: "For Organizations",
     buttonText: "Contact Enterprise",
-    buttonHref: "/register/instructor",
-    buttonVariant: "outline",
+    buttonHref: "/register",
+    isPrimary: false,
     features: [
       "Everything in Pro All-Access",
       "Up to 10 team seats included",
@@ -155,60 +155,62 @@ export default function PricingPage() {
   const [isAnnual, setIsAnnual] = useState(true);
 
   return (
-    <div className="flex flex-col min-h-screen pb-20">
+    <div className="flex flex-col min-h-screen bg-[#F8FAFC] dark:bg-[#0b1120] text-slate-900 dark:text-slate-100 transition-colors duration-200">
+      
       {/* Hero Section */}
-      <section className="relative overflow-hidden py-16 md:py-24 grainy">
+      <section className="relative overflow-hidden py-16 md:py-24">
         <div className="container max-w-5xl mx-auto text-center relative z-10 px-4">
-          <div className="inline-flex items-center gap-2 rounded-full border bg-background/80 px-4 py-1.5 text-xs font-semibold shadow-sm backdrop-blur mb-6">
+          <div className="inline-flex items-center gap-2 rounded-full border border-indigo-200/80 dark:border-indigo-900/60 bg-indigo-50/90 dark:bg-indigo-950/60 px-4 py-1.5 text-xs font-bold text-[#4A3AFF] dark:text-indigo-300 shadow-xs mb-6">
             <Sparkles className="w-3.5 h-3.5 text-amber-500" />
             <span>Invest in your career with zero risk</span>
           </div>
 
-          <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-foreground font-heading">
+          <h1 className="text-4xl md:text-6xl font-black tracking-tight text-slate-900 dark:text-white leading-tight">
             Simple, Transparent Pricing <br className="hidden sm:inline" />
-            <span className="bg-gradient-to-r from-sky-600 via-indigo-600 to-purple-600 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-[#4A3AFF] via-indigo-500 to-[#14C88C] bg-clip-text text-transparent">
               for Lifelong Learning
             </span>
           </h1>
 
-          <p className="mt-4 max-w-2xl mx-auto text-base sm:text-lg text-muted-foreground">
+          <p className="mt-4 max-w-2xl mx-auto text-sm sm:text-base md:text-lg text-slate-600 dark:text-slate-300 font-normal leading-relaxed">
             Get unlimited access to industry-grade programming, design, and tech courses.
             Learn from seasoned instructors and earn accredited certificates.
           </p>
 
           {/* Billing Cycle Switcher */}
           <div className="mt-10 flex items-center justify-center gap-4">
-            <span className={cn("text-sm font-medium", !isAnnual ? "text-foreground font-semibold" : "text-muted-foreground")}>
+            <span className={cn("text-xs sm:text-sm font-bold transition-colors", !isAnnual ? "text-slate-900 dark:text-white" : "text-slate-500 dark:text-slate-400")}>
               Monthly Billing
             </span>
             <button
               onClick={() => setIsAnnual(!isAnnual)}
               className={cn(
-                "relative inline-flex h-7 w-14 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-2",
-                isAnnual ? "bg-sky-600" : "bg-slate-300"
+                "relative inline-flex h-7 w-14 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-[#4A3AFF] focus:ring-offset-2",
+                isAnnual ? "bg-[#4A3AFF]" : "bg-slate-300 dark:bg-slate-700"
               )}
               role="switch"
               aria-checked={isAnnual}
+              aria-label="Toggle Billing Cycle"
             >
               <span
                 className={cn(
-                  "pointer-events-none inline-block h-6 w-6 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out",
+                  "pointer-events-none inline-block h-6 w-6 transform rounded-full bg-white shadow-md ring-0 transition duration-200 ease-in-out",
                   isAnnual ? "translate-x-7" : "translate-x-0"
                 )}
               />
             </button>
-            <span className={cn("text-sm font-medium flex items-center gap-1.5", isAnnual ? "text-foreground font-semibold" : "text-muted-foreground")}>
+            <span className={cn("text-xs sm:text-sm font-bold flex items-center gap-1.5 transition-colors", isAnnual ? "text-slate-900 dark:text-white" : "text-slate-500 dark:text-slate-400")}>
               Annual Billing
-              <Badge variant="success" className="text-[10px] uppercase font-bold py-0.5 px-2">
+              <span className="text-[10px] uppercase font-black py-0.5 px-2 rounded-full bg-emerald-100 dark:bg-emerald-950/80 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800">
                 Save 20%
-              </Badge>
+              </span>
             </span>
           </div>
         </div>
       </section>
 
       {/* Pricing Cards Grid */}
-      <section className="container max-w-7xl mx-auto px-4 -mt-6">
+      <section className="container max-w-7xl mx-auto px-4 -mt-4 pb-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
           {plans.map((plan) => {
             const price = isAnnual ? plan.annualPrice : plan.monthlyPrice;
@@ -223,67 +225,68 @@ export default function PricingPage() {
               <div
                 key={plan.id}
                 className={cn(
-                  "relative flex flex-col rounded-2xl border bg-card p-8 shadow-sm transition-all duration-300 hover:shadow-lg",
+                  "relative flex flex-col rounded-3xl p-8 shadow-sm transition-all duration-300 hover:shadow-2xl border",
                   plan.popular
-                    ? "border-sky-500 ring-2 ring-sky-500/20 shadow-sky-100 dark:shadow-none scale-100 md:-translate-y-2"
-                    : "border-border"
+                    ? "bg-white dark:bg-slate-900 border-[#4A3AFF] dark:border-[#4A3AFF] ring-2 ring-[#4A3AFF]/30 shadow-indigo-500/10 md:-translate-y-3"
+                    : "bg-white dark:bg-slate-900 border-slate-200/90 dark:border-slate-800"
                 )}
               >
                 {plan.popular && (
                   <div className="absolute -top-3.5 left-1/2 -translate-x-1/2">
-                    <Badge className="bg-gradient-to-r from-sky-600 to-indigo-600 text-white border-0 shadow-md font-semibold px-3 py-1">
+                    <span className="bg-gradient-to-r from-[#4A3AFF] to-indigo-600 text-white border-0 shadow-lg font-bold text-xs px-4 py-1 rounded-full uppercase tracking-wider">
                       {plan.badge}
-                    </Badge>
+                    </span>
                   </div>
                 )}
 
                 <div className="mb-6">
-                  <h3 className="text-xl font-bold text-foreground">{plan.name}</h3>
-                  <p className="text-xs text-muted-foreground mt-2 min-h-[32px]">
+                  <h3 className="text-xl font-extrabold text-slate-900 dark:text-white">{plan.name}</h3>
+                  <p className="text-xs text-slate-500 dark:text-slate-400 mt-2 min-h-[32px] font-medium leading-relaxed">
                     {plan.description}
                   </p>
                 </div>
 
-                <div className="mb-6 pb-6 border-b">
+                <div className="mb-6 pb-6 border-b border-slate-100 dark:border-slate-800">
                   <div className="flex items-baseline gap-1">
-                    <span className="text-4xl font-extrabold tracking-tight text-foreground">
+                    <span className="text-4xl sm:text-5xl font-black tracking-tight text-slate-900 dark:text-white">
                       ${price}
                     </span>
-                    <span className="text-sm font-medium text-muted-foreground">
+                    <span className="text-xs sm:text-sm font-semibold text-slate-500 dark:text-slate-400">
                       / month
                     </span>
                   </div>
-                  <p className="text-xs text-muted-foreground mt-1.5">{billedNote}</p>
+                  <p className="text-xs text-slate-500 dark:text-slate-400 mt-1.5 font-medium">{billedNote}</p>
                 </div>
 
                 <Link
                   href={plan.buttonHref}
                   className={cn(
-                    buttonVariants({
-                      variant: plan.popular ? "default" : plan.buttonVariant,
-                      size: "lg",
-                    }),
-                    "w-full font-semibold shadow-sm",
-                    plan.popular && "bg-sky-600 hover:bg-sky-700 text-white"
+                    "w-full py-3.5 px-4 rounded-2xl text-xs sm:text-sm font-bold transition-all duration-200 flex items-center justify-center gap-2 cursor-pointer shadow-xs text-center",
+                    plan.isPrimary
+                      ? "bg-[#4A3AFF] hover:bg-[#3D2FE6] text-white shadow-md shadow-indigo-500/20"
+                      : "bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 border border-slate-200 dark:border-slate-700"
                   )}
                 >
-                  {plan.buttonText}
+                  <span>{plan.buttonText}</span>
+                  <ArrowRight className="w-4 h-4" />
                 </Link>
 
                 <div className="mt-8 flex-1">
-                  <p className="text-xs font-semibold text-foreground uppercase tracking-wider mb-4">
+                  <p className="text-xs font-extrabold text-slate-900 dark:text-slate-100 uppercase tracking-wider mb-4">
                     What&apos;s included:
                   </p>
-                  <ul className="space-y-3 text-sm text-muted-foreground">
+                  <ul className="space-y-3 text-xs sm:text-sm text-slate-600 dark:text-slate-300 font-medium">
                     {plan.features.map((feat, i) => (
                       <li key={i} className="flex items-start gap-2.5">
-                        <Check className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
+                        <div className="w-4 h-4 rounded-full bg-emerald-50 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 flex items-center justify-center shrink-0 mt-0.5">
+                          <Check className="w-3 h-3 stroke-[2.8]" />
+                        </div>
                         <span>{feat}</span>
                       </li>
                     ))}
                     {plan.notIncluded.map((feat, i) => (
-                      <li key={i} className="flex items-start gap-2.5 text-slate-400 opacity-60">
-                        <X className="w-4 h-4 text-slate-400 shrink-0 mt-0.5" />
+                      <li key={i} className="flex items-start gap-2.5 text-slate-400 dark:text-slate-500 opacity-60">
+                        <X className="w-4 h-4 text-slate-400 dark:text-slate-500 shrink-0 mt-0.5" />
                         <span>{feat}</span>
                       </li>
                     ))}
@@ -296,21 +299,21 @@ export default function PricingPage() {
       </section>
 
       {/* Trust & Guarantee Banner */}
-      <section className="container max-w-5xl mx-auto px-4 mt-16">
-        <div className="rounded-2xl border bg-gradient-to-r from-sky-50 via-indigo-50 to-purple-50 p-6 md:p-8 flex flex-col md:flex-row items-center gap-6 text-center md:text-left">
-          <div className="w-14 h-14 rounded-2xl bg-white shadow-md flex items-center justify-center shrink-0">
-            <ShieldCheck className="w-8 h-8 text-sky-600" />
+      <section className="container max-w-5xl mx-auto px-4 mt-8">
+        <div className="rounded-3xl border border-indigo-100 dark:border-slate-800 bg-white dark:bg-slate-900 p-6 md:p-8 flex flex-col md:flex-row items-center gap-6 text-center md:text-left shadow-sm">
+          <div className="w-14 h-14 rounded-2xl bg-indigo-50 dark:bg-indigo-950/60 text-[#4A3AFF] dark:text-indigo-400 shadow-xs flex items-center justify-center shrink-0">
+            <ShieldCheck className="w-8 h-8" />
           </div>
           <div className="flex-1">
-            <h4 className="text-lg font-bold text-slate-900">14-Day 100% Risk-Free Guarantee</h4>
-            <p className="text-sm text-slate-600 mt-1">
+            <h4 className="text-lg font-extrabold text-slate-900 dark:text-white">14-Day 100% Risk-Free Guarantee</h4>
+            <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 mt-1 font-normal leading-relaxed">
               Try EduConnect Pro risk-free. If you don&apos;t feel you&apos;re leveling up your skills within 14 days,
               we&apos;ll refund 100% of your payment with zero hassle.
             </p>
           </div>
           <Link
             href="/courses"
-            className={cn(buttonVariants({ variant: "outline", size: "sm" }), "bg-white hover:bg-slate-50 shrink-0")}
+            className="bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 border border-slate-200 dark:border-slate-700 font-bold px-5 py-2.5 rounded-2xl text-xs sm:text-sm shrink-0 transition-colors shadow-xs"
           >
             Explore Courses First
           </Link>
@@ -318,68 +321,68 @@ export default function PricingPage() {
       </section>
 
       {/* Feature Comparison Matrix */}
-      <section className="container max-w-5xl mx-auto px-4 mt-24">
+      <section className="container max-w-5xl mx-auto px-4 mt-20">
         <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold tracking-tight text-foreground font-heading">
+          <h2 className="text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white">
             Detailed Plan Comparison
           </h2>
-          <p className="text-sm text-muted-foreground mt-2">
+          <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-2 font-medium">
             Compare all features side-by-side to choose the best learning plan for your goals.
           </p>
         </div>
 
-        <div className="overflow-x-auto rounded-xl border bg-card shadow-sm">
-          <table className="w-full text-left text-sm">
+        <div className="overflow-x-auto rounded-3xl border border-slate-200/90 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm">
+          <table className="w-full text-left text-xs sm:text-sm">
             <thead>
-              <tr className="border-b bg-muted/50 text-xs font-semibold text-muted-foreground uppercase">
+              <tr className="border-b border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/80 text-xs font-bold text-slate-600 dark:text-slate-300 uppercase">
                 <th className="py-4 px-6">Features</th>
                 <th className="py-4 px-4 text-center">Starter</th>
-                <th className="py-4 px-4 text-center text-sky-600 font-bold">Pro All-Access</th>
+                <th className="py-4 px-4 text-center text-[#4A3AFF] dark:text-indigo-400 font-black">Pro All-Access</th>
                 <th className="py-4 px-4 text-center">Enterprise</th>
               </tr>
             </thead>
-            <tbody className="divide-y">
+            <tbody className="divide-y divide-slate-100 dark:divide-slate-800">
               {comparisonFeatures.map((cat, catIdx) => (
                 <div key={catIdx} className="contents">
-                  <tr className="bg-muted/30">
-                    <td colSpan={4} className="py-3 px-6 font-bold text-xs uppercase tracking-wider text-foreground">
+                  <tr className="bg-slate-50/60 dark:bg-slate-800/40">
+                    <td colSpan={4} className="py-3 px-6 font-bold text-xs uppercase tracking-wider text-slate-900 dark:text-white">
                       {cat.category}
                     </td>
                   </tr>
                   {cat.items.map((item, itemIdx) => (
-                    <tr key={itemIdx} className="hover:bg-muted/20 transition-colors">
-                      <td className="py-3.5 px-6 font-medium text-foreground">{item.name}</td>
+                    <tr key={itemIdx} className="hover:bg-slate-50/50 dark:hover:bg-slate-800/40 transition-colors">
+                      <td className="py-3.5 px-6 font-semibold text-slate-800 dark:text-slate-200">{item.name}</td>
                       <td className="py-3.5 px-4 text-center">
                         {typeof item.starter === "boolean" ? (
                           item.starter ? (
-                            <Check className="w-4 h-4 text-emerald-600 mx-auto" />
+                            <Check className="w-4 h-4 text-emerald-600 dark:text-emerald-400 mx-auto stroke-[2.5]" />
                           ) : (
-                            <X className="w-4 h-4 text-slate-300 mx-auto" />
+                            <X className="w-4 h-4 text-slate-300 dark:text-slate-600 mx-auto" />
                           )
                         ) : (
-                          <span className="text-xs text-muted-foreground font-medium">{item.starter}</span>
+                          <span className="text-xs text-slate-500 dark:text-slate-400 font-medium">{item.starter}</span>
                         )}
                       </td>
-                      <td className="py-3.5 px-4 text-center bg-sky-50/40 dark:bg-sky-950/20">
+                      <td className="py-3.5 px-4 text-center bg-indigo-50/30 dark:bg-indigo-950/20">
                         {typeof item.pro === "boolean" ? (
                           item.pro ? (
-                            <Check className="w-4 h-4 text-sky-600 mx-auto font-bold" />
+                            <Check className="w-4 h-4 text-[#4A3AFF] dark:text-indigo-400 mx-auto font-bold stroke-[3]" />
                           ) : (
-                            <X className="w-4 h-4 text-slate-300 mx-auto" />
+                            <X className="w-4 h-4 text-slate-300 dark:text-slate-600 mx-auto" />
                           )
                         ) : (
-                          <span className="text-xs text-sky-700 font-semibold">{item.pro}</span>
+                          <span className="text-xs text-[#4A3AFF] dark:text-indigo-300 font-bold">{item.pro}</span>
                         )}
                       </td>
                       <td className="py-3.5 px-4 text-center">
                         {typeof item.enterprise === "boolean" ? (
                           item.enterprise ? (
-                            <Check className="w-4 h-4 text-emerald-600 mx-auto" />
+                            <Check className="w-4 h-4 text-emerald-600 dark:text-emerald-400 mx-auto stroke-[2.5]" />
                           ) : (
-                            <X className="w-4 h-4 text-slate-300 mx-auto" />
+                            <X className="w-4 h-4 text-slate-300 dark:text-slate-600 mx-auto" />
                           )
                         ) : (
-                          <span className="text-xs font-semibold text-foreground">{item.enterprise}</span>
+                          <span className="text-xs font-bold text-slate-800 dark:text-slate-200">{item.enterprise}</span>
                         )}
                       </td>
                     </tr>
@@ -394,11 +397,11 @@ export default function PricingPage() {
       {/* FAQ Section */}
       <section className="container max-w-4xl mx-auto px-4 mt-24">
         <div className="text-center mb-12">
-          <div className="inline-flex items-center gap-1.5 text-xs font-bold text-sky-600 uppercase tracking-wider mb-2">
+          <div className="inline-flex items-center gap-1.5 text-xs font-bold text-[#4A3AFF] dark:text-indigo-300 uppercase tracking-wider mb-2">
             <HelpCircle className="w-4 h-4" />
             Got Questions?
           </div>
-          <h2 className="text-3xl font-bold tracking-tight text-foreground font-heading">
+          <h2 className="text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white">
             Frequently Asked Questions
           </h2>
         </div>
@@ -408,12 +411,12 @@ export default function PricingPage() {
             <AccordionItem
               key={i}
               value={`item-${i}`}
-              className="border rounded-xl px-5 bg-card shadow-sm hover:border-slate-300 transition-colors"
+              className="border border-slate-200/90 dark:border-slate-800 rounded-2xl px-5 bg-white dark:bg-slate-900 shadow-xs hover:border-[#4A3AFF]/40 transition-colors"
             >
-              <AccordionTrigger className="text-base font-semibold text-left py-4 hover:no-underline">
+              <AccordionTrigger className="text-sm sm:text-base font-bold text-left py-4 hover:no-underline text-slate-900 dark:text-white">
                 {faq.question}
               </AccordionTrigger>
-              <AccordionContent className="text-sm text-muted-foreground pb-4 leading-relaxed">
+              <AccordionContent className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 pb-4 leading-relaxed font-normal">
                 {faq.answer}
               </AccordionContent>
             </AccordionItem>
@@ -421,36 +424,11 @@ export default function PricingPage() {
         </Accordion>
       </section>
 
-      {/* Bottom CTA Banner */}
-      <section className="container max-w-5xl mx-auto px-4 mt-20">
-        <div className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-slate-900 via-slate-800 to-indigo-950 p-8 md:p-14 text-white shadow-2xl">
-          <div className="relative z-10 max-w-2xl">
-            <span className="inline-block rounded-full bg-sky-500/20 px-3 py-1 text-xs font-semibold text-sky-300 border border-sky-400/30 mb-4">
-              Start learning today
-            </span>
-            <h3 className="text-3xl md:text-4xl font-bold tracking-tight font-heading">
-              Ready to accelerate your tech career?
-            </h3>
-            <p className="mt-3 text-slate-300 text-sm md:text-base leading-relaxed">
-              Join thousands of developers and designers mastering in-demand skills on EduConnect with accredited certificates.
-            </p>
-            <div className="mt-8 flex flex-wrap items-center gap-4">
-              <Link
-                href="/courses"
-                className={cn(buttonVariants({ size: "lg" }), "bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold")}
-              >
-                Browse All Courses <ArrowRight className="w-4 h-4 ml-1.5" />
-              </Link>
-              <Link
-                href="/register/instructor"
-                className={cn(buttonVariants({ variant: "outline", size: "lg" }), "border-slate-600 text-white hover:bg-white/10")}
-              >
-                Teach on EduConnect
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* CTA Banners */}
+      <div className="mt-12">
+        <CtaBanners />
+      </div>
+
     </div>
   );
 }

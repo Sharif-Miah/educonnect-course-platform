@@ -24,24 +24,24 @@ export function Quiz({ courseId, quizSet, isTaken }) {
 
   return (
     <>
-      <div className="w-full bg-white rounded-2xl border border-slate-100/90 shadow-sm overflow-hidden space-y-3 p-4">
+      <div className="w-full bg-white dark:bg-slate-900 rounded-2xl border border-slate-100/90 dark:border-slate-800 shadow-sm overflow-hidden space-y-3 p-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-xl bg-amber-50 text-amber-500 flex items-center justify-center">
+            <div className="w-8 h-8 rounded-xl bg-amber-50 dark:bg-amber-950/60 text-amber-500 flex items-center justify-center">
               <HelpCircle className="w-4 h-4" />
             </div>
             <div>
-              <h4 className="text-xs font-bold text-slate-900 line-clamp-1">
+              <h4 className="text-xs font-bold text-slate-900 dark:text-white line-clamp-1">
                 {quizSet?.title || "Assessment Quiz"}
               </h4>
-              <p className="text-[10px] text-slate-400 font-medium">
+              <p className="text-[10px] text-slate-400 dark:text-slate-400 font-medium">
                 {quizzes.length} Questions • {totalMarks} Marks
               </p>
             </div>
           </div>
 
           {isTaken && (
-            <span className="bg-emerald-50 text-emerald-600 text-[10px] font-bold px-2 py-0.5 rounded-full flex items-center gap-1 border border-emerald-100">
+            <span className="bg-emerald-50 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-300 text-[10px] font-bold px-2 py-0.5 rounded-full flex items-center gap-1 border border-emerald-100 dark:border-emerald-900/60">
               <CheckCircle2 className="w-3 h-3" />
               <span>Completed</span>
             </span>
@@ -54,7 +54,7 @@ export function Quiz({ courseId, quizSet, isTaken }) {
           className={cn(
             "w-full py-2.5 px-3 rounded-xl text-xs font-bold transition-all duration-200 flex items-center justify-center gap-1.5 cursor-pointer",
             isTaken
-              ? "bg-slate-100 hover:bg-slate-200 text-slate-700"
+              ? "bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200"
               : "bg-[#4A3AFF] hover:bg-[#3D2FE6] text-white shadow-md shadow-indigo-500/20"
           )}
         >

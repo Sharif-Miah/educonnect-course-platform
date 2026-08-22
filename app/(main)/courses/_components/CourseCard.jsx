@@ -32,11 +32,11 @@ const CourseCard = ({ course }) => {
   const totalLessons = course?.modules?.reduce((acc, m) => acc + (m.lessonIds?.length || 0), 0) || (course?.modules?.length ? course.modules.length * 6 : 24);
 
   return (
-    <div className="group bg-white rounded-3xl p-4 sm:p-5 shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100/90 flex flex-col justify-between h-full relative overflow-hidden">
+    <div className="group bg-white dark:bg-slate-900 rounded-3xl p-4 sm:p-5 shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100/90 dark:border-slate-800 flex flex-col justify-between h-full relative overflow-hidden">
       
       {/* Top Image & Overlay */}
       <div>
-        <div className="relative aspect-[16/10] w-full rounded-2xl overflow-hidden mb-4 bg-slate-100">
+        <div className="relative aspect-[16/10] w-full rounded-2xl overflow-hidden mb-4 bg-slate-100 dark:bg-slate-800">
           <Image
             src={thumbnail}
             alt={course?.title || "Course thumbnail"}
@@ -56,7 +56,7 @@ const CourseCard = ({ course }) => {
             <span className={`text-xs font-black px-3 py-1 rounded-full shadow-md ${
               isFree 
                 ? "bg-emerald-500 text-white" 
-                : "bg-white text-slate-900"
+                : "bg-white dark:bg-slate-950 text-slate-900 dark:text-white"
             }`}>
               {formattedPrice}
             </span>
@@ -72,13 +72,13 @@ const CourseCard = ({ course }) => {
 
         {/* Title */}
         <Link href={`/courses/${course.id || course._id}`}>
-          <h3 className="text-base sm:text-lg font-bold text-slate-900 group-hover:text-[#4A3AFF] transition-colors line-clamp-2 leading-snug mb-3 cursor-pointer">
+          <h3 className="text-base sm:text-lg font-bold text-slate-900 dark:text-white group-hover:text-[#4A3AFF] transition-colors line-clamp-2 leading-snug mb-3 cursor-pointer">
             {course?.title}
           </h3>
         </Link>
 
         {/* Meta Stats Row (Lessons & Students) */}
-        <div className="flex items-center gap-4 text-xs text-slate-500 font-medium pb-4 border-b border-slate-100">
+        <div className="flex items-center gap-4 text-xs text-slate-500 dark:text-slate-400 font-medium pb-4 border-b border-slate-100 dark:border-slate-800">
           <span className="flex items-center gap-1.5">
             <BookOpen className="w-3.5 h-3.5 text-[#4A3AFF]" />
             <span>{totalLessons} Lessons</span>
@@ -93,7 +93,7 @@ const CourseCard = ({ course }) => {
       {/* Bottom Row: Instructor & Action Button */}
       <div className="pt-4 flex items-center justify-between gap-3 mt-auto">
         <div className="flex items-center gap-2.5">
-          <div className="w-8 h-8 rounded-full overflow-hidden relative ring-2 ring-indigo-50 flex-shrink-0 bg-slate-200">
+          <div className="w-8 h-8 rounded-full overflow-hidden relative ring-2 ring-indigo-50 dark:ring-indigo-950 flex-shrink-0 bg-slate-200 dark:bg-slate-700">
             <Image
               src={instructorAvatar}
               alt={instructorName}
@@ -102,14 +102,14 @@ const CourseCard = ({ course }) => {
               className="object-cover"
             />
           </div>
-          <span className="text-xs font-bold text-slate-700 truncate max-w-[120px]">
+          <span className="text-xs font-bold text-slate-700 dark:text-slate-300 truncate max-w-[120px]">
             {instructorName}
           </span>
         </div>
 
         <Link
           href={`/courses/${course.id || course._id}`}
-          className="w-9 h-9 rounded-full bg-indigo-50 group-hover:bg-[#4A3AFF] text-[#4A3AFF] group-hover:text-white flex items-center justify-center transition-all duration-300 shadow-xs flex-shrink-0"
+          className="w-9 h-9 rounded-full bg-indigo-50 dark:bg-slate-800 group-hover:bg-[#4A3AFF] dark:group-hover:bg-[#4A3AFF] text-[#4A3AFF] group-hover:text-white dark:text-indigo-300 dark:group-hover:text-white flex items-center justify-center transition-all duration-300 shadow-xs flex-shrink-0"
         >
           <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
         </Link>

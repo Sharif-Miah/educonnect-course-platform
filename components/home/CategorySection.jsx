@@ -159,7 +159,7 @@ export default function CategorySection({ categories = [] }) {
     : defaultCategories;
 
   return (
-    <section id="categories" className="py-24 bg-white relative">
+    <section id="categories" className="py-24 bg-white dark:bg-[#0b1120] relative transition-colors duration-200">
       <div className="container max-w-7xl mx-auto px-4 sm:px-6">
         
         {/* Section Header */}
@@ -168,7 +168,7 @@ export default function CategorySection({ categories = [] }) {
             TOP CATEGORY
           </p>
           <div className="relative inline-block">
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight leading-tight">
               Browse Our Online Course <br />
               Categories
             </h2>
@@ -189,9 +189,9 @@ export default function CategorySection({ categories = [] }) {
               <Link
                 key={item.id || idx}
                 href={`/courses?category=${encodeURIComponent(item.id || item.title)}`}
-                className="group relative h-28 sm:h-32 rounded-3xl p-5 sm:p-6 bg-white border border-dashed border-slate-200/90 shadow-sm hover:shadow-2xl hover:border-transparent transition-all duration-300 overflow-hidden flex items-center justify-between"
+                className="group relative h-28 sm:h-32 rounded-3xl p-5 sm:p-6 bg-white dark:bg-slate-900 border border-dashed border-slate-200/90 dark:border-slate-800 shadow-sm hover:shadow-2xl hover:border-transparent transition-all duration-300 overflow-hidden flex items-center justify-between"
               >
-                {/* Background image & dark blur overlay on hover (Image 2 style) */}
+                {/* Background image & dark blur overlay on hover */}
                 <div className="absolute inset-0 z-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
                   <Image
                     src={item.bg}
@@ -207,17 +207,17 @@ export default function CategorySection({ categories = [] }) {
                 {/* Left Area: Circle Icon + Title & Course Count */}
                 <div className="relative z-10 flex items-center gap-4 sm:gap-5">
                   {/* Circular Icon Container */}
-                  <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-slate-50 border border-slate-100 group-hover:bg-white group-hover:border-transparent group-hover:shadow-lg flex items-center justify-center text-[#4A3AFF] transition-all duration-300 flex-shrink-0">
+                  <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-slate-50 dark:bg-slate-800 border border-slate-100 dark:border-slate-700 group-hover:bg-white group-hover:border-transparent group-hover:shadow-lg flex items-center justify-center text-[#4A3AFF] transition-all duration-300 flex-shrink-0">
                     <Icon className="w-7 h-7 sm:w-8 sm:h-8" />
                   </div>
 
                   {/* Title & Badge */}
                   <div>
-                    <h3 className="text-base sm:text-lg font-bold text-slate-900 group-hover:text-white group-hover:text-xl transition-all duration-200 leading-snug">
+                    <h3 className="text-base sm:text-lg font-bold text-slate-900 dark:text-white group-hover:text-white group-hover:text-xl transition-all duration-200 leading-snug">
                       {item.title}
                     </h3>
                     <div className="mt-1.5">
-                      <span className="inline-block text-xs font-semibold text-[#4A3AFF] bg-indigo-50/90 group-hover:bg-[#4A3AFF] group-hover:text-white px-3 py-1 rounded-md shadow-none group-hover:shadow-md transition-all duration-200">
+                      <span className="inline-block text-xs font-semibold text-[#4A3AFF] dark:text-indigo-300 bg-indigo-50/90 dark:bg-indigo-950/80 group-hover:bg-[#4A3AFF] group-hover:text-white px-3 py-1 rounded-md shadow-none group-hover:shadow-md transition-all duration-200">
                         {item.count} Courses
                       </span>
                     </div>
@@ -225,7 +225,7 @@ export default function CategorySection({ categories = [] }) {
                 </div>
 
                 {/* Right Area: Arrow Button */}
-                <div className="relative z-10 w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-slate-50 border border-slate-100 group-hover:bg-[#4A3AFF] group-hover:border-transparent flex items-center justify-center text-slate-400 group-hover:text-white group-hover:shadow-lg group-hover:translate-x-0.5 transition-all duration-300 flex-shrink-0">
+                <div className="relative z-10 w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-slate-50 dark:bg-slate-800 border border-slate-100 dark:border-slate-700 group-hover:bg-[#4A3AFF] group-hover:border-transparent flex items-center justify-center text-slate-400 dark:text-slate-400 group-hover:text-white group-hover:shadow-lg group-hover:translate-x-0.5 transition-all duration-300 flex-shrink-0">
                   <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
                 </div>
               </Link>

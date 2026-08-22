@@ -80,7 +80,7 @@ export default function LatestNewsSection() {
   }, [isPaused, maxIndex]);
 
   return (
-    <section id="blog" className="py-24 bg-slate-50/40 relative overflow-hidden">
+    <section id="blog" className="py-24 bg-slate-50/40 dark:bg-[#0b1120] relative overflow-hidden transition-colors duration-200">
       <div className="container max-w-7xl mx-auto px-4 sm:px-6">
         
         {/* Section Header */}
@@ -89,7 +89,7 @@ export default function LatestNewsSection() {
             LATEST NEWS
           </p>
           <div className="relative inline-block">
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight leading-tight">
               Read Some Store About <br />
               News & Blog
             </h2>
@@ -123,7 +123,7 @@ export default function LatestNewsSection() {
                 <div className="relative w-full">
                   
                   {/* Photo Container with Top-to-Bottom Sliding Dark Hover Shadow */}
-                  <div className="relative w-full aspect-[16/11] rounded-3xl overflow-hidden bg-slate-200 shadow-md">
+                  <div className="relative w-full aspect-[16/11] rounded-3xl overflow-hidden bg-slate-200 dark:bg-slate-800 shadow-md">
                     <Image
                       src={blog.thumbnail}
                       alt={blog.title}
@@ -143,10 +143,10 @@ export default function LatestNewsSection() {
                   </div>
 
                   {/* Elevated Overlapping White Content Card matching Screenshot */}
-                  <div className="relative -mt-10 mx-3 sm:mx-4 bg-white rounded-2xl p-5 sm:p-6 shadow-xl border border-slate-100 text-left z-20 transition-transform duration-300 group-hover:-translate-y-1">
+                  <div className="relative -mt-10 mx-3 sm:mx-4 bg-white dark:bg-slate-900 rounded-2xl p-5 sm:p-6 shadow-xl border border-slate-100 dark:border-slate-800 text-left z-20 transition-transform duration-300 group-hover:-translate-y-1">
                     
                     {/* Meta Row: Author & Date */}
-                    <div className="flex items-center gap-4 text-xs font-semibold text-slate-500 mb-2.5">
+                    <div className="flex items-center gap-4 text-xs font-semibold text-slate-500 dark:text-slate-400 mb-2.5">
                       <div className="flex items-center gap-1.5">
                         <User className="w-3.5 h-3.5 text-[#4A3AFF]" />
                         <span>{blog.author}</span>
@@ -159,7 +159,7 @@ export default function LatestNewsSection() {
 
                     {/* Blog Heading */}
                     <Link href={`/blog/${blog.id}`}>
-                      <h3 className="text-base sm:text-lg font-bold text-slate-900 line-clamp-2 leading-snug group-hover:text-[#4A3AFF] transition-colors mb-4">
+                      <h3 className="text-base sm:text-lg font-bold text-slate-900 dark:text-white line-clamp-2 leading-snug group-hover:text-[#4A3AFF] transition-colors mb-4">
                         {blog.title}
                       </h3>
                     </Link>
@@ -168,7 +168,7 @@ export default function LatestNewsSection() {
                     <div className="pt-1">
                       <Link
                         href={`/blog/${blog.id}`}
-                        className="w-9 h-9 rounded-full bg-slate-50 group-hover:bg-[#4A3AFF] text-slate-400 group-hover:text-white border border-slate-100 group-hover:border-transparent flex items-center justify-center transition-all duration-300 shadow-sm"
+                        className="w-9 h-9 rounded-full bg-slate-50 dark:bg-slate-800 group-hover:bg-[#4A3AFF] dark:group-hover:bg-[#4A3AFF] text-slate-400 dark:text-slate-400 group-hover:text-white dark:group-hover:text-white border border-slate-100 dark:border-slate-700 group-hover:border-transparent flex items-center justify-center transition-all duration-300 shadow-sm"
                       >
                         <ArrowRight className="w-4 h-4" />
                       </Link>

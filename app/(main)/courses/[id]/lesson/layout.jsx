@@ -21,7 +21,7 @@ const CourseLayout = async ({ children, params: { id } }) => {
   const course = await getCourseDetails(id);
 
   return (
-    <div className="min-h-screen bg-[#F8FAFC] flex flex-col">
+    <div className="min-h-screen bg-[#F8FAFC] dark:bg-[#0b1120] flex flex-col transition-colors duration-200">
       {/* Top Sticky Learning Sub-Header */}
       <div className="bg-slate-950 text-white border-b border-slate-800/80 sticky top-20 z-30 px-4 sm:px-6 py-3.5 shadow-sm">
         <div className="max-w-7xl mx-auto flex items-center justify-between gap-4">
@@ -66,7 +66,7 @@ const CourseLayout = async ({ children, params: { id } }) => {
       <div className="flex-1 flex flex-col lg:flex-row max-w-7xl w-full mx-auto">
         
         {/* Left: Sticky Desktop Sidebar (380px) */}
-        <aside className="hidden lg:block w-96 flex-shrink-0 border-r border-slate-200/80 bg-white min-h-[calc(100vh-130px)] sticky top-[133px] max-h-[calc(100vh-133px)] overflow-y-auto">
+        <aside className="hidden lg:block w-96 flex-shrink-0 border-r border-slate-200/80 dark:border-slate-800 bg-white dark:bg-[#0b1120] min-h-[calc(100vh-130px)] sticky top-[133px] max-h-[calc(100vh-133px)] overflow-y-auto transition-colors">
           <CourseSidebar courseId={id} />
         </aside>
 

@@ -5,7 +5,7 @@ import Image from "next/image";
 
 export default function CtaBanners() {
   return (
-    <section className="pt-24 pb-20 bg-white relative overflow-visible">
+    <section className="pt-24 pb-20 bg-white dark:bg-[#0b1120] relative overflow-visible transition-colors duration-200">
       <div className="container max-w-7xl mx-auto px-4 sm:px-6">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-10">
           

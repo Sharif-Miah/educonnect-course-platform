@@ -20,17 +20,17 @@ async function EnrolledCourses() {
     <div className="space-y-6">
       
       {/* Header Info */}
-      <div className="flex items-center justify-between pb-4 border-b border-slate-200/80">
+      <div className="flex items-center justify-between pb-4 border-b border-slate-200/80 dark:border-slate-800">
         <div>
-          <h3 className="text-xl font-bold text-slate-900 tracking-tight">
+          <h3 className="text-xl font-bold text-slate-900 dark:text-white tracking-tight">
             My Enrolled Courses
           </h3>
-          <p className="text-xs text-slate-500 font-medium mt-0.5">
+          <p className="text-xs text-slate-500 dark:text-slate-400 font-medium mt-0.5">
             Track your course progress, lessons completed, and assessments.
           </p>
         </div>
 
-        <span className="bg-[#4A3AFF]/10 text-[#4A3AFF] text-xs font-extrabold px-3.5 py-1.5 rounded-full">
+        <span className="bg-[#4A3AFF]/10 dark:bg-[#4A3AFF]/20 text-[#4A3AFF] dark:text-indigo-300 text-xs font-extrabold px-3.5 py-1.5 rounded-full">
           {enrollments?.length || 0} Enrolled
         </span>
       </div>
@@ -49,14 +49,14 @@ async function EnrolledCourses() {
         </div>
       ) : (
         /* Empty State */
-        <div className="bg-white rounded-3xl p-12 text-center border border-slate-100 shadow-sm space-y-4 max-w-md mx-auto my-8">
-          <div className="w-16 h-16 rounded-full bg-indigo-50 text-[#4A3AFF] flex items-center justify-center mx-auto shadow-inner">
+        <div className="bg-white dark:bg-slate-900 rounded-3xl p-12 text-center border border-slate-100 dark:border-slate-800 shadow-sm space-y-4 max-w-md mx-auto my-8">
+          <div className="w-16 h-16 rounded-full bg-indigo-50 dark:bg-indigo-950/60 text-[#4A3AFF] dark:text-indigo-400 flex items-center justify-center mx-auto shadow-inner">
             <GraduationCap className="w-8 h-8" />
           </div>
-          <h3 className="text-lg font-bold text-slate-900">
+          <h3 className="text-lg font-bold text-slate-900 dark:text-white">
             No enrolled courses yet
           </h3>
-          <p className="text-xs sm:text-sm text-slate-500 leading-relaxed">
+          <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 leading-relaxed">
             You haven't enrolled in any courses yet. Discover our catalog of in-demand courses and start learning today!
           </p>
           <div className="pt-2">

@@ -68,7 +68,7 @@ export default function AboutExperienceSection() {
   ];
 
   return (
-    <section id="about" className="py-24 bg-white relative overflow-hidden">
+    <section id="about" className="py-24 bg-white dark:bg-[#0b1120] relative overflow-hidden transition-colors duration-200">
       
       <div className="container max-w-7xl mx-auto px-4 sm:px-6">
         
@@ -102,12 +102,12 @@ export default function AboutExperienceSection() {
             </div>
 
             {/* Watermark outline graduation cap */}
-            <div className="absolute -bottom-6 right-2 text-slate-100 -z-0 pointer-events-none">
+            <div className="absolute -bottom-6 right-2 text-slate-100 dark:text-slate-800 -z-0 pointer-events-none">
               <GraduationCap className="w-44 h-44 stroke-[1]" />
             </div>
 
             {/* Pill Shaped Photo 1 (Studying at table) */}
-            <div className="relative w-52 sm:w-64 h-80 sm:h-96 rounded-[70px] overflow-hidden shadow-2xl border-4 border-white z-10 -translate-x-8 sm:-translate-x-12">
+            <div className="relative w-52 sm:w-64 h-80 sm:h-96 rounded-[70px] overflow-hidden shadow-2xl border-4 border-white dark:border-slate-800 z-10 -translate-x-8 sm:-translate-x-12">
               <Image
                 src="/assets/home/about_student_study.jpg"
                 alt="Students studying"
@@ -118,7 +118,7 @@ export default function AboutExperienceSection() {
             </div>
 
             {/* Circular Photo 2 (Student with glasses & books on teal background) */}
-            <div className="relative w-52 sm:w-64 h-52 sm:h-64 rounded-full overflow-hidden shadow-2xl border-4 border-white z-20 -translate-x-6 sm:-translate-x-10 translate-y-8 bg-[#14C88C]">
+            <div className="relative w-52 sm:w-64 h-52 sm:h-64 rounded-full overflow-hidden shadow-2xl border-4 border-white dark:border-slate-800 z-20 -translate-x-6 sm:-translate-x-10 translate-y-8 bg-[#14C88C]">
               <Image
                 src="/assets/home/about_student_portrait.jpg"
                 alt="University Student"
@@ -129,11 +129,11 @@ export default function AboutExperienceSection() {
             </div>
 
             {/* Floating Experience Advisor Card (Image 1 Style) */}
-            <div className="absolute bottom-14 left-4 sm:left-10 z-30 bg-white rounded-2xl p-4 sm:p-5 shadow-2xl border border-slate-100 flex flex-col items-center gap-2 text-center animate-float">
+            <div className="absolute bottom-14 left-4 sm:left-10 z-30 bg-white dark:bg-slate-900 rounded-2xl p-4 sm:p-5 shadow-2xl border border-slate-100 dark:border-slate-800 flex flex-col items-center gap-2 text-center animate-float">
               <div className="w-12 h-12 rounded-full bg-[#4A3AFF] text-white flex items-center justify-center shadow-md">
                 <GraduationCap className="w-6 h-6" />
               </div>
-              <span className="text-xs sm:text-sm font-bold text-slate-900 leading-tight">
+              <span className="text-xs sm:text-sm font-bold text-slate-900 dark:text-white leading-tight">
                 Experience<br />Advisor
               </span>
             </div>
@@ -147,7 +147,7 @@ export default function AboutExperienceSection() {
               <p className="text-xs sm:text-sm font-bold uppercase tracking-wider text-[#4A3AFF] mb-2">
                 ABOUT OUR EDPLUS
               </p>
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight">
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight leading-tight">
                 We create unique digital media <br />
                 experiences.
               </h2>
@@ -159,7 +159,7 @@ export default function AboutExperienceSection() {
               </div>
             </div>
 
-            <p className="text-sm sm:text-base text-slate-600 leading-relaxed font-normal">
+            <p className="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed font-normal">
               At University Edplus, we are driven by the transformative power of education and the limitless potential within each individual. Founded in 1971, we have remained steadfast in our commitment to nurturing intellectual curiosity, promoting academic excellence, cultivating a dynamic campus community.
             </p>
 
@@ -170,18 +170,18 @@ export default function AboutExperienceSection() {
               <div className="space-y-4 relative">
                 {col1Features.map((title, idx) => (
                   <div key={idx} className="relative">
-                    <div className="flex items-center gap-3 p-3.5 rounded-xl bg-white border border-slate-200/90 shadow-sm hover:border-[#4A3AFF] transition-colors">
-                      <div className="w-5 h-5 rounded-full bg-indigo-50 text-[#4A3AFF] flex items-center justify-center flex-shrink-0">
+                    <div className="flex items-center gap-3 p-3.5 rounded-xl bg-white dark:bg-slate-900 border border-slate-200/90 dark:border-slate-800 shadow-sm hover:border-[#4A3AFF] transition-colors">
+                      <div className="w-5 h-5 rounded-full bg-indigo-50 dark:bg-indigo-950/80 text-[#4A3AFF] flex items-center justify-center flex-shrink-0">
                         <Check className="w-3.5 h-3.5 stroke-[2.8]" />
                       </div>
-                      <span className="text-xs sm:text-sm font-semibold text-slate-800">
+                      <span className="text-xs sm:text-sm font-semibold text-slate-800 dark:text-slate-200">
                         {title}
                       </span>
                     </div>
 
                     {/* Dotted connector */}
                     {idx < col1Features.length - 1 && (
-                      <div className="w-0.5 h-3 border-l-2 border-dotted border-indigo-300 mx-auto my-0.5" />
+                      <div className="w-0.5 h-3 border-l-2 border-dotted border-indigo-300 dark:border-indigo-800 mx-auto my-0.5" />
                     )}
                   </div>
                 ))}
@@ -193,18 +193,18 @@ export default function AboutExperienceSection() {
               <div className="space-y-4 relative">
                 {col2Features.map((title, idx) => (
                   <div key={idx} className="relative">
-                    <div className="flex items-center gap-3 p-3.5 rounded-xl bg-white border border-slate-200/90 shadow-sm hover:border-[#4A3AFF] transition-colors">
-                      <div className="w-5 h-5 rounded-full bg-indigo-50 text-[#4A3AFF] flex items-center justify-center flex-shrink-0">
+                    <div className="flex items-center gap-3 p-3.5 rounded-xl bg-white dark:bg-slate-900 border border-slate-200/90 dark:border-slate-800 shadow-sm hover:border-[#4A3AFF] transition-colors">
+                      <div className="w-5 h-5 rounded-full bg-indigo-50 dark:bg-indigo-950/80 text-[#4A3AFF] flex items-center justify-center flex-shrink-0">
                         <Check className="w-3.5 h-3.5 stroke-[2.8]" />
                       </div>
-                      <span className="text-xs sm:text-sm font-semibold text-slate-800">
+                      <span className="text-xs sm:text-sm font-semibold text-slate-800 dark:text-slate-200">
                         {title}
                       </span>
                     </div>
 
                     {/* Dotted connector */}
                     {idx < col2Features.length - 1 && (
-                      <div className="w-0.5 h-3 border-l-2 border-dotted border-indigo-300 mx-auto my-0.5" />
+                      <div className="w-0.5 h-3 border-l-2 border-dotted border-indigo-300 dark:border-indigo-800 mx-auto my-0.5" />
                     )}
                   </div>
                 ))}

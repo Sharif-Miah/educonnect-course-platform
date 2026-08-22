@@ -7,12 +7,12 @@ import { Facebook, Linkedin, Youtube, Send } from "lucide-react";
 
 export default function SiteFooter({ className }) {
   return (
-    <footer className={cn("relative bg-[#FBFBFE] pt-24 pb-8 text-slate-600 overflow-hidden", className)}>
+    <footer className={cn("relative bg-[#FBFBFE] dark:bg-[#070d18] pt-24 pb-8 text-slate-600 dark:text-slate-300 overflow-hidden transition-colors duration-200 border-t border-slate-100 dark:border-slate-800/60", className)}>
       
       {/* Background Guilloche Curved Geometric Wave Pattern matching Screenshot */}
       <div className="absolute inset-0 pointer-events-none opacity-45 overflow-hidden">
         <svg
-          className="w-full h-full text-slate-300/80"
+          className="w-full h-full text-slate-300/80 dark:text-slate-800/60"
           viewBox="0 0 1600 700"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
@@ -42,7 +42,7 @@ export default function SiteFooter({ className }) {
           {/* Column 1: About Us (lg:col-span-3) */}
           <div className="lg:col-span-3 space-y-4">
             <div>
-              <h4 className="text-base sm:text-lg font-bold text-slate-900 tracking-tight">About Us</h4>
+              <h4 className="text-base sm:text-lg font-bold text-slate-900 dark:text-white tracking-tight">About Us</h4>
               {/* Soft Purple Wavy Underline */}
               <div className="mt-1.5">
                 <svg className="w-12 text-[#938BFB]" viewBox="0 0 48 8" fill="none">
@@ -50,21 +50,21 @@ export default function SiteFooter({ className }) {
                 </svg>
               </div>
             </div>
-            <p className="text-xs sm:text-[13px] text-slate-500 leading-relaxed font-normal max-w-[260px]">
+            <p className="text-xs sm:text-[13px] text-slate-500 dark:text-slate-400 leading-relaxed font-normal max-w-[260px]">
               Duis aute irure dolor in reprehenderit in volupta velit esse cillum dolore eu fugiat nulla pariatur. excepteur sint occaecat
             </p>
             <div className="space-y-1.5 text-xs sm:text-[13px] font-semibold pt-1">
               <p>
-                <span className="text-slate-900 font-bold">Email: </span>
-                <a href="mailto:support@example.com" className="text-[#4A3AFF] hover:underline font-semibold">support@example.com</a>
+                <span className="text-slate-900 dark:text-slate-200 font-bold">Email: </span>
+                <a href="mailto:support@example.com" className="text-[#4A3AFF] dark:text-indigo-400 hover:underline font-semibold">support@example.com</a>
               </p>
               <p>
-                <span className="text-slate-900 font-bold">Phone: </span>
-                <a href="tel:+9801736895478" className="text-[#4A3AFF] hover:underline font-semibold">+9801736895478</a>
+                <span className="text-slate-900 dark:text-slate-200 font-bold">Phone: </span>
+                <a href="tel:+9801736895478" className="text-[#4A3AFF] dark:text-indigo-400 hover:underline font-semibold">+9801736895478</a>
               </p>
               <p>
-                <span className="text-slate-900 font-bold">Location: </span>
-                <span className="text-[#4A3AFF] font-semibold">3500 Lenox Road , USA</span>
+                <span className="text-slate-900 dark:text-slate-200 font-bold">Location: </span>
+                <span className="text-[#4A3AFF] dark:text-indigo-400 font-semibold">3500 Lenox Road , USA</span>
               </p>
             </div>
           </div>
@@ -72,74 +72,74 @@ export default function SiteFooter({ className }) {
           {/* Column 2: Company (lg:col-span-2) */}
           <div className="lg:col-span-2 space-y-4">
             <div>
-              <h4 className="text-base sm:text-lg font-bold text-slate-900 tracking-tight">Company</h4>
+              <h4 className="text-base sm:text-lg font-bold text-slate-900 dark:text-white tracking-tight">Company</h4>
               <div className="mt-1.5">
                 <svg className="w-12 text-[#938BFB]" viewBox="0 0 48 8" fill="none">
                   <path d="M1 5C5 1 9 7 13 3C17 1 21 7 25 3C29 1 33 7 37 3C41 1 45 7 47 3" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
                 </svg>
               </div>
             </div>
-            <ul className="space-y-2.5 text-xs sm:text-[13px] text-slate-600 font-medium">
-              <li><Link href="/#about" className="hover:text-[#4A3AFF] transition-colors">About</Link></li>
-              <li><Link href="/courses" className="hover:text-[#4A3AFF] transition-colors">Course</Link></li>
-              <li><Link href="/#instructors" className="hover:text-[#4A3AFF] transition-colors">Instructor</Link></li>
-              <li><Link href="/events" className="hover:text-[#4A3AFF] transition-colors">Events</Link></li>
-              <li><Link href="/#instructors" className="hover:text-[#4A3AFF] transition-colors">Instructor Details</Link></li>
-              <li><Link href="/pricing" className="hover:text-[#4A3AFF] transition-colors">Purchase Guide</Link></li>
+            <ul className="space-y-2.5 text-xs sm:text-[13px] text-slate-600 dark:text-slate-300 font-medium">
+              <li><Link href="/#about" className="hover:text-[#4A3AFF] dark:hover:text-white transition-colors">About</Link></li>
+              <li><Link href="/courses" className="hover:text-[#4A3AFF] dark:hover:text-white transition-colors">Course</Link></li>
+              <li><Link href="/#instructors" className="hover:text-[#4A3AFF] dark:hover:text-white transition-colors">Instructor</Link></li>
+              <li><Link href="/events" className="hover:text-[#4A3AFF] dark:hover:text-white transition-colors">Events</Link></li>
+              <li><Link href="/#instructors" className="hover:text-[#4A3AFF] dark:hover:text-white transition-colors">Instructor Details</Link></li>
+              <li><Link href="/pricing" className="hover:text-[#4A3AFF] dark:hover:text-white transition-colors">Purchase Guide</Link></li>
             </ul>
           </div>
 
           {/* Column 3: Useful Links (lg:col-span-2) */}
           <div className="lg:col-span-2 space-y-4">
             <div>
-              <h4 className="text-base sm:text-lg font-bold text-slate-900 tracking-tight">Useful Links</h4>
+              <h4 className="text-base sm:text-lg font-bold text-slate-900 dark:text-white tracking-tight">Useful Links</h4>
               <div className="mt-1.5">
                 <svg className="w-12 text-[#938BFB]" viewBox="0 0 48 8" fill="none">
                   <path d="M1 5C5 1 9 7 13 3C17 1 21 7 25 3C29 1 33 7 37 3C41 1 45 7 47 3" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
                 </svg>
               </div>
             </div>
-            <ul className="space-y-2.5 text-xs sm:text-[13px] text-slate-600 font-medium">
-              <li><Link href="/contact" className="hover:text-[#4A3AFF] transition-colors">Contact Us</Link></li>
-              <li><Link href="/courses" className="hover:text-[#4A3AFF] transition-colors">Technology</Link></li>
-              <li><Link href="/#instructors" className="hover:text-[#4A3AFF] transition-colors">Instructors</Link></li>
-              <li><Link href="/pricing" className="hover:text-[#4A3AFF] transition-colors">Pricing</Link></li>
-              <li><Link href="/services" className="hover:text-[#4A3AFF] transition-colors">Service</Link></li>
-              <li><Link href="/privacy" className="hover:text-[#4A3AFF] transition-colors">Privacy Policy</Link></li>
+            <ul className="space-y-2.5 text-xs sm:text-[13px] text-slate-600 dark:text-slate-300 font-medium">
+              <li><Link href="/contact" className="hover:text-[#4A3AFF] dark:hover:text-white transition-colors">Contact Us</Link></li>
+              <li><Link href="/courses" className="hover:text-[#4A3AFF] dark:hover:text-white transition-colors">Technology</Link></li>
+              <li><Link href="/#instructors" className="hover:text-[#4A3AFF] dark:hover:text-white transition-colors">Instructors</Link></li>
+              <li><Link href="/pricing" className="hover:text-[#4A3AFF] dark:hover:text-white transition-colors">Pricing</Link></li>
+              <li><Link href="/services" className="hover:text-[#4A3AFF] dark:hover:text-white transition-colors">Service</Link></li>
+              <li><Link href="/privacy" className="hover:text-[#4A3AFF] dark:hover:text-white transition-colors">Privacy Policy</Link></li>
             </ul>
           </div>
 
           {/* Column 4: Explore (lg:col-span-2) */}
           <div className="lg:col-span-2 space-y-4">
             <div>
-              <h4 className="text-base sm:text-lg font-bold text-slate-900 tracking-tight">Explore</h4>
+              <h4 className="text-base sm:text-lg font-bold text-slate-900 dark:text-white tracking-tight">Explore</h4>
               <div className="mt-1.5">
                 <svg className="w-12 text-[#938BFB]" viewBox="0 0 48 8" fill="none">
                   <path d="M1 5C5 1 9 7 13 3C17 1 21 7 25 3C29 1 33 7 37 3C41 1 45 7 47 3" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
                 </svg>
               </div>
             </div>
-            <ul className="space-y-2.5 text-xs sm:text-[13px] text-slate-600 font-medium">
-              <li><Link href="/contact" className="hover:text-[#4A3AFF] transition-colors">Contact Us</Link></li>
-              <li><Link href="/courses" className="hover:text-[#4A3AFF] transition-colors">Technology</Link></li>
-              <li><Link href="/#instructors" className="hover:text-[#4A3AFF] transition-colors">Instructors</Link></li>
-              <li><Link href="/pricing" className="hover:text-[#4A3AFF] transition-colors">Pricing</Link></li>
-              <li><Link href="/services" className="hover:text-[#4A3AFF] transition-colors">Service</Link></li>
-              <li><Link href="/privacy" className="hover:text-[#4A3AFF] transition-colors">Privacy Policy</Link></li>
+            <ul className="space-y-2.5 text-xs sm:text-[13px] text-slate-600 dark:text-slate-300 font-medium">
+              <li><Link href="/contact" className="hover:text-[#4A3AFF] dark:hover:text-white transition-colors">Contact Us</Link></li>
+              <li><Link href="/courses" className="hover:text-[#4A3AFF] dark:hover:text-white transition-colors">Technology</Link></li>
+              <li><Link href="/#instructors" className="hover:text-[#4A3AFF] dark:hover:text-white transition-colors">Instructors</Link></li>
+              <li><Link href="/pricing" className="hover:text-[#4A3AFF] dark:hover:text-white transition-colors">Pricing</Link></li>
+              <li><Link href="/services" className="hover:text-[#4A3AFF] dark:hover:text-white transition-colors">Service</Link></li>
+              <li><Link href="/privacy" className="hover:text-[#4A3AFF] dark:hover:text-white transition-colors">Privacy Policy</Link></li>
             </ul>
           </div>
 
           {/* Column 5: Sign up for the Newsletter (lg:col-span-3) */}
           <div className="lg:col-span-3 space-y-4">
             <div>
-              <h4 className="text-base sm:text-lg font-bold text-slate-900 tracking-tight">Sign up for the Newsletter</h4>
+              <h4 className="text-base sm:text-lg font-bold text-slate-900 dark:text-white tracking-tight">Sign up for the Newsletter</h4>
               <div className="mt-1.5">
                 <svg className="w-12 text-[#938BFB]" viewBox="0 0 48 8" fill="none">
                   <path d="M1 5C5 1 9 7 13 3C17 1 21 7 25 3C29 1 33 7 37 3C41 1 45 7 47 3" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
                 </svg>
               </div>
             </div>
-            <p className="text-xs sm:text-[13px] text-slate-500 leading-relaxed font-normal max-w-[280px]">
+            <p className="text-xs sm:text-[13px] text-slate-500 dark:text-slate-400 leading-relaxed font-normal max-w-[280px]">
               Duis aute irure dolor in reprehenderit in volupta velit esse cillum dolore eu fugiat nulla pariatur.
             </p>
 
@@ -148,21 +148,21 @@ export default function SiteFooter({ className }) {
               <input
                 type="email"
                 placeholder="Enter Email Address"
-                className="w-full bg-[#ECEFF8] border border-transparent focus:border-[#4A3AFF]/40 focus:bg-white rounded-full py-3.5 pl-5 pr-14 text-xs sm:text-sm text-slate-800 placeholder-slate-400 focus:outline-none transition-all shadow-inner"
+                className="w-full bg-[#ECEFF8] dark:bg-slate-900 border border-transparent dark:border-slate-800 focus:border-[#4A3AFF]/40 focus:bg-white dark:focus:bg-slate-900 rounded-full py-3.5 pl-5 pr-14 text-xs sm:text-sm text-slate-800 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none transition-all shadow-inner"
               />
               <button
                 type="submit"
                 aria-label="Subscribe"
-                className="absolute right-1.5 w-9 h-9 rounded-full bg-[#4A3AFF] hover:bg-[#3D2FE6] text-white flex items-center justify-center transition shadow-md"
+                className="absolute right-1.5 w-9 h-9 rounded-full bg-[#4A3AFF] hover:bg-[#3D2FE6] text-white flex items-center justify-center transition shadow-md cursor-pointer"
               >
                 <Send className="w-4 h-4 -rotate-45 -mr-0.5" />
               </button>
             </form>
 
             {/* Social Icons */}
-            <div className="pt-2 flex items-center gap-3 text-xs sm:text-sm font-bold text-slate-700">
-              <span className="font-semibold text-slate-800">Follow on:</span>
-              <div className="flex items-center gap-3.5 text-slate-800">
+            <div className="pt-2 flex items-center gap-3 text-xs sm:text-sm font-bold text-slate-700 dark:text-slate-300">
+              <span className="font-semibold text-slate-800 dark:text-slate-200">Follow on:</span>
+              <div className="flex items-center gap-3.5 text-slate-800 dark:text-slate-300">
                 <Link href="#" aria-label="Facebook" className="hover:text-[#4A3AFF] transition-colors"><Facebook className="w-4 h-4 fill-current" /></Link>
                 <Link href="#" aria-label="Twitter X" className="hover:text-[#4A3AFF] transition-colors font-black text-xs">✕</Link>
                 <Link href="#" aria-label="LinkedIn" className="hover:text-[#4A3AFF] transition-colors"><Linkedin className="w-4 h-4 fill-current" /></Link>
@@ -174,11 +174,11 @@ export default function SiteFooter({ className }) {
         </div>
 
         {/* Bottom Bar: Logo & Copyright */}
-        <div className="pt-6 border-t border-slate-200/80 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div className="pt-6 border-t border-slate-200/80 dark:border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-2">
             <Logo />
           </div>
-          <p className="text-xs text-slate-500 font-normal">
+          <p className="text-xs text-slate-500 dark:text-slate-400 font-normal">
             Copyright 2026 All Rights Reserved Edplus
           </p>
         </div>

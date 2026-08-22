@@ -46,14 +46,14 @@ export const DownloadCertificate = ({ courseId, totalProgress }) => {
         "w-full rounded-2xl py-3 px-4 text-xs font-bold transition-all duration-200 flex items-center justify-between shadow-xs cursor-pointer",
         isUnlocked
           ? "bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white shadow-emerald-500/20 hover:scale-[1.02] active:scale-[0.98]"
-          : "bg-slate-100 hover:bg-slate-200/80 text-slate-500 border border-slate-200/60"
+          : "bg-slate-100 dark:bg-slate-800/80 hover:bg-slate-200/80 dark:hover:bg-slate-700 text-slate-500 dark:text-slate-400 border border-slate-200/60 dark:border-slate-700"
       )}
     >
       <div className="flex items-center gap-2.5">
         <div
           className={cn(
             "w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0",
-            isUnlocked ? "bg-white/20 text-white" : "bg-slate-200 text-slate-400"
+            isUnlocked ? "bg-white/20 text-white" : "bg-slate-200 dark:bg-slate-700 text-slate-400 dark:text-slate-300"
           )}
         >
           {isCertificateDownloading ? (

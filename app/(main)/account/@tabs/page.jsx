@@ -19,7 +19,7 @@ async function Profile() {
       <PersonalDetails userInfo={loggedInUser} />
 
       {/* 2. Contact Info & Security Credentials (2-Column Grid) */}
-      <div className="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-slate-100/90">
+      <div className="bg-white dark:bg-slate-900 rounded-3xl p-6 sm:p-8 shadow-sm border border-slate-100/90 dark:border-slate-800 transition-colors">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <ContactInfo />
           <ChangePassword email={loggedInUser?.email} />

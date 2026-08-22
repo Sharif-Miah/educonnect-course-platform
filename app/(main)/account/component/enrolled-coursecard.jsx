@@ -53,11 +53,11 @@ const EnrolledCourseCard = async ({ enrollment }) => {
   const isCompleted = totalProgress === 100;
 
   return (
-    <div className="group bg-white rounded-3xl p-4 sm:p-5 shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100/90 flex flex-col justify-between h-full relative overflow-hidden">
+    <div className="group bg-white dark:bg-slate-900 rounded-3xl p-4 sm:p-5 shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100/90 dark:border-slate-800 flex flex-col justify-between h-full relative overflow-hidden">
       
       <div>
         {/* Course Thumbnail with Sliding Overlay */}
-        <div className="relative aspect-[16/10] w-full rounded-2xl overflow-hidden mb-4 bg-slate-100">
+        <div className="relative aspect-[16/10] w-full rounded-2xl overflow-hidden mb-4 bg-slate-100 dark:bg-slate-800">
           <Image
             src={thumbnail}
             alt={enrollment?.course?.title || "Enrolled course thumbnail"}
@@ -89,34 +89,34 @@ const EnrolledCourseCard = async ({ enrollment }) => {
         </div>
 
         {/* Title */}
-        <h3 className="text-base sm:text-lg font-bold text-slate-900 group-hover:text-[#4A3AFF] transition-colors line-clamp-2 leading-snug mb-3">
+        <h3 className="text-base sm:text-lg font-bold text-slate-900 dark:text-white group-hover:text-[#4A3AFF] transition-colors line-clamp-2 leading-snug mb-3">
           {enrollment?.course?.title}
         </h3>
 
         {/* Modules & Quizzes Grid */}
-        <div className="bg-slate-50 rounded-2xl p-3.5 space-y-2 text-xs font-semibold text-slate-600 mb-4 border border-slate-100">
+        <div className="bg-slate-50 dark:bg-slate-800/60 rounded-2xl p-3.5 space-y-2 text-xs font-semibold text-slate-600 dark:text-slate-300 mb-4 border border-slate-100 dark:border-slate-800">
           <div className="flex items-center justify-between">
-            <span className="flex items-center gap-1.5 text-slate-500">
+            <span className="flex items-center gap-1.5 text-slate-500 dark:text-slate-400">
               <BookOpen className="w-3.5 h-3.5 text-[#4A3AFF]" />
               <span>Modules</span>
             </span>
-            <span className="text-slate-900 font-bold">
+            <span className="text-slate-900 dark:text-white font-bold">
               {totalCompletedModules} / {totalModuleCount} Completed
             </span>
           </div>
 
           <div className="flex items-center justify-between">
-            <span className="flex items-center gap-1.5 text-slate-500">
+            <span className="flex items-center gap-1.5 text-slate-500 dark:text-slate-400">
               <FileCheck className="w-3.5 h-3.5 text-[#14C88C]" />
               <span>Quizzes Taken</span>
             </span>
-            <span className="text-slate-900 font-bold">
+            <span className="text-slate-900 dark:text-white font-bold">
               {quizzesTaken.length} / {totalQuizzes || 0}
             </span>
           </div>
 
-          <div className="flex items-center justify-between pt-1 border-t border-slate-200/60">
-            <span className="flex items-center gap-1.5 text-slate-500">
+          <div className="flex items-center justify-between pt-1 border-t border-slate-200/60 dark:border-slate-700">
+            <span className="flex items-center gap-1.5 text-slate-500 dark:text-slate-400">
               <Award className="w-3.5 h-3.5 text-amber-500" />
               <span>Marks Earned</span>
             </span>
@@ -132,10 +132,10 @@ const EnrolledCourseCard = async ({ enrollment }) => {
       <div className="space-y-3 pt-1 mt-auto">
         <div className="space-y-1.5">
           <div className="flex items-center justify-between text-xs font-bold">
-            <span className="text-slate-500">Course Progress</span>
+            <span className="text-slate-500 dark:text-slate-400">Course Progress</span>
             <span className="text-[#4A3AFF]">{totalProgress}%</span>
           </div>
-          <div className="w-full bg-slate-100 h-2.5 rounded-full overflow-hidden">
+          <div className="w-full bg-slate-100 dark:bg-slate-800 h-2.5 rounded-full overflow-hidden">
             <div
               className={`h-full rounded-full transition-all duration-500 ${
                 isCompleted ? "bg-[#14C88C]" : "bg-[#4A3AFF]"
