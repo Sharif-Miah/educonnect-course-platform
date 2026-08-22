@@ -1,9 +1,14 @@
 import CourseDetailsIntro from "./_components/CourseDetailsIntro";
 import CourseDetails from "./_components/CourseDetails";
 import { getCourseDetails } from "@/queries/courses";
+import { notFound } from "next/navigation";
 
 const SingleCoursePage = async ({ params: { id } }) => {
   const course = await getCourseDetails(id);
+
+  if (!course) {
+    notFound();
+  }
 
   return (
     <div className="w-full min-h-screen bg-slate-50/50">

@@ -25,6 +25,7 @@ export async function getEnrollmentsForUser(userId) {
 }
 
 export async function hasEnrollmentForCourse(courseId, studentId) {
+    if (!courseId || !studentId) return false;
     try {
       await dbConnect();
       const enrollment = await Enrollment.findOne({
@@ -41,7 +42,8 @@ export async function hasEnrollmentForCourse(courseId, studentId) {
 
       return true;
     } catch (error) {
-      throw new Error(error);
+      console.error("Error in hasEnrollmentForCourse:", error.message);
+      return false;
     }
   }
 

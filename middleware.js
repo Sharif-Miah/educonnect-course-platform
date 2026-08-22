@@ -15,6 +15,8 @@ export default auth((req) => {
     pathname.startsWith("/api/auth") ||
     pathname.startsWith("/api/register") ||
     pathname.startsWith("/assets") ||
+    pathname.startsWith("/favicon.ico") ||
+    pathname.startsWith("/icon.svg") ||
     pathname.includes(".")
   ) {
     return;

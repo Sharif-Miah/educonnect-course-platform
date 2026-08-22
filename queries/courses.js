@@ -32,38 +32,45 @@ export async function getCourseList() {
 }
 
 export async function getCourseDetails(id) {
-    await dbConnect();
-    const course = await Course.findById(id)
-    .populate({
-        path: "category",
-        model: Category
-    }).populate({
-        path: "instructor",
-        model: User
-    }).populate({
-        path: "testimonials",
-        model: Testimonial,
-        populate: {
-            path: "user",
+    try {
+        await dbConnect();
+        const course = await Course.findById(id)
+        .populate({
+            path: "category",
+            model: Category
+        }).populate({
+            path: "instructor",
             model: User
-        }
-    }).populate({
-        path: "modules",
-        model: Module,
-        populate: {
-            path: "lessonIds",
-            model: Lesson
-        }
-    }).populate({
-        path: "quizSet",
-        model: Quizset,
-        populate: {
-            path: "quizIds",
-            model: Quiz
-        }
-    }).lean();
+        }).populate({
+            path: "testimonials",
+            model: Testimonial,
+            populate: {
+                path: "user",
+                model: User
+            }
+        }).populate({
+            path: "modules",
+            model: Module,
+            populate: {
+                path: "lessonIds",
+                model: Lesson
+            }
+        }).populate({
+            path: "quizSet",
+            model: Quizset,
+            populate: {
+                path: "quizIds",
+                model: Quiz
+            }
+        }).lean();
 
-    return replaceMongoIdInObject(course)
+        if (!course) return null;
+
+        return replaceMongoIdInObject(course);
+    } catch (err) {
+        console.error("Error fetching course details:", err.message);
+        return null;
+    }
 }
 
 export async function getCourseDetailsByInstructor(instructorId, expand) {
