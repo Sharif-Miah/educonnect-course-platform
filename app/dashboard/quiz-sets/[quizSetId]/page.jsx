@@ -87,37 +87,40 @@ const EditQuizSet = async ({params: {quizSetId}}) => {
         <div className="flex items-center justify-end">
           <QuizSetAction />
         </div>
-        <div className="grid grid-cols-1 lg:grid-cols-2  gap-6 mt-16">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-16">
           {/* Quiz List */}
           <div className="max-lg:order-2">
-            <h2 className="text-xl mb-6">Quiz List</h2>
+            <h2 className="text-xl font-bold text-slate-900 dark:text-white mb-6">Quiz List</h2>
             {quizzes.length === 0 && (<AlertBanner
-              label="No Quiz are in the set, add some using the form above."
+              label="No Quiz are in the set, add some using the form."
               variant="warning"
-              className="rounded mb-6"
+              className="rounded-2xl mb-6"
             />)}
             <div className="space-y-6">
               {quizzes.map((quiz) => {
                 return (
                   <div
                     key={quiz.id}
-                    className=" bg-gray-50 shadow-md p-4 lg:p-6 rounded-md border"
+                    className="bg-white dark:bg-slate-900 shadow-sm p-6 rounded-2xl border border-slate-200 dark:border-slate-800 transition-colors"
                   >
-                    <h2 className="mb-3">{quiz.title}</h2>
+                    <h2 className="mb-4 font-bold text-base text-slate-900 dark:text-white">{quiz.title}</h2>
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                       {quiz.options.map((option) => {
                         return (
                           <div
                             className={cn(
-                              "py-1.5 rounded-sm  text-sm flex items-center gap-1 text-gray-600"
+                              "py-2 px-3 rounded-xl text-xs sm:text-sm flex items-center gap-2 border transition-colors",
+                              option.isTrue
+                                ? "bg-emerald-50 dark:bg-emerald-950/40 border-emerald-200 dark:border-emerald-800 text-emerald-800 dark:text-emerald-300 font-semibold"
+                                : "bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300"
                             )}
                             key={option.label}
                           >
                             {option.isTrue ? (
-                              <CircleCheck className="size-4 text-emerald-500 " />
+                              <CircleCheck className="size-4 text-emerald-500 shrink-0" />
                             ) : (
-                              <Circle className="size-4" />
+                              <Circle className="size-4 text-slate-400 shrink-0" />
                             )}
 
                             <p>{option.label}</p>
@@ -125,7 +128,7 @@ const EditQuizSet = async ({params: {quizSetId}}) => {
                         );
                       })}
                     </div>
-                    <div className="flex items-center justify-end gap-2 mt-6">
+                    <div className="flex items-center justify-end gap-2 mt-6 pt-4 border-t border-slate-100 dark:border-slate-800">
                       <QuizCardActions quiz={quiz} quizSetId={quizSetId}/>
                     </div>
                   </div>

@@ -159,9 +159,9 @@ export const AddQuizForm = ({ quizSetId }) => {
   };
 
   return (
-    <div className="mt-6 border bg-gray-50 rounded-md p-4">
-      <div className="font-medium flex items-center justify-between">
-        Add New Quiz
+    <div className="mt-6 border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 rounded-2xl p-6 shadow-xs text-slate-900 dark:text-slate-100 transition-colors">
+      <div className="font-bold text-sm flex items-center justify-between pb-3 border-b border-slate-100 dark:border-slate-800">
+        Add New Quiz Question
       </div>
 
       {
@@ -176,11 +176,12 @@ export const AddQuizForm = ({ quizSetId }) => {
               name="title"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Quiz Title</FormLabel>
+                  <FormLabel className="text-xs font-bold text-slate-700 dark:text-slate-200">Quiz Title</FormLabel>
                   <FormControl>
                     <Input
                       disabled={isSubmitting}
                       placeholder="Enter quiz question"
+                      className="bg-slate-50/50 dark:bg-slate-800 border-slate-200/90 dark:border-slate-700 text-slate-900 dark:text-white rounded-xl"
                       {...field}
                     />
                   </FormControl>
@@ -194,11 +195,12 @@ export const AddQuizForm = ({ quizSetId }) => {
               name="description"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Quiz Description</FormLabel>
+                  <FormLabel className="text-xs font-bold text-slate-700 dark:text-slate-200">Quiz Description</FormLabel>
                   <FormControl>
                     <Textarea
                       disabled={isSubmitting}
-                      placeholder="Enter quiz description"
+                      placeholder="Enter quiz description (optional)"
+                      className="bg-slate-50/50 dark:bg-slate-800 border-slate-200/90 dark:border-slate-700 text-slate-900 dark:text-white rounded-xl"
                       {...field}
                     />
                   </FormControl>
@@ -208,14 +210,14 @@ export const AddQuizForm = ({ quizSetId }) => {
             />
 
             {/* --------------- OPTION A -------- */}
-            <div className="space-y-3">
-              <FormLabel>Option A</FormLabel>
-              <div className="flex items-start gap-3">
+            <div className="space-y-2">
+              <FormLabel className="text-xs font-bold text-slate-700 dark:text-slate-200">Option A</FormLabel>
+              <div className="flex items-center gap-3">
                 <FormField
                   control={form.control}
                   name="optionA.isTrue"
                   render={({ field }) => (
-                    <FormItem className="flex flex-row items-start space-x-3 space-y-0 rounded-md border p-3">
+                    <FormItem className="flex items-center justify-center rounded-xl border border-slate-200 dark:border-slate-700 p-3 bg-slate-50/50 dark:bg-slate-800">
                       <FormControl>
                         <Checkbox
                           checked={field.value}
@@ -235,7 +237,8 @@ export const AddQuizForm = ({ quizSetId }) => {
                         <FormControl>
                           <Input
                             disabled={isSubmitting}
-                            placeholder="Enter quiz question"
+                            placeholder="Option A text"
+                            className="bg-slate-50/50 dark:bg-slate-800 border-slate-200/90 dark:border-slate-700 text-slate-900 dark:text-white rounded-xl"
                             {...field}
                           />
                         </FormControl>
@@ -249,14 +252,14 @@ export const AddQuizForm = ({ quizSetId }) => {
             {/* --------------- OPTION A ENDS -------- */}
 
             {/* --------------- OPTION B -------- */}
-            <div className="space-y-3">
-              <FormLabel>Option B</FormLabel>
-              <div className="flex items-start gap-3">
+            <div className="space-y-2">
+              <FormLabel className="text-xs font-bold text-slate-700 dark:text-slate-200">Option B</FormLabel>
+              <div className="flex items-center gap-3">
                 <FormField
                   control={form.control}
                   name="optionB.isTrue"
                   render={({ field }) => (
-                    <FormItem className="flex flex-row items-start space-x-3 space-y-0 rounded-md border p-3">
+                    <FormItem className="flex items-center justify-center rounded-xl border border-slate-200 dark:border-slate-700 p-3 bg-slate-50/50 dark:bg-slate-800">
                       <FormControl>
                         <Checkbox
                           checked={field.value}
@@ -276,7 +279,8 @@ export const AddQuizForm = ({ quizSetId }) => {
                         <FormControl>
                           <Input
                             disabled={isSubmitting}
-                            placeholder="Enter quiz question"
+                            placeholder="Option B text"
+                            className="bg-slate-50/50 dark:bg-slate-800 border-slate-200/90 dark:border-slate-700 text-slate-900 dark:text-white rounded-xl"
                             {...field}
                           />
                         </FormControl>
@@ -290,14 +294,14 @@ export const AddQuizForm = ({ quizSetId }) => {
             {/* --------------- OPTION B ENDS -------- */}
 
             {/* --------------- OPTION C -------- */}
-            <div className="space-y-3">
-              <FormLabel>Option C</FormLabel>
-              <div className="flex items-start gap-3">
+            <div className="space-y-2">
+              <FormLabel className="text-xs font-bold text-slate-700 dark:text-slate-200">Option C</FormLabel>
+              <div className="flex items-center gap-3">
                 <FormField
                   control={form.control}
                   name="optionC.isTrue"
                   render={({ field }) => (
-                    <FormItem className="flex flex-row items-start space-x-3 space-y-0 rounded-md border p-3">
+                    <FormItem className="flex items-center justify-center rounded-xl border border-slate-200 dark:border-slate-700 p-3 bg-slate-50/50 dark:bg-slate-800">
                       <FormControl>
                         <Checkbox
                           checked={field.value}
@@ -317,7 +321,8 @@ export const AddQuizForm = ({ quizSetId }) => {
                         <FormControl>
                           <Input
                             disabled={isSubmitting}
-                            placeholder="Enter quiz question"
+                            placeholder="Option C text"
+                            className="bg-slate-50/50 dark:bg-slate-800 border-slate-200/90 dark:border-slate-700 text-slate-900 dark:text-white rounded-xl"
                             {...field}
                           />
                         </FormControl>
@@ -331,14 +336,14 @@ export const AddQuizForm = ({ quizSetId }) => {
             {/* --------------- OPTION C ENDS -------- */}
 
             {/* --------------- OPTION D -------- */}
-            <div className="space-y-3">
-              <FormLabel>Option D</FormLabel>
-              <div className="flex items-start gap-3">
+            <div className="space-y-2">
+              <FormLabel className="text-xs font-bold text-slate-700 dark:text-slate-200">Option D</FormLabel>
+              <div className="flex items-center gap-3">
                 <FormField
                   control={form.control}
                   name="optionD.isTrue"
                   render={({ field }) => (
-                    <FormItem className="flex flex-row items-start space-x-3 space-y-0 rounded-md border p-3">
+                    <FormItem className="flex items-center justify-center rounded-xl border border-slate-200 dark:border-slate-700 p-3 bg-slate-50/50 dark:bg-slate-800">
                       <FormControl>
                         <Checkbox
                           checked={field.value}
@@ -358,7 +363,8 @@ export const AddQuizForm = ({ quizSetId }) => {
                         <FormControl>
                           <Input
                             disabled={isSubmitting}
-                            placeholder="Enter quiz question"
+                            placeholder="Option D text"
+                            className="bg-slate-50/50 dark:bg-slate-800 border-slate-200/90 dark:border-slate-700 text-slate-900 dark:text-white rounded-xl"
                             {...field}
                           />
                         </FormControl>
@@ -370,9 +376,9 @@ export const AddQuizForm = ({ quizSetId }) => {
               </div>
             </div>
             {/* --------------- OPTION D ENDS -------- */}
-            <div className="flex items-center justify-end gap-x-2">
-              <Button disabled={isSubmitting} type="submit">
-                Save
+            <div className="flex items-center justify-end gap-x-2 pt-2">
+              <Button disabled={isSubmitting} type="submit" className="bg-[#4A3AFF] hover:bg-[#3D2FE6] text-white rounded-xl font-bold">
+                Save Quiz
               </Button>
             </div>
           </form>

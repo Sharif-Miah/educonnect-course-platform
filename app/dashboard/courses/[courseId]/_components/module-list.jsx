@@ -60,36 +60,38 @@ export const ModuleList = ({ items, onReorder, onEdit }) => {
                 {(provided) => (
                   <div
                     className={cn(
-                      "flex items-center gap-x-2 bg-slate-200 border-slate-200 border text-slate-700 rounded-md mb-4 text-sm",
+                      "flex items-center gap-x-2 bg-slate-100 dark:bg-slate-800 border-slate-200 dark:border-slate-700 border text-slate-800 dark:text-slate-100 rounded-xl mb-3 text-xs sm:text-sm font-medium",
                       module.active &&
-                        "bg-sky-100 border-sky-200 text-sky-700"
+                        "bg-indigo-50/80 dark:bg-indigo-950/40 border-indigo-200 dark:border-indigo-800/80 text-[#4A3AFF] dark:text-indigo-300"
                     )}
                     ref={provided.innerRef}
                     {...provided.draggableProps}
                   >
                     <div
                       className={cn(
-                        "px-2 py-3 border-r border-r-slate-200 hover:bg-slate-300 rounded-l-md transition",
+                        "px-2.5 py-3 border-r border-r-slate-200 dark:border-r-slate-700 hover:bg-slate-200 dark:hover:bg-slate-700 rounded-l-xl transition cursor-grab",
                         module.active &&
-                          "border-r-sky-200 hover:bg-sky-200"
+                          "border-r-indigo-200 dark:border-r-indigo-800 hover:bg-indigo-100 dark:hover:bg-indigo-900/50"
                       )}
                       {...provided.dragHandleProps}
                     >
-                      <Grip className="h-5 w-5" />
+                      <Grip className="h-4 w-4 text-slate-400 dark:text-slate-500" />
                     </div>
-                    {module.title}
-                    <div className="ml-auto pr-2 flex items-center gap-x-2">
-                      <Badge
+                    <span className="font-semibold">{module.title}</span>
+                    <div className="ml-auto pr-3 flex items-center gap-x-2.5">
+                      <span
                         className={cn(
-                          "bg-gray-500",
-                          module.active && "bg-emerald-600"
+                          "text-[10px] font-bold py-0.5 px-2.5 rounded-full uppercase tracking-wider",
+                          module.active 
+                            ? "bg-emerald-100 dark:bg-emerald-950/80 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800" 
+                            : "bg-slate-200 dark:bg-slate-700 text-slate-600 dark:text-slate-300"
                         )}
                       >
                         {module.active ? "Published" : "Draft"}
-                      </Badge>
+                      </span>
                       <Pencil
                         onClick={() => onEdit(module.id)}
-                        className="w-4 h-4 cursor-pointer hover:opacity-75 transition"
+                        className="w-4 h-4 text-slate-400 hover:text-[#4A3AFF] dark:hover:text-indigo-300 cursor-pointer transition"
                       />
                     </div>
                   </div>

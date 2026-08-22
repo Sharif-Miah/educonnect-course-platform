@@ -57,7 +57,7 @@ async function EnrolledCourses() {
             No enrolled courses yet
           </h3>
           <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 leading-relaxed">
-            You haven't enrolled in any courses yet. Discover our catalog of in-demand courses and start learning today!
+            You haven&apos;t enrolled in any courses yet. Discover our catalog of in-demand courses and start learning today!
           </p>
           <div className="pt-2">
             <Link

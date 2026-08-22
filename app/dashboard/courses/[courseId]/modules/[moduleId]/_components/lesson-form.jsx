@@ -108,21 +108,21 @@ export const LessonForm = ({ initialData, moduleId, courseId }) => {
   };
 
   return (
-    <div className="relative mt-6 border bg-slate-100 rounded-md p-4">
+    <div className="relative mt-6 border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 rounded-2xl p-6 shadow-xs text-slate-900 dark:text-slate-100 transition-colors">
       {isUpdating && (
-        <div className="absolute h-full w-full bg-gray-500/20 top-0 right-0 rounded-md flex items-center justify-center">
-          <Loader2 className="animate-spin h-6 w-6 text-sky-700" />
+        <div className="absolute h-full w-full bg-slate-900/40 top-0 right-0 rounded-2xl flex items-center justify-center backdrop-blur-xs z-10">
+          <Loader2 className="animate-spin h-6 w-6 text-[#4A3AFF]" />
         </div>
       )}
-      <div className="font-medium flex items-center justify-between">
-        Module Lessions
-        <Button variant="ghost" onClick={toggleCreating}>
+      <div className="font-bold text-sm flex items-center justify-between">
+        Module Lessons
+        <Button variant="ghost" onClick={toggleCreating} className="dark:text-slate-200 dark:hover:bg-slate-800">
           {isCreating ? (
             <>Cancel</>
           ) : (
             <>
               <PlusCircle className="h-4 w-4 mr-2" />
-              Add a chapter
+              Add a lesson
             </>
           )}
         </Button>
@@ -143,6 +143,7 @@ export const LessonForm = ({ initialData, moduleId, courseId }) => {
                     <Input
                       disabled={isSubmitting}
                       placeholder="e.g. 'Introduction to the course...'"
+                      className="bg-slate-50/50 dark:bg-slate-800 border-slate-200/90 dark:border-slate-700 text-slate-900 dark:text-white rounded-xl"
                       {...field}
                     />
                   </FormControl>
@@ -150,7 +151,7 @@ export const LessonForm = ({ initialData, moduleId, courseId }) => {
                 </FormItem>
               )}
             />
-            <Button disabled={!isValid || isSubmitting} type="submit">
+            <Button disabled={!isValid || isSubmitting} type="submit" className="bg-[#4A3AFF] hover:bg-[#3D2FE6] text-white rounded-xl">
               Create
             </Button>
           </form>
@@ -160,10 +161,10 @@ export const LessonForm = ({ initialData, moduleId, courseId }) => {
         <div
           className={cn(
             "text-sm mt-2",
-            !lessons?.length && "text-slate-500 italic"
+            !lessons?.length && "text-slate-400 italic"
           )}
         >
-          {!lessons?.length && "No Lesson"}
+          {!lessons?.length && "No lessons created yet."}
           <LessonList
             onEdit={onEdit}
             onReorder={onReorder}
@@ -172,8 +173,8 @@ export const LessonForm = ({ initialData, moduleId, courseId }) => {
         </div>
       )}
       {!isCreating && (
-        <p className="text-xs text-muted-foreground mt-4">
-          Drag & Drop to reorder the lessons
+        <p className="text-xs text-slate-500 dark:text-slate-400 mt-4">
+          Drag & drop to reorder lessons
         </p>
       )}
       <LessonModal open={isEditing} setOpen={setIsEditing} courseId={courseId} moduleId={moduleId} lesson={lessonToEdit} onclose={() => {

@@ -53,14 +53,14 @@ const AddCourse = () => {
   };
 
   return (
-    <div className="p-6 sm:p-8 lg:p-10 bg-[#F8FAFC] min-h-[calc(100vh-80px)] flex items-center justify-center">
+    <div className="p-6 sm:p-8 lg:p-10 bg-[#F8FAFC] dark:bg-[#0b1120] min-h-[calc(100vh-80px)] flex items-center justify-center transition-colors">
       <div className="max-w-2xl w-full">
         
         {/* Back Link */}
         <div className="mb-6">
           <Link
             href="/dashboard/courses"
-            className="inline-flex items-center gap-2 text-xs font-bold text-slate-500 hover:text-[#4A3AFF] transition"
+            className="inline-flex items-center gap-2 text-xs font-bold text-slate-500 dark:text-slate-400 hover:text-[#4A3AFF] dark:hover:text-indigo-400 transition"
           >
             <ArrowLeft className="w-4 h-4" />
             <span>Back to All Courses</span>
@@ -68,20 +68,20 @@ const AddCourse = () => {
         </div>
 
         {/* Elevated Form Card */}
-        <div className="bg-white rounded-3xl p-6 sm:p-10 shadow-sm border border-slate-100/90 space-y-6">
+        <div className="bg-white dark:bg-slate-900 rounded-3xl p-6 sm:p-10 shadow-sm border border-slate-100/90 dark:border-slate-800 space-y-6 transition-colors">
           
           {/* Header */}
-          <div className="space-y-2 pb-4 border-b border-slate-100">
-            <div className="inline-flex items-center gap-1.5 bg-[#4A3AFF]/10 text-[#4A3AFF] px-3 py-1 rounded-full text-xs font-bold">
+          <div className="space-y-2 pb-4 border-b border-slate-100 dark:border-slate-800">
+            <div className="inline-flex items-center gap-1.5 bg-[#4A3AFF]/10 dark:bg-[#4A3AFF]/20 text-[#4A3AFF] dark:text-indigo-300 px-3 py-1 rounded-full text-xs font-bold">
               <Sparkles className="w-3.5 h-3.5" />
               <span>Step 1 of 2 • Basic Information</span>
             </div>
             
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight">
               Name Your Course
             </h2>
 
-            <p className="text-xs sm:text-sm text-slate-500 font-medium leading-relaxed">
+            <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 font-medium leading-relaxed">
               What would you like to name your course? Do not worry, you can always change this and add modules later.
             </p>
           </div>
@@ -95,7 +95,7 @@ const AddCourse = () => {
                 name="title"
                 render={({ field }) => (
                   <FormItem className="space-y-2">
-                    <FormLabel className="text-xs font-bold text-slate-700">
+                    <FormLabel className="text-xs font-bold text-slate-700 dark:text-slate-200">
                       Course Title <span className="text-rose-500">*</span>
                     </FormLabel>
                     <FormControl>
@@ -103,7 +103,7 @@ const AddCourse = () => {
                         disabled={isSubmitting}
                         placeholder="e.g. 'Advanced Next.js 14 & Full-Stack Mastery'"
                         {...field}
-                        className="bg-slate-50/50 border-slate-200/90 rounded-2xl py-3 px-4 text-xs sm:text-sm focus:ring-2 focus:ring-[#4A3AFF]/30 focus:border-[#4A3AFF]"
+                        className="bg-slate-50/50 dark:bg-slate-800 border-slate-200/90 dark:border-slate-700 text-slate-900 dark:text-white dark:placeholder-slate-500 rounded-2xl py-3 px-4 text-xs sm:text-sm focus:ring-2 focus:ring-[#4A3AFF]/30 focus:border-[#4A3AFF]"
                       />
                     </FormControl>
                     <FormMessage />
@@ -117,18 +117,18 @@ const AddCourse = () => {
                 name="description"
                 render={({ field }) => (
                   <FormItem className="space-y-2">
-                    <FormLabel className="text-xs font-bold text-slate-700">
+                    <FormLabel className="text-xs font-bold text-slate-700 dark:text-slate-200">
                       Short Overview & Description <span className="text-rose-500">*</span>
                     </FormLabel>
                     <FormControl>
                       <Textarea
                         placeholder="Write a brief overview of what students will learn in this course..."
                         rows={4}
-                        className="bg-slate-50/50 border-slate-200/90 rounded-2xl p-4 text-xs sm:text-sm focus:ring-2 focus:ring-[#4A3AFF]/30 focus:border-[#4A3AFF] resize-none"
+                        className="bg-slate-50/50 dark:bg-slate-800 border-slate-200/90 dark:border-slate-700 text-slate-900 dark:text-white dark:placeholder-slate-500 rounded-2xl p-4 text-xs sm:text-sm focus:ring-2 focus:ring-[#4A3AFF]/30 focus:border-[#4A3AFF] resize-none"
                         {...field}
                       />
                     </FormControl>
-                    <FormDescription className="text-[11px] text-slate-400">
+                    <FormDescription className="text-[11px] text-slate-400 dark:text-slate-400">
                       Provide 2-3 sentences summarizing the key takeaways of this course.
                     </FormDescription>
                     <FormMessage />
@@ -137,10 +137,10 @@ const AddCourse = () => {
               />
 
               {/* Actions */}
-              <div className="pt-4 flex items-center justify-end gap-3 border-t border-slate-100">
+              <div className="pt-4 flex items-center justify-end gap-3 border-t border-slate-100 dark:border-slate-800">
                 <Link
                   href="/dashboard/courses"
-                  className="px-5 py-3 rounded-2xl text-xs sm:text-sm font-bold text-slate-600 hover:bg-slate-100 transition"
+                  className="px-5 py-3 rounded-2xl text-xs sm:text-sm font-bold text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition"
                 >
                   Cancel
                 </Link>

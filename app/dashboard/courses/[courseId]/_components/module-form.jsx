@@ -54,12 +54,12 @@ export const ModulesForm = ({ initialData, courseId }) => {
       formData.append("courseId", courseId);
       formData.append("order", modules.length);
 
-      const module = await createModule(formData);
+      const createdModule = await createModule(formData);
 
       setModules((modules) => [
         ...modules,
         {
-          id: module?._id.toString(),
+          id: createdModule?._id.toString(),
           title: values.title,
         },
       ]);
@@ -92,15 +92,15 @@ export const ModulesForm = ({ initialData, courseId }) => {
   };
 
   return (
-    <div className="relative mt-6 border bg-slate-100 rounded-md p-4">
+    <div className="relative mt-6 border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 rounded-2xl p-6 shadow-xs text-slate-900 dark:text-slate-100 transition-colors">
       {isUpdating && (
-        <div className="absolute h-full w-full bg-gray-500/20 top-0 right-0 rounded-md flex items-center justify-center">
-          <Loader2 className="animate-spin h-6 w-6 text-sky-700" />
+        <div className="absolute h-full w-full bg-slate-900/40 top-0 right-0 rounded-2xl flex items-center justify-center backdrop-blur-xs z-10">
+          <Loader2 className="animate-spin h-6 w-6 text-[#4A3AFF]" />
         </div>
       )}
-      <div className="font-medium flex items-center justify-between">
+      <div className="font-bold text-sm flex items-center justify-between">
         Course Modules
-        <Button variant="ghost" onClick={toggleCreating}>
+        <Button variant="ghost" onClick={toggleCreating} className="dark:text-slate-200 dark:hover:bg-slate-800">
           {isCreating ? (
             <>Cancel</>
           ) : (
@@ -127,6 +127,7 @@ export const ModulesForm = ({ initialData, courseId }) => {
                     <Input
                       disabled={isSubmitting}
                       placeholder="e.g. 'Introduction to the course...'"
+                      className="bg-slate-50/50 dark:bg-slate-800 border-slate-200/90 dark:border-slate-700 text-slate-900 dark:text-white rounded-xl"
                       {...field}
                     />
                   </FormControl>
@@ -134,7 +135,7 @@ export const ModulesForm = ({ initialData, courseId }) => {
                 </FormItem>
               )}
             />
-            <Button disabled={!isValid || isSubmitting} type="submit">
+            <Button disabled={!isValid || isSubmitting} type="submit" className="bg-[#4A3AFF] hover:bg-[#3D2FE6] text-white rounded-xl">
               Create
             </Button>
           </form>
@@ -144,10 +145,10 @@ export const ModulesForm = ({ initialData, courseId }) => {
         <div
           className={cn(
             "text-sm mt-2",
-            !modules?.length && "text-slate-500 italic"
+            !modules?.length && "text-slate-400 italic"
           )}
         >
-          {!modules?.length && "No module"}
+          {!modules?.length && "No modules created yet."}
           <ModuleList
             onEdit={onEdit}
             onReorder={onReorder}
@@ -156,8 +157,8 @@ export const ModulesForm = ({ initialData, courseId }) => {
         </div>
       )}
       {!isCreating && (
-        <p className="text-xs text-muted-foreground mt-4">
-          Drag & Drop to reorder the modules
+        <p className="text-xs text-slate-500 dark:text-slate-400 mt-4">
+          Drag & drop to reorder modules
         </p>
       )}
     </div>

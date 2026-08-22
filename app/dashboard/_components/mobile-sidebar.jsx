@@ -8,7 +8,7 @@ export const MobileSidebar = () => {
       <SheetTrigger className="lg:hidden pr-4 hover:opacity-75 transition">
         <Menu />
       </SheetTrigger>
-      <SheetContent side="left" className="p-0 bg-white">
+      <SheetContent side="left" className="p-0 bg-white dark:bg-[#0b1120] border-r border-slate-200/80 dark:border-slate-800">
         <Sidebar />
       </SheetContent>
     </Sheet>

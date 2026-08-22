@@ -52,10 +52,10 @@ export const PriceForm = ({ initialData, courseId }) => {
   };
 
   return (
-    <div className="mt-6 border bg-gray-50 rounded-md p-4">
-      <div className="font-medium flex items-center justify-between">
+    <div className="mt-6 border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 rounded-2xl p-6 shadow-xs text-slate-900 dark:text-slate-100 transition-colors">
+      <div className="font-bold text-sm flex items-center justify-between">
         Course Price
-        <Button variant="ghost" onClick={toggleEdit}>
+        <Button variant="ghost" onClick={toggleEdit} className="dark:text-slate-200 dark:hover:bg-slate-800">
           {isEditing ? (
             <>Cancel</>
           ) : (
@@ -69,11 +69,11 @@ export const PriceForm = ({ initialData, courseId }) => {
       {!isEditing && (
         <p
           className={cn(
-            "text-sm mt-2",
-            !initialData.price && "text-slate-500 italic"
+            "text-xs sm:text-sm mt-2 font-bold",
+            !initialData.price ? "text-slate-400 italic font-normal" : "text-emerald-600 dark:text-emerald-400"
           )}
         >
-          {initialData.price ? formatPrice(initialData.price) : "No price"}
+          {initialData.price ? formatPrice(initialData.price) : "Free / No price set"}
         </p>
       )}
       {isEditing && (
@@ -93,6 +93,7 @@ export const PriceForm = ({ initialData, courseId }) => {
                       step="0.01"
                       disabled={isSubmitting}
                       placeholder="Set a price for your course"
+                      className="bg-slate-50/50 dark:bg-slate-800 border-slate-200/90 dark:border-slate-700 text-slate-900 dark:text-white rounded-xl"
                       {...field}
                     />
                   </FormControl>
@@ -101,7 +102,7 @@ export const PriceForm = ({ initialData, courseId }) => {
               )}
             />
             <div className="flex items-center gap-x-2">
-              <Button disabled={!isValid || isSubmitting} type="submit">
+              <Button disabled={!isValid || isSubmitting} type="submit" className="bg-[#4A3AFF] hover:bg-[#3D2FE6] text-white rounded-xl">
                 Save
               </Button>
             </div>
