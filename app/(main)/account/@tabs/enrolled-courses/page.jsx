@@ -6,6 +6,8 @@ import EnrolledCourseCard from "../../component/enrolled-coursecard";
 import Link from "next/link";
 import { BookOpen, GraduationCap, ArrowRight } from "lucide-react";
 
+export const dynamic = "force-dynamic";
+
 async function EnrolledCourses() {
   const session = await auth();
 

@@ -5,6 +5,7 @@ import { getInstructorDashboardData, ENROLLMENT_DATA } from "@/lib/dashboard-hel
 
 import { getCourseDetails } from "@/queries/courses";
 
+export const dynamic = "force-dynamic";
 
 const EnrollmentsPage = async ({params: {courseId}}) => {
   const course = await getCourseDetails(courseId);

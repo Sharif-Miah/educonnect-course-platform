@@ -25,7 +25,7 @@ const CourseModuleList = ({module}) => {
             <AccordionTrigger>{module?.title}</AccordionTrigger>
             <AccordionContent>
                 {/* header */}
-                <div class="flex gap-x-5 items-center flex-wrap mt-4 mb-6 text-gray-600 text-sm">
+                <div className="flex gap-x-5 items-center flex-wrap mt-4 mb-6 text-gray-600 text-sm">
                     <span className="flex items-center gap-1.5">
                         <Video className="w-4 h-4" />
                         {(totalDuration/3660).toPrecision(2)} Hours
@@ -36,7 +36,7 @@ const CourseModuleList = ({module}) => {
                 <div className="space-y-3">
                     {
                         module?.lessonIds && module?.lessonIds.map(lessonId => (
-                            <CourseLessonList lessonId={lessonId} />
+                            <CourseLessonList key={lessonId?._id?.toString() || lessonId?.id || lessonId} lessonId={lessonId} />
                         ))
                     }
 

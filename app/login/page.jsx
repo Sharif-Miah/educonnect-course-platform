@@ -1,7 +1,10 @@
+import { Suspense } from "react";
 import { LoginForm } from "./_components/login-form";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import Image from "next/image";
+
+export const dynamic = "force-dynamic";
 
 const LoginPage = () => {
   return (
@@ -45,7 +48,9 @@ const LoginPage = () => {
 
       {/* Center Auth Card */}
       <div className="my-auto py-6 relative z-10 w-full">
-        <LoginForm />
+        <Suspense fallback={<div className="text-center text-white">Loading...</div>}>
+          <LoginForm />
+        </Suspense>
       </div>
 
       {/* Bottom Footer Note */}

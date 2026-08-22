@@ -18,6 +18,8 @@ const lives = [
   },
 ];
 
+export const dynamic = "force-dynamic";
+
 const LivesPage = async () => {
   return (
     <div className="p-6 sm:p-8 lg:p-10 space-y-8 bg-[#F8FAFC] dark:bg-[#0b1120] min-h-[calc(100vh-80px)] transition-colors">

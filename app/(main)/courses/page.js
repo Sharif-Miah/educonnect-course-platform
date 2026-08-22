@@ -230,7 +230,7 @@ const CoursesPage = async ({ searchParams }) => {
                   No courses found
                 </h3>
                 <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 leading-relaxed">
-                  We couldn't find any courses matching your filter criteria. Try searching for different keywords or resetting the filters.
+                  We couldn&apos;t find any courses matching your filter criteria. Try searching for different keywords or resetting the filters.
                 </p>
                 <div className="pt-2">
                   <Link

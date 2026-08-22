@@ -74,7 +74,7 @@ const ActiveFilters = () => {
           onClick={removeSearch}
           className="inline-flex items-center gap-1.5 bg-indigo-50 dark:bg-indigo-950/80 hover:bg-indigo-100 dark:hover:bg-indigo-900 text-[#4A3AFF] dark:text-indigo-300 text-xs font-bold px-3 py-1.5 rounded-full border border-indigo-200/60 dark:border-indigo-800 transition cursor-pointer"
         >
-          <span>Keyword: "{searchTerm}"</span>
+          <span>Keyword: &quot;{searchTerm}&quot;</span>
           <X className="w-3 h-3 text-[#4A3AFF] dark:text-indigo-300" />
         </button>
       )}

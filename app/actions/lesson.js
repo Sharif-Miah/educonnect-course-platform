@@ -17,9 +17,9 @@ export async function createLesson(data) {
     const createdLesson = await create({title, slug, order});
     console.log(createdLesson);
 
-    const module = await Module.findById(moduleId);
-    module.lessonIds.push(createdLesson._id);
-    module.save();
+    const moduleDoc = await Module.findById(moduleId);
+    moduleDoc.lessonIds.push(createdLesson._id);
+    await moduleDoc.save();
 
     return createdLesson;
 
@@ -60,10 +60,10 @@ export async function changeLessonPublishState(lessonId) {
 
 export async function deleteLesson(lessonId, moduleId) {
   try {
-    const module = await Module.findById(moduleId);
-    module.lessonIds.pull(new mongoose.Types.ObjectId(lessonId));
+    const moduleDoc = await Module.findById(moduleId);
+    moduleDoc.lessonIds.pull(new mongoose.Types.ObjectId(lessonId));
     await Lesson.findByIdAndDelete(lessonId);
-    module.save();
+    await moduleDoc.save();
   } catch (err) {
     throw new Error(err);
   }

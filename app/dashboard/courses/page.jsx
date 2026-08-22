@@ -4,6 +4,8 @@ import { getInstructorDashboardData, COURSE_DATA } from "@/lib/dashboard-helper"
 import Link from "next/link";
 import { PlusCircle, BookOpen, Sparkles } from "lucide-react";
 
+export const dynamic = "force-dynamic";
+
 const CoursesPage = async () => {
   const courses = await getInstructorDashboardData(COURSE_DATA);
 

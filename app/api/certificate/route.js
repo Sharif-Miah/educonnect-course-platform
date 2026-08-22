@@ -7,35 +7,10 @@ import { getAReport } from "@/queries/reports";
 
 import { formatMyDate } from "@/lib/date";
 
-// Fetch custom fonts
-const kalamFontUrl = `${process.env.NEXT_PUBLIC_BASE_URL}/fonts/kalam/Kalam-Regular.ttf`;
-const kalamFontBytes = await fetch(kalamFontUrl).then((res) =>
-  res.arrayBuffer()
-);
-console.log({
-  env: process.env.NEXT_PUBLIC_BASE_URL,
-});
-console.log({
-  kalamFontUrl,
-  kalamFontBytes,
-});
+import fs from "fs/promises";
+import path from "path";
 
-const montserratItalicFontUrl = `${process.env.NEXT_PUBLIC_BASE_URL}/fonts/montserrat/Montserrat-Italic.ttf`;
-const montserratItalicFontBytes = await fetch(montserratItalicFontUrl).then(
-  (res) => res.arrayBuffer()
-);
-console.log({
-  montserratItalicFontUrl,
-  montserratItalicFontBytes,
-});
-const montserratFontUrl = `${process.env.NEXT_PUBLIC_BASE_URL}/fonts/montserrat/Montserrat-Medium.ttf`;
-const montserratFontBytes = await fetch(montserratFontUrl).then((res) =>
-  res.arrayBuffer()
-);
-console.log({
-  montserratFontUrl,
-  montserratFontBytes,
-});
+export const dynamic = "force-dynamic";
 
 export async function GET(request) {
   try {
@@ -44,33 +19,38 @@ export async function GET(request) {
      * Configuratios
      *
      *-------------------*/
-    const searchParams = request.nextUrl.searchParams
-    const courseId = searchParams.get('courseId');
-    const course  = await getCourseDetails(courseId);
+    const searchParams = request.nextUrl.searchParams;
+    const courseId = searchParams.get("courseId");
+    const course = await getCourseDetails(courseId);
     const loggedInUser = await getLoggedInUser();
 
-    const report = await getAReport({ course: courseId, student:loggedInUser.id });
+    const report = await getAReport({ course: courseId, student: loggedInUser?.id });
     console.log(report?.completion_date);
     const completionDate = report?.completion_date ? formatMyDate(report?.completion_date) : formatMyDate(Date.now());
     console.log(completionDate);
 
     const completionInfo = {
-      name: `${loggedInUser?.firstName} ${loggedInUser?.lastName}`,
+      name: `${loggedInUser?.firstName || ""} ${loggedInUser?.lastName || ""}`.trim() || "Student",
       completionDate: completionDate,
-      courseName: course.title,
-      instructor: `${course?.instructor?.firstName} ${course?.instructor?.lastName}`,
-      instructorDesignation: `${course?.instructor?.designation}`,
+      courseName: course?.title || "Course",
+      instructor: `${course?.instructor?.firstName || ""} ${course?.instructor?.lastName || ""}`.trim() || "Instructor",
+      instructorDesignation: `${course?.instructor?.designation || "Instructor"}`,
       sign: "/sign.png",
     };
 
     console.log(completionInfo);
+
+    // Read fonts directly from local disk
+    const publicDir = path.join(process.cwd(), "public");
+    const kalamFontBytes = await fs.readFile(path.join(publicDir, "fonts", "kalam", "Kalam-Regular.ttf"));
+    const montserratItalicFontBytes = await fs.readFile(path.join(publicDir, "fonts", "montserrat", "Montserrat-Italic.ttf"));
+    const montserratFontBytes = await fs.readFile(path.join(publicDir, "fonts", "montserrat", "Montserrat-Medium.ttf"));
 
     const pdfDoc = await PDFDocument.create();
     pdfDoc.registerFontkit(fontkit);
 
     const kalamFont = await pdfDoc.embedFont(kalamFontBytes);
     const montserratItalic = await pdfDoc.embedFont(montserratItalicFontBytes);
-
     const montserrat = await pdfDoc.embedFont(montserratFontBytes);
 
     const page = pdfDoc.addPage([841.89, 595.28]);
@@ -82,8 +62,7 @@ export async function GET(request) {
      * Logo
      *
      *-------------------*/
-    const logoUrl = `${process.env.NEXT_PUBLIC_BASE_URL}/logo.png`;
-    const logoBytes = await fetch(logoUrl).then((res) => res.arrayBuffer());
+    const logoBytes = await fs.readFile(path.join(publicDir, "logo.png"));
     const logo = await pdfDoc.embedPng(logoBytes);
     const logoDimns = logo.scale(0.5);
     page.drawImage(logo, {
@@ -211,9 +190,7 @@ export async function GET(request) {
       color: rgb(0, 0, 0),
     });
 
-    const signUrl = `${process.env.NEXT_PUBLIC_BASE_URL}${completionInfo.sign}`;
-
-    const signBytes = await fetch(signUrl).then((res) => res.arrayBuffer());
+    const signBytes = await fs.readFile(path.join(publicDir, "sign.png"));
     const sign = await pdfDoc.embedPng(signBytes);
 
     page.drawImage(sign, {
@@ -224,11 +201,7 @@ export async function GET(request) {
     });
 
     // pattern
-    const patternUrl = `${process.env.NEXT_PUBLIC_BASE_URL}/pattern.jpg`;
-
-    const patternBytes = await fetch(patternUrl).then((res) =>
-      res.arrayBuffer()
-    );
+    const patternBytes = await fs.readFile(path.join(publicDir, "pattern.jpg"));
     const pattern = await pdfDoc.embedJpg(patternBytes);
 
     page.drawImage(pattern, {

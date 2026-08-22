@@ -20,6 +20,8 @@ import {
   Award
 } from "lucide-react";
 
+export const dynamic = "force-dynamic";
+
 const DashboardPage = async () => {
   const session = await auth();
   if (!session?.user) redirect("/login");

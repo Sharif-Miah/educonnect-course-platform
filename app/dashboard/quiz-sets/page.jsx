@@ -4,6 +4,8 @@ import { getAllQuizSets } from "@/queries/quizzes";
 import { HelpCircle, PlusCircle, Sparkles } from "lucide-react";
 import Link from "next/link";
 
+export const dynamic = "force-dynamic";
+
 const QuizSets = async () => {
   let quizSets = [];
   try {

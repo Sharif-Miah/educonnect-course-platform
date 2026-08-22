@@ -352,7 +352,7 @@ export default function DocsPage() {
                   EduConnect automatically tracks completed lessons, watched durations, and quiz submissions.
                 </p>
                 <div className="rounded-2xl border p-6 bg-slate-900 text-white font-mono text-xs space-y-2">
-                  <p className="text-emerald-400">// Progress Calculation Algorithm</p>
+                  <p className="text-emerald-400">{"// Progress Calculation Algorithm"}</p>
                   <p>Completed Lessons / Total Course Lessons * 100%</p>
                   <p className="text-slate-400">When progress reaches 100% + Quizzes passed = Certificate Unlocked!</p>
                 </div>

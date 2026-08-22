@@ -5,6 +5,8 @@ import { auth } from "@/auth";
 import { getUserByEmail } from "@/queries/users";
 import { redirect } from "next/navigation";
 
+export const dynamic = "force-dynamic";
+
 async function Profile() {
   const session = await auth();
   if (!session?.user) {
