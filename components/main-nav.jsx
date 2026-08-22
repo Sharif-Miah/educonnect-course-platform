@@ -90,25 +90,12 @@ export function MainNav({ items, children }) {
             </DropdownMenuContent>
           </DropdownMenu>
 
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <button className="flex items-center gap-1 text-sm font-medium text-gray-700 dark:text-slate-300 hover:text-[#4A3AFF] dark:hover:text-[#4A3AFF] transition-colors outline-none cursor-pointer">
-                <span>Pages</span>
-                <ChevronDown className="w-3.5 h-3.5 opacity-70" />
-              </button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent align="start" className="w-52 bg-white dark:bg-slate-900 shadow-xl rounded-2xl p-1.5 border border-slate-100 dark:border-slate-800">
-              <DropdownMenuItem asChild className="rounded-xl cursor-pointer py-2 px-3 text-xs font-bold focus:bg-indigo-50 dark:focus:bg-slate-800 focus:text-[#4A3AFF] dark:text-slate-200">
-                <Link href="/pricing">Pricing & Plans</Link>
-              </DropdownMenuItem>
-              <DropdownMenuItem asChild className="rounded-xl cursor-pointer py-2 px-3 text-xs font-bold focus:bg-indigo-50 dark:focus:bg-slate-800 focus:text-[#4A3AFF] dark:text-slate-200">
-                <Link href="/docs">Documentation</Link>
-              </DropdownMenuItem>
-              <DropdownMenuItem asChild className="rounded-xl cursor-pointer py-2 px-3 text-xs font-bold focus:bg-emerald-50 dark:focus:bg-emerald-950/60 focus:text-emerald-700 dark:focus:text-emerald-400 dark:text-slate-200">
-                <Link href="/register/instructor">Teach on EduPlus</Link>
-              </DropdownMenuItem>
-            </DropdownMenuContent>
-          </DropdownMenu>
+          <Link
+            href="/pricing"
+            className="text-sm font-medium text-gray-700 dark:text-slate-300 hover:text-[#4A3AFF] dark:hover:text-[#4A3AFF] transition-colors"
+          >
+            Pricing
+          </Link>
 
           <Link
             href="/blog"
