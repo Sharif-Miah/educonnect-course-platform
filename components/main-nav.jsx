@@ -73,12 +73,7 @@ export function MainNav({ items, children }) {
             Home
           </Link>
 
-          <Link
-            href="/about"
-            className="text-sm font-medium text-gray-700 hover:text-[#4A3AFF] transition-colors"
-          >
-            About
-          </Link>
+
 
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
@@ -122,6 +117,12 @@ export function MainNav({ items, children }) {
             className="text-sm font-medium text-gray-700 hover:text-[#4A3AFF] transition-colors"
           >
             Blog
+          </Link>
+          <Link
+            href="/about"
+            className="text-sm font-medium text-gray-700 hover:text-[#4A3AFF] transition-colors"
+          >
+            About
           </Link>
 
           <Link
